@@ -1,0 +1,22 @@
+@6180 = ~Les arcanes de la sorcellerie ont rendu possible cet improbable mariage entre le feu et la glace au sein de cet arc splendide, et les flèches tirées par cet arc sont imprégnées des deux éléments.
+
+PARAMÈTRES :
+
+Capacités d'équipement :
+- Résistance au feu : +5 %
+- Résistance au froid : +5 %
+
+Capacités de charge :
+- Hâte améliorée une fois par jour
+  Durée : 23 rounds
+  Zone d'effet : l'utilisateur
+  
+TAC0 : +4
+DaDégâts : +1 point de feu et +1 point de froid
+Facteur de vitesse : 2
+Type de compétence : arc court
+Type : arme à deux mains
+Nécessite :
+3 en Force
+
+Poids : 1~

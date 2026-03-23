@@ -1,0 +1,109 @@
+@5210 = ~Châtiment Éthéré
+(Conjuration)
+
+Niveau : quête
+Sphère : Convocation
+Portée : 12 m
+Durée : 3 rounds
+Temps d'incantation : 8
+Zone d'effet : rayon de 4,5 m
+Jet de sauvegarde : spécial
+
+Les silhouettes fantomatiques appelées par le chaman tourbillonnent autour du champ de bataille et tourmentent les adversaires du chaman. Tous les ennemis dans la zone d'effet subissent 6d6 points de dégâts magiques par round pour les 3 prochains rounds (pas de sauvegarde). En outre, tous les ennemis vivants (les morts-vivants et les créatures artificielles ne sont pas affectés) doivent réussir leur jet de sauvegarde contre les sorts ou perdre 2 points de Force à chaque round pendant 5 rounds. La perte de force est cumulative, mais ce sort ne peut pas réduire la force d'une créature au-dessous de 1..~
+
+@6300 = ~Piège explosif
+Cette capacité permet au voleur de préparer un puissant piège qui libère une boule de feu infligeant 15d6 points de dégâts (jet de sauvegarde contre les souffles pour diviser par deux) et projetant ses victimes au sol pendant 1 round (jet de sauvegarde contre les sorts à -10 pour éviter).~
+
+@6310 = ~Paume vibratoire
+La attaques réussie lors des 7 secondes qui suivent forcent la cible à réussir un jet de sauvegarde contre les sorts ou mourir. À partir du niveau 16, le jet de sauvegarde est fait avec une pénalité de 1 puis, à apartir du niveau 24, la pénalité sur le jet de sauvegarde passe à 2 points.
+
+Cette capacité spéciale modifie automatiquement l'attaque normale, sans avoir besoin de viser une cible.~
+
+@6320 = ~Cri de guerre
+Le combattant émet un cri de guerre puissant et impressionnant qui fait paniquer tous les ennemis dans un rayon de 4,5 m pendant 1 tour s'ils ratent leur jet de sauvegarde contre les sorts.
+
+De plus, le combattant et ses alliés voient leur moral restauré à sa valeur maximum, sont soignés de 12 points de vie et obtiennent un bonus de 2 points au TAC0 et aux dégâts d'armes pendant 3 rounds. Pendant cette période, le combattant réussit des coups critiques 5 % plus souvent.~
+
+@6440 = ~Arme empoisonnée
+Chaque coup réussi au cours des 5 prochains rounds empoisonnera la cible. Chaque cible ne peut être affectée qu'une fois par round. Le montant des dégâts de poison dépend du niveau du personnage :
+
+Niveau 1 : la cible subit 1 point de dégât de poison par seconde pendant 6 secondes (jet de sauvegarde contre la mort de +1 pour annuler)
+Niveau 5 : la cible subit 1 point de dégât de poison par seconde pendant 12 secondes (jet de sauvegarde contre la mort pour annuler) et subit immédiatement 2 points de dégâts de poison (pas de sauvegarde)
+Niveau 9 : la cible subit 1 point de dégât de poison par seconde pendant 18 secondes (jet de sauvegarde contre la mort de -1 pour annuler) et subit immédiatement 4 points de dégâts de poison (pas de sauvegarde)
+Niveau 13 : la cible subit 1 point de dégât de poison par seconde pendant 24 secondes (jet de sauvegarde contre la mort de -2 pour annuler) et subit immédiatement 6 points de dégâts de poison (pas de sauvegarde)
+Niveau 17 : la cible subit 1 point de dégât de poison par seconde pendant 27 secondes (jet de sauvegarde contre la mort de -3 pour annuler) et subit immédiatement 8 points de dégâts de poison (pas de sauvegarde)
+Niveau 21 : la cible subit 1 point de dégât de poison par seconde pendant 30 secondes (jet de sauvegarde contre la mort de -4 pour annuler) et subit immédiatement 10 points de dégâts de poison (pas de sauvegarde)
+~
+
+@6880 = ~Brouillard putride
+(Conjuration)
+
+Niveau : 2
+Sphère : Convocation
+Portée : champ visuel du lanceur
+Durée : 1 tour
+Temps d'incantation : 2
+Zone d'effet : rayon de 4,5 m
+Jet de sauvegarde : spécial
+
+Ce sort fait apparaître un nuage de brouillard putride qui glace et entrave toute personne dans sa zone d'effet sauf le lanceur de sort. Les créatures dans le brouillard subissent 1d3 points de dégâts de froid par round. Le dé de dégâts augmente d'une taille à chaque niveau, jusqu'à un maximum de 1d10. En outre, il y a 50 % de chances qu'elles doivent réussir un jet de sauvegarde contre la mort, sans quoi elles seront ralenties pendant 1 round. Les créatures immunisées contre les dégâts de froid ne souffrent d'aucun effet néfaste de ce sort.~
+
+@6990 = ~Lucidité spirituelle
+(Abjuration)
+
+Niveau : 3
+Sphère : protection
+Portée : champ visuel du lanceur de sort
+Durée : instantanée
+Temps d'incantation : 9
+Zone d'effet : 1 créature
+Jet de sauvegarde : aucun
+
+Avec ce sort, le chaman renforce la détermination spirituelle d'une créature et purge son esprit des influences négatives. Le sort supprime pour une seule créature les effets de la peur, de berserk, du charme, de la confusion de l'ébriété et de la débilité mentale.~
+
+@7000 = ~Feu spirituel
+(Conjuration)
+
+Niveau : 4
+Sphère : Convocation
+Portée : 12 m 
+Durée : instantanée
+Temps d'incantation : 4
+Zone d'effet : rayon de 4,5 m
+Jet de sauvegarde : spécial
+
+Lorsque le chaman lance ce sort, les énergies du monde des esprits se rassemblent et forment une sphère bleu pâle. Le chaman peut projeter la sphère afin qu'elle explose dans un éclat de flammes azur fantomatiques, qui infligent 1d4+1 points de dégâts magiques par niveau du chaman (jusqu'à un maximum de 12d4+12). Il y a aussi 33 % de chances que tous les ennemis dans la zone d'effet soient atteints par le sort Fatalité (malus de -2 aux jets de sauvegarde et aux jets d'attaque pendant 1 tour). Un jet de sauvegarde contre les sorts réussi divise les dégâts par deux mais l'effet de Fatalité est toujours appliqué. Les esprits, les fées, les élémentaires et les morts-vivants spectraux subissent le double de dégâts.~
+
+@7530 = ~Élu des Esprits
+
+Portée : 0
+Durée : 24 heure
+Temps d'incantation : 9
+Zone d'effet : lanceur de sort
+Jet de sauvegarde : aucun
+
+Ce puissant rite protège le chaman de la mort pendant 24 heures ou jusqu'à ce qu'il soit déchargé. Tant qu'il est sous la protection de ce rite, le chaman est immunisé contre toutes les formes de magie de mort et les coups d'armes vorpales. En outre, si le chaman voit ses points de vie descendre sous les 10 % et que le rite est actif, le chaman reçoit instantanément un sort de Guérison. La protection du rite (y compris l'immunité contre la mort) est complètement déchargée dès que le sort de Guérison est déclenché. Accomplir le rite plusieurs fois ne cumule pas les effets mais remplace le rite précédent.
+
+Nécessite : Forme spirituelle~
+
+
+@7790 = ~Faisceau de la Conscience Solaire
+Le personnage provoque une explosion de lumière intense qui touche toutes les créatures dans un rayon de 4,5 m. Le Faisceau de la Conscience Solaire ne frappe pas automatiquement toutes les cibles, mais consiste en une attaque de mêlée basée sur le TAC0 actuel du personnage (+3 contre les morts-vivants). Les victimes subissent 9d6 points de dégâts de feu (12d6+3 si morts-vivants), mais peuvent faire un jet de sauvegarde contre les sorts pour diviser par deux. En outre, toutes les créatures (excepté le personnage) doivent réussir un jet de sauvegarde contre les sorts, ou être aveuglées pendant 2 heures.~
+
+@7800 = ~Rayon de la Conscience Solaire
+Le personnage projette un rayon de lumière de sa paume, infligeant à une cible unique 1d8 points de dégâts de feu tous les 2 niveaux du lanceur jusqu'à un maximum de 5d8. Les morts-vivants subissent 6 points de dégâts supplémentaires (augment de 2 points tous les deux niveaux du lanceur). Il n'y a pas de jet de sauvegarde contre cette capacité.~
+
+@8080 = ~Assassinat
+Combinaison de toutes les ficelles apprises par le voleur au cours d'innombrables batailles, cette capacité permet de transformer chaque attaque des 7 secondes suivantes en attaque sournoise, appliquant bien évidemment le modificateur de dégâts du voleur lié à celles-ci. De plus,pendant cette durée et le round suivant, les échecs critiques sont impossibles et les chances de coup critique augmentent de 10 %.
+
+Les voleurs dévoués (non multiclassés) tirent de meilleurs bénéfices :
+
+– Le bonus aux coups critiques passe à 15 %
+– +2 aux dégâts et au TAC0
+– +1 attaque par round~
+
+@8180 = ~Trompe-la-mort
+Dans un effort extraordinaire, un voleur de haut niveau peut éviter une mort quasi certaine. Cet effet dure 5 rounds durant lesquels les Jets de sauvegarde contre la mort reçoivent un bonus de 5, les points de vie sont augmentés de 20 et le voleur devient immunisé contre la magie de mort et le drain de niveau. De plus, pendant le premier round, le roublard réussit tous des jets de sauvegarde et ses points de vie ne peuvent descendre en-dessous de 1 pendant la première moitié du round.~
+
+@8191 = ~Spirale défensive
+Durant les 4 prochains rounds, le personnage se déplacer à la moitié de sa vitesse normale, obtient un bonus de +1 à la classe d'armure par niveau (jusqu'aà un maximum de +10), et est immunisé contre les attaques sournoises.~

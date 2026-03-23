@@ -1,0 +1,248 @@
+
+@6450 = ~Cette superbe chope en étain s'adapte étonnement bien à la forme de la main, ou peut-être cela n'est-il pas si étonnant car il semblerait que ce soit la vôtre. « <CHARNAME> » est gravé dessus en gros caractères anguleux. Vous ressentez une force étrange vous parcourir lorsque vous la tenez, similaire à l'euphorie brève qui précède souvent un sommeil long et irrégulier lui-même précédant un jour de calvaire encore plus long. Cette chope était un cadeau de Mironda, la naine entropiste et grande connaisseuse en mousseuse.
+
+PARAMÈTRES :
+
+Capacités de charge :
+- Restaure 27 points de vie trois fois par jour Pendant 1 tour, l'utilisateur bénéficie d'un bonus de 1 point à la force et à la constitution (ne se cumule pas).
+
+Poids : 3~
+
+@7460 = ~Baguette de Projectiles Magiques
+Une fois activée, la baguette crache trois projectiles d'énergie magique qui filent toucher automatiquement sa cible, y compris un ennemi engagé dans un combat au corps à corps. La créature doit être vue, ou au moins détectable, si bien qu'une couverture presque totale, telle celle qu'offre une archère, peut rendre les projectiles inopérants. Ceux-ci infligent 1d4 +1 points de dégâts chacun à la créature qu'ils frappent.
+
+PARAMÈTRES :
+
+Capacités de charge :
+- trois projectiles magiques vont frapper la cible
+  Dégâts : 1d4 +1 magiques par projectile
+  Portée : 30 mètres
+  Zone d'effet : 1 créature
+
+Nécessite : 9 en Intelligence
+
+Poids : 1~
+
+@7461 = ~Une multitude de fins éclats de glace entoure la personne buvant cette potion, créant un manteau de givre qui protège toute la zone contre les dégâts de feu. Cette potion a été créée pour contrer les effets de la Boule de feu et autres sorts similaires.
+
+PARAMÈTRES :
+
+Capacités de charge :
+- Protection contre 75 % des dégâts de feu pendant 3 rounds sur toute la zone couverte
+  Portée : 0
+  Zone d'effet : rayon de 4,5 m
+
+Poids : 1~
+
+@7462 = ~Cette potion, puissamment enchantée, simule une augmentation temporaire du niveau et accorde au buveur une confiance absolue. L'effet dure 2 heures, ce qui fait d'elle un atout considérable lors d un combat à mort.
+
+PARAMÈTRES :
+
+Points de vie : +10 % des points de vie de base
+Dégâts : +1
+TAC0 : +2
+Spécial : Immunité contre les échecs de moral.
+
+Durée : 2 heures
+
+Poids : 1~
+
+@7463 = ~La potion confère une très grande résistance à toutes les attaques et donne un bonus à tous les jets de sauvegarde et à la résistance magique. L'effet de la potion dure 2 heures.
+
+PARAMÈTRES :
+
+Classe d'armure : 0
+Jets de sauvegarde : +5
+Résistance à la magie : +10 %
+Durée : 1 heure
+
+Poids : 1~
+
+@7464 = ~L'Élixir de Santé est une puissante mixture faite pour purifier le corps de toute impureté. Elle soigne de tous les poisons, puis quand le corps est purgé, le bénéficiaire est soigné de 20 points de vie pour récupérer plus vite.
+
+PARAMÈTRES :
+
+Spécial : Soigne du poison et des maladies, protège contre leurs effets pendant 10 secondes et redonne 20 points de vie
+
+Poids : 1~
+
+@7465 = ~Cette potion affine les sens de celui qui la boit et lui permet ainsi d' effectuer certaines tâches délicates avec plus de précision. L'amélioration des sens se manifeste aussi au combat sous la forme d'une plus grande précision et d'une meilleure aptitude à l'esquive.
+
+PARAMÈTRES :
+
+Classe d'armure : +1
+Jets de sauvegarde : +1
+TAC0 : +1
+Détection des pièges : +40 %
+Détection des illusions : +40 %
+Vol à la tire : +20 %
+Crochetage : +20 %
+Furtivité : +20 %
+Se cacher dans l'ombre : +20 %
+Durée : 6 heures
+
+Poids : 1~
+
+@7466 = ~Ce puissant élixir est similaire à la potion d'héroïsme, en ce qu'il offre à celui qui le boit des niveaux supplémentaires et lui accorde plus d'assurance. L'accroissement affecte les points de vie, le TAC0, le temps d'incantation, les dégâts et les talents de voleur.
+
+PARAMÈTRES :
+
+TAC0 : +4
+Points de vie : +20 % temporaires
+Compétences de voleur : +20 %
+Dégâts : +10 %
+Temps d'incantation réduit de 1
+Durée : 4 tours
+
+Poids : 1~
+
+@7467 = ~Consommée en entier, cette potion rend douze points de vie au buveur. L'effet est instantané, et la potion ne sert qu'une seule fois.
+
+PARAMÈTRES :
+
+Spécial : Restaure 12 points de vie.
+
+Poids : 1~
+
+@7468 = ~Absorbée en entier, cette potion opaque permet de rendre 12 points de vie à la personne qui la boit. L'effet est instantané, et la potion est à usage unique.
+
+Poids : 1~
+
+@7469 = ~Ce puissant élixir confère à celui qui le boit les capacités de régénération similaires à celles d'un troll : ses plaies se referment d'elles-mêmes, guérissant littéralement à vue d'œil. Il permet de récupérer 3 points de vie par round et dure 3 tours.
+
+PARAMÈTRES :
+
+Spécial : Régénère 3 points de vie par round
+Durée : 3 tours
+
+Poids : 1~
+@8090 = ~Une baguette d'effroi instille la terreur en toute créature se trouvant dans sa zone d'effet. Le résultat n'est pas garanti cependant, les plus courageux y résistant. À l'instar de toutes ses pareilles, elle ne sert qu'un certain nombre de fois avant d'être détruite.
+
+PARAMÈTRES :
+
+Capacités de charge :
+- Fait fuir les cibles, sauf en cas de réussite d'un jet de sauvegarde contre les sorts
+  Portée : 30,5 m
+  Zone d'effet : rayon de 4,5 m
+Durée : 1 tour
+
+Nécessite : 9 en Intelligence
+
+Poids : 1~
+
+@8100 = ~Une fois activée, la baguette émet un fin rayon bleuté long de 30 m au maximum. La créature frappée par ce rayon doit réussir un jet de sauvegarde contre les baguettes, sous peine d'être étourdie pendant 7 rounds.
+
+PARAMÈTRES :
+
+Capacités de charge :
+- Cible étourdie à moins de réussir un jet de sauvegarde contre les baguettes avec un malus de -4
+  Portée : 30,5 m
+  Zone d'effet : 1 créature
+  Durée : 7 rounds
+
+Nécessite : 9 en Intelligence
+
+Poids : 1~
+
+@8110 = ~La baguette émet un rayon doré qui porte au maximum à 24 m, sur un rayon de 4,5 m. Les créatures visées doivent réussir un jet de sauvegarde contre les baguettes sous peine de sombrer dans un sommeil comateux durant 2 tours.  Seules les créatures de 4 dés de vie ou moins sont affectées.
+
+PARAMÈTRES :
+
+Capacités de charge :
+- Sommeil (jet de sauvegarde contre les baguettes pour annuler)
+  Portée : 24 m
+  Zone d'effet : rayon de 4,5 m
+  Durée : 2 tours
+
+Nécessite : 9 en Intelligence
+
+Poids : 1~
+
+@8580 = ~Un parchemin de protection contre les morts-vivants invoque un cercle de protection invisible de 90 cm de rayon autour de la cible. Celle-ci est à l'abri de toute attaque physique portée par des morts-vivants,ainsi que des effets généralement associés aux morts-vivants, comme la paralysie, la domination et l'absorption de niveaux. La protection dure 12 heures.
+
+PARAMÈTRES :
+- Classe d'armure : +2 contre les morts-vivants
+- Jets de sauvegarde contre la mort : +2
+- Immunité contre l'absorption de niveau et la paralysie causés par les touchers de goules, blêmes, liches et les autres morts-vivants
+- Immunité contre la domination par les vampires
+- Les morts-vivants frappant la cible sont repoussés. Ils subissent 1d4+1 points de dégâts magiques (jet de sauvegarde contre les sorts pour demi-dégâts) et sont forcés à fuir pendant 2 rounds s'il échouent à leur jet de sauvegarde contre les sorts. Une fois affectés, ils ne peuvent plus être forcés à fuir pendant 1 tour mais subissent toujours les dégâts.
+- Zone d'effet : 1 créature
+- Durée : 12 heures
+
+Nécessite : 9 en Intelligence~
+
+ @8590 = ~Tentative de parade~
+
+@8700 = ~Forme de l'Écorcheur~
+@8701 = ~Slayer Form
+
+Manifestez vos compulsions les plus sauvages en prenant la forme de l'essence brutale de Bhaal : une créature violente et puissante faite de crocs et de griffes. 
+
+La forme de l'Écorcheur confère les avantages suivants :
+
+- Force et Dextérité fixées à 21 (23 à partir de 3 millions de PX puis 25 à partir de 6 millions de PX)
+– Constitution augmentée de 3
+- Attaques par round fixées à 3 (7/2 à partir de 3 millions de PX puis 4 à partir de 6 millions de PX)
+- Les attaques de griffes et de crocs infligent 1d8+3 points de dégâts contondants/tranchants +1 point de dégât de froid, avec un bonus au TAC0 de 5 points, touchant comme une arme +5. À partir de 3 millions de PX, les dégâts passent à 2d4+5 avec 1d2+1 de froid et à 6 millions de PX les dégâts passent à 2d4+6 avec 1d3+1 de froid, le bonus au TAC0 passe à +6.
+- Toutes les attaques frappent comme une arme magique +6 dès lors qu'il s'agit de déterminer ce qu'elles peuvent toucher.
+- Inflige 2d6 points de dégâts supplémentaires contondants et tranchants aux cibles renversées, inconscientes ou hors combat
+- Vitesse de déplacement augmentée de 5
+- Classe d'armure effective mise à 10
+- Jets de sauvegarde améliorés de 5 points
+- Résistance à la magie améliorée de 10 %
+- TACO mis à 0
+- Complètement soigné par la transformation
+– 100 points de vie, 150 point de vie à partie de 3 millions de PX, puis 200 points de vie à partit de 6 millions de PX. Si le maximum de points de vie est plus élevé, les points de vie augmentent de 15 à la place.
+– Immunité à Emprisonnement, à l'absorption de niveaux, à l'étourdissement, à la peur, la panique, l'échec de moral et les projectiles.
+
+Cette forme est instable et doit assouvir sa soif de sang pour être maintenue. Une mise à mort doit survenir une fois par tour,sinon l'utilisateur retourne d'office à sa forme d'origine. La transformation prendra de toute façon fin au bout de 2 heures.~
+
+@8702 = ~Que le massacre commence~
+@8703 = ~Que le massacre commence
+Hurlez comme une bête affamée et marquez les créatures environnantes d'une marque sinistre qui, à leur mort, améliore vos défenses et renforce votre rage. Les ennemis marqués doivent réussir un jet de sauvegarde contre la mort avec un malus de 2 points sous peine d'être étourdi pendant 2 rounds. Si un ennemi marqué meurt dans les 4 rounds, vous obtenez un bonus de 1 point à la classe d'armure, aux dégâts et au TAC0 pendant 4 rounds. Il n'y a pas de sauvegarde contre l'application de la marque elle-même~
+
+@8704 = ~Ruée implacable~
+@8705 = ~Ruée implacable
+Si elle échoue à un jet de sauvegarde contr ela mort à -4, la cible est projetée au sol et subit 2d6+1 points de dégâts contondants. À partir de 3 millions de PX, les dégâts passent à 4d6+2.~
+
+@8706 = ~Somptueux bain de sang ~
+@8707 = ~Somptueux bain de sang
+Déchirez les artères de votre ennemi, infligeant instantanément 2d8+4 points de dégâts tranchants (réduit de moitié sur un succès à un jet de sauvegarde contre la mort à -4). Ensuite, la cible saigne pendant 3 rounds et subis 2 points de dégâts tranchants par round. À chaque fois que la cible saigne, l'écorcheur est aspergé de sang et récupère 2d6 points de vie. À partir de 3 millions de PX, les dégâts initiaux passent à 3d8+6 points dégâts tranchants, le saignement à 2 points par round et le soin à 3d6 points de vie. Si je jet de sauvegarde est réussi, l'écorcheur n'est soigné qu'une seule fois.~
+
+@8800 = ~ARME À UNE MAIN : Ce style de combat est destiné aux personnages qui ne veulent pas utiliser de boucliers, mais désirent obtenir des bonus dans l'utilisation d'armes de mêlée à une main.
+
+Non entraîné (0 étoiles) : Le personnage subit une pénalité de 1 au facteur de vitesse.
+
+Aptitude (1 étoile) : Le personnage bénéficie d'un bonus de 1 point aux jets d'attaque, à la CA et au facteur de vitesse, et inflige des coups critiques sur un jet d'attaque de 19 ou 20.
+
+Spécialisation (2 étoiles) : Le personnage bénéficie d'un bonus de 2 points aux jets d'attaque, à la CA et au facteur de vitesse, et inflige des coups critiques sur un jet d'attaque de 19 ou 20.~
+
+@8801 = ~ÉPÉE ET BOUCLIER : N'importe qui peut profiter de la protection de base offerte par un bouclier mais en attribuant des points dans ce style de combat, un aventurier peut optimiser les bénéfices de son utilisation.
+
+Non entraîné (0 étoiles) : Le personnage subit une pénalité de 1 à tous les jets de combat et à la classe d'armure contre les projectiles.
+
+Aptitude (1 étoile) : Le personnage ne subit plus les pénalités et bénéficie d'un bonus de 1 point à la classe d'armure contre les projectiles.
+
+Spécialisation (2 étoiles) : Le personnage bénéficie d'un bonus de 1 point à la classe d'armure ainsi que d'un bonus additionnel de 2 points contre les projectiles.
+
+REMARQUE : ce style de combat n'est pas limité aux épées, toute arme de mêlée à une main combinée à un bouclier permettra de bénéficier des mêmes avantages.~
+
+@8802 = ~ARME À DEUX MAINS : Ce style de combat permet au personnage d'utiliser une arme de mêlée à deux mains et de profiter de bonus spéciaux.
+
+Non entraîné (0 étoiles) : Le personnage subit une pénalité de 1 point à la classe d'armure.
+
+Aptitude (1 étoile) : Le personnage ne subit plus la pénalité à la classe d'armure et bénéficie d'un bonus de 1 point aux jets de dégâts et au facteur de vitesse.
+
+Spécialisation (2 étoiles) : Le personnage bénéficie d'un bonus de 2 points aux jets de dégâts, d'un bonus de 4 points au facteur de vitesse et inflige des coups critiques sur un jet d'attaque de 19 ou 20 quand il manie des armes à deux mains.
+
+REMARQUE : les armes magiques à deux mains sont plus puissantes que leurs équivalents à une main. Cela compense l'impossibilité d'utiliser une deuxième arme ou un bouclier avec une arme à deux mains. La Sainte Lame et la Vorpale sont des exemples d'arme à deux mains.~
+
+@8803 = ~DEUX ARMES : Cette classe d'arme permet au personnage d'utiliser deux armes de mêlée simultanément avec des malus inférieurs à la normale.
+
+Non entraîné (0 étoiles) : Quand il manie deux armes sans entraînement, le personnage subit une pénalité de 2 points à la classe d'armure, de 1 point aux jets de dégâts avec l'arme en main principale (2 points pour l'arme en deuxième main) et de 4 points au TAC0 sur l'arme principale (6 points sur l'arme dans la deuxième main).
+
+Aptitude (1 étoile) : Les pénalités sont réduites : la pénalité aux dégâts sur la deuxième main passe à 1 point, la pénalité à la classe d'armure passe à 1 point et les pénalités au TAC0 passent à 2 points pour la main principale et 4 points pour la deuxième main.
+
+Spécialisation (2 étoiles) : Toutes les pénalités à la classe d'armure et aux jets de dégâts avec la main principale sont supprimées. Les pénalités au TAC0 passent à 1 point pour la main principale et à 3 points pour la deuxième main.
+
+Maîtrise (3 étoiles) : La pénalité aux dégâts sur la deuxième main est supprimée. La pénalité au TAC0 pour la main principale est supprimée et la pénalité auTAC0 pour la deuxième main passe à 3 points.~
