@@ -71,11 +71,11 @@ jobs:
 
           rsync -av "${EXCLUDES[@]}" ./ package/
           
-          cat readme.md > package/readme.md
-          printf '\n' >> package/readme.md
-          sed '/^#/s/^/#/' ZSTweaks/component_readme.md >> package/readme.md
-          printf '\n' >> package/readme.md
-          cat changelog.md >> package/readme.md
+          cat readme.md > "package/${PROJECT_NAME}/readme.md"
+          printf '\n' >> "package/${PROJECT_NAME}/readme.md"
+          sed '/^#/s/^/#/' "${PROJECT_NAME}/component_readme.md" >> "package/${PROJECT_NAME}/readme.md"
+          printf '\n' >> "package/${PROJECT_NAME}/readme.md"
+          cat changelog.md >> "package/${PROJECT_NAME}/readme.md"
 
           cd package
           zip -r ../${PLATFORM_SHORT}-${PROJECT_NAME}-${TAG_NAME}.zip .
@@ -106,7 +106,7 @@ jobs:
           filename: ${{ env.PLATFORM_SHORT }}-${{ env.PROJECT_NAME }}-${{ env.TAG_NAME }}.zip
           version: ${{ env.TAG_NAME }}
           display_name: ${{ env.PROJECT_NAME }} ${{ env.TAG_NAME }}
-          description: Changelog at https://github.com/szaumoor/ZSTweaks/blob/50dda3103e0d270791b61a64b27b0c2de885f28e/changelog.md
+          description: Changelog at https://github.com/szaumoor/ZSTweaks/blob/main/changelog.md
           file_category: main
 
       - name: Upload to Nexus Mods (BG2)
@@ -118,5 +118,5 @@ jobs:
           filename: ${{ env.PLATFORM_SHORT }}-${{ env.PROJECT_NAME }}-${{ env.TAG_NAME }}.zip
           version: ${{ env.TAG_NAME }}
           display_name: ${{ env.PROJECT_NAME }} ${{ env.TAG_NAME }}
-          description: Changelog at https://github.com/szaumoor/ZSTweaks/blob/50dda3103e0d270791b61a64b27b0c2de885f28e/changelog.md
+          description: Changelog at https://github.com/szaumoor/ZSTweaks/blob/main/changelog.md
           file_category: main
