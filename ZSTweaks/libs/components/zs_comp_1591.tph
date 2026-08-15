@@ -1,7 +1,7 @@
 ACTION_IF is_bg2ee_or_eet BEGIN
 
     OUTER_SET two_handed_comp_installed = zst_1150_dice_twohanded_swords AND
-                                            (MOD_IS_INSTALLED ~ZSTweaks.tp2~ ~1150~ OR 
+                                            (MOD_IS_INSTALLED ~ZSTweaks.tp2~ ~1150~ OR
                                             (MOD_IS_INSTALLED "ZSTweaks.tp2" "103" AND zst_group_1150_weapon_dice))
 
     ACTION_IF zst_1591_soul_reaver_nerf BEGIN
@@ -26,7 +26,7 @@ ACTION_IF is_bg2ee_or_eet BEGIN
             LPF ALTER_EFFECT INT_VAR match_opcode=54 duration=30 savingthrow=1 savebonus="-5" END
             LPF ALTER_EFFECT INT_VAR match_opcode = 12 dicesize = 3 special = 1024 END
             LPF ALTER_EFFECT_EX INT_VAR savingthrow = 1 savebonus = "-2" STR_VAR match_opcode_ex="(o_opcode != 12 AND o_opcode != 54)" END
-        BUT_ONLY IF_EXISTS
+        IF_EXISTS
 
     END
 
@@ -72,5 +72,5 @@ ACTION_IF is_bg2ee_or_eet BEGIN
         BUT_ONLY IF_EXISTS
 
     END
-                                                    
+
 END

@@ -4,21 +4,21 @@ STATISTICS:
 
 Equipped abilities:
 – Immunity to charm and confusion
-– Stacking bonuses that depend on the alignment of the wielder:
-  All alignments: +1 Armor Class, +5% Magic Resistance
-  All morally neutral alignments: +1 Damage, +1 Saving Throws, +5% Magic Resistance
-  True Neutral: +1 Armor Class, +1 Saving Throws, +5% Magic Resistance, +5% critical hit chances with all weapons
+– Armor Class: +1 (+2 if True Neutral)
+– Magic Resistance: +5% (10% if morally neutral; 20% if True Neutral)
+– Attack damage: +1 (morally neutral only)
+– Saving Throws: +2 (True Neutral only)
+– Critical Hit Chances: +5% (all weapons; True Neutral only)
 
 Combat abilities:
 – Strikes as a +5 weapon for the purposes of overcoming weapon immunities
-– Damage and THAC0 bonuses depend on how far a target's alignment strays from True Neutral:
+– Extra damage and THAC0 apply depending on how far a target's alignment strays from True Neutral:
   vs. Lawful Neutral and Chaotic Neutral: +1 THAC0, +1 slashing and magic damage
   vs. Neutral Good, Neutral Evil: +2 THAC0, +2 slashing and magic damage
   vs. Other Alignments: +3 THAC0, +3 slashing and magic damage
 
 THAC0: +3
-Damage: 1d8+3
-Damage type: Slashing
+Damage: 1d8+3 (slashing)
 Speed Factor: 0
 Proficiency Type: Long Sword
 Type: One-handed
@@ -216,7 +216,7 @@ STATISTICS:
 Equipped abilities:
 – Armor Class: +2, plus +1 vs. Slashing, Piercing, and Missile
 – Magic Resistance: +5%
-– Resistance to Damage (all sources): +5%
+– Resistance to damage (all sources): +5%
 
 THAC0: +4
 Damage: 1d8+4 (piercing)
@@ -254,6 +254,9 @@ Weight: 1~
 @6190 = ~This long sword bears the sigil of Tyr and is intended for his most fervent followers.
 
 STATISTICS:
+
+Combat abilities:
+– Acts as a +5 weapon vs. evil for the purposes of what it can hit
 
 THAC0: +3
 Damage: 1d8+3, +6 extra vs. evil
@@ -334,7 +337,7 @@ STATISTICS:
 Equipped abilities:
 – Armor Class: +2, plus an extra +2 vs. Slashing, Piercing, and Missile
 – Save vs. Spell: +1
-– +8% physical damage resistance
+– Physical Damage Resistance: +8%
 
 Combat abilities:
 – Acts as a +5 weapon for the purposes of what it can hit
@@ -350,9 +353,9 @@ Requires:
 Weight: 4~
 
 // Hawksight more interesting description
-@6540 = ~Long ago, the famous elven sentinel Arannis Alderlight had this sword forged to help him defend against the forces plotting against his kingdom. The arcane smiths imbued it with the essence of a hawk, and with this blade, Arannis became a force to be reckoned with, able to strike down foes before they could act.
+@6540 = ~Arannis Alderlight served as an unrelenting sentinel during a troubled period in his kingdom's history, when its enemies relied more on assassins and covert agents than armies in the field. This weapon was forged at his request and named Hawksight by his fellow sentinels, for little seemed to escape his notice while he carried it. Through years of uncovered plots, thwarted assassinations, and tireless watchfulness, Alderlight's reputation became inseparable from that of his blade.
 
-After Arannis faded into legend, Hawksight continued to pass through the hands of other warriors. Each bearer inherited a fragment of Arannis's vigilant spirit, transforming them into ever-vigilant sentinels, ensuring no threat went unseen and no strike landed untrue.
+After his death, Hawksight passed through the hands of scouts, guards, and opportunistic adventurers. Many of its bearers reported an unnerving awareness of nearby danger, as though some remnant of Alderlight's vigilance endured within the blade. Whether Hawksight preserves a fragment of his spirit or merely awakens the same instincts that so often led him to hidden enemies before they could strike remains uncertain.
 
 STATISTICS:
 
@@ -403,7 +406,7 @@ STATISTICS:
 Combat abilities:
 – Dancing sword can attack on its own for 1 turn
 – Armor Class: +1, +2 vs. slashing and piercing
-– Flashy design: +1/2 attacks per round (Shadowdancers, Blades, and Swashbucklers)
+– Flashy: +1 attacks per round (only shadowdancers, blades, and swashbucklers)
 
 THAC0: +4
 Damage: 1d8+2 (slashing)
@@ -444,12 +447,12 @@ STATISTICS:
 
 Equipped abilities:
 – Immunity to fear
-– Regenerate 1 Hit Point every 5/2 rounds
-– +15% resistance vs. acid, electricity, fire, and cold
-– Armor Class: +2 vs. dragons and wyverns
+– Regenerate 1 Hit Point every 15 seconds
+– Elemental Resistance: +15%
+– Armor Class and Saving Throws: +2 vs. dragons and wyverns
 
 Combat abilities:
-– Acts as a +4 weapon against dragons and wyverns for the purposes of overcoming weapon immunities
+– Acts as a +4 weapon vs. dragons and wyverns for the purposes of overcoming weapon immunities
 
 Charge abilities:
 – Detect Invisibility three times per day
@@ -472,7 +475,7 @@ Weight: 3~
 STATISTICS:
 
 Combat abilities:
-– Inflicts 1d2 points of bleeding damage on hit and one round later
+– Inflicts 1d2 points of bleeding (piercing) damage on hit and one round later
 – Critical hits inflict 2d4 extra piercing damage
 – Drains 2 points of Strength from the target and transfers them to the wielder for 5 rounds when a successful backstab is performed (non-cumulative)
 
@@ -533,27 +536,28 @@ Requires:
 
 Weight: 2~
 
-@7160 = ~Kachiko's Whisper +3~
-@7161 = ~Kachiko's Whisper
-This wakizashi was the favored weapon of a renowned warrior named Kachiko, whose origins trace back to the eastern lands of Kara-Tur. Though much of her early life is largely unknown, it is said she was trained as a shadowdancer, quickly ascending to become one of the most accomplished members of her order.
+@7160 = ~Whisper +3~
+@7161 = ~This elegant wakizashi once belonged to Kachiko, a warrior from Kara-Tur. Little reliable is known of her beyond her reputation as an accomplished shadowdancer; neither her loyalties nor her eventual fate were recorded. One story concerning the sword, however, has survived.
 
-Old tales recount that, during a mission deep in the heart of a forgotten mountain temple, Kachiko came upon this blade resting atop an ornate pedestal. As her hand closed around the hilt, the sword resonated with a soft whisper, as if acknowledging her presence.
+The tale recounts how Kachiko entered an abandoned mountain temple and discovered this blade resting within its innermost chamber. When she lifted it from its pedestal, the blade seemed to whisper to her. If Kachiko understood what it said, she never revealed it.
 
-From that moment, the blade's latent powers awakened, and the soft whisper that greeted Kachiko became its namesake. The bond between warrior and weapon grew inseparable, and many of Kachiko's greatest feats were accomplished with this blade at her side.
+Thereafter, it became her favored weapon, and later tales rarely mention Kachiko without also noting the faint whisper of her blade.
 
 STATISTICS:
 
 Equipped abilities:
-– +10% bonus to Hiding in the Shadows and Move Silently (Shadowdancer only)
+– Hiding in the Shadows: +10 (monks, thieves, and rangers)
+– Move Silently: +10 (monks, thieves, and rangers)
 
 Combat abilities:
-– Confounding Whisper: each hit drains 2 points of Wisdom from the target for 5 rounds (Save vs. Death negates) and causes Confusion for 1 round.
+– THAC0: +1 (single-classed thieves)
+– Confounding Strike: each hit drains 2 points of Wisdom from the target for 5 rounds (Save vs. Death negates) and causes confusion for 1 round.
 
 Charge abilities:
 – Shadow Blink three times per day
-  Special: Instantly teleport to any visible location and become invisible for 2 rounds. While invisible, you cannot critically miss. Shadowdancers, Stalkers, and Monks also gain a +1 backstab multiplier during this time (doesn't stack).
+  Special: Wielder instantly teleports to any visible location and becomes invisible for 2 rounds. During this time, critical misses are not possible. Monks, shadowdancers, and stalkers gain a +1 backstab multiplier during this time (doesn't stack).
 
-THAC0: +3, +4 (Shadowdancers)
+THAC0: +3
 Damage: 1d8+3 (piercing)
 Speed Factor: 0
 Proficiency Type: Scimitar/Wakizashi/Ninjatō
@@ -564,29 +568,34 @@ Requires:
 Weight: 2~
 
 @7162 = ~Shadow Blink~
-@7163 = ~Kachiko's Whisper +5~
-@7164 = ~Kachiko's Whisper
-This wakizashi was the favored weapon of a renowned warrior named Kachiko, whose origins trace back to the eastern lands of Kara-Tur. Though much of her early life is largely unknown, it is said she was trained as a shadowdancer, quickly ascending to become one of the most accomplished members of her order.
+@7163 = ~Whisper +5~
+@7164 = ~This elegant wakizashi once belonged to Kachiko, a warrior from Kara-Tur. Little reliable is known of her beyond her reputation as an accomplished shadowdancer; neither her loyalties nor her eventual fate were recorded. One story concerning the sword, however, has survived.
 
-Old tales recount that, during a mission deep in the heart of a forgotten mountain temple, Kachiko came upon this blade resting atop an ornate pedestal. As her hand closed around the hilt, the sword resonated with a soft whisper, as if acknowledging her presence.
+The tale recounts how Kachiko entered an abandoned mountain temple and discovered this blade resting within its innermost chamber. When she lifted it from its pedestal, the blade seemed to whisper to her. If Kachiko understood what it said, she never revealed it.
 
-From that moment, the blade's latent powers awakened, and the soft whisper that greeted Kachiko became its namesake. The bond between warrior and weapon grew inseparable, and many of Kachiko's greatest feats were accomplished with this blade at her side.
+Thereafter, it became her favored weapon, and later tales rarely mention Kachiko without also noting the faint whisper of her blade.
 
 Now upgraded by Cespenar, this sword has reached the pinnacle of its power—its true potential, first awakened by the warrior Kachiko, is now fully unleashed.
 
 STATISTICS:
 
 Equipped abilities:
-– Immunity to deafness and all sound-based magic, such as Holy Word and Wail of the Banshee
-– +15% bonus to Hide in Shadows and Move Silently (Shadowdancer only)
-– 10% chance when hit, once per hour, to be affected by Shadow Form (Shadowdancer only)
+– Immunity to deafness and all sound-based magic
+– Hiding in the Shadows: +15 (monks, thieves, and rangers)
+– Move Silently: +15 (monks, thieves, and rangers)
+– 10% chance when hit, once per hour, to be affected by Shadow Form (shadowdancer only)
 
 Combat abilities:
-– Deadly Whisper: each hit drains 2 points of Wisdom from the target for 5 rounds (Save vs. Death at -2 negates) and causes Confusion for 1 round. After one round, there is a 15% chance the sword successfully commands the target to die unless another Save vs. Death at -2 succeeds (this can only trigger on the same enemy once every 3 rounds).
+– THAC0: +1 (shadowdancers, monks, and stalkers)
+– Confounding Strike: each hit drains 2 points of Wisdom from the target for 5 rounds (Save vs. Death at -2 negates) and causes confusion for 1 round. 
+– One round after a successful Confounding Strike, there is a 15% chance the sword commands the target to die unless another Save vs. Death at -2 succeeds (this can only trigger on the same enemy once every 3 rounds). This command will have no effect if the target is unable to hear it.
 
 Charge abilities:
-– Shadow Blink five times per day
-  Special: Instantly teleport to any visible location and become invisible for 2 rounds. While invisible, you cannot critically miss. Shadowdancers, Stalkers, and Monks also gain a +1 backstab multiplier during this time (doesn't stack).
+– Shadow Blink three times per day
+  Special: Wielder instantly teleports to any visible location and becomes invisible as per the Improved Invisibility spell for 2 rounds. During this time, critical misses are not possible. Monks, shadowdancers, and stalkers gain a +1 backstab multiplier during this time (doesn't stack).
+
+– Shadow Maze once per day
+  Special: Opens a temporary gateway to a small pocket of the Plane of Shadow, mazing targets near the user if they fail their saving throws as per the shadowdancer ability of the same name.
 
 THAC0: +5
 Damage: 1d8+5 (piercing)
@@ -655,7 +664,7 @@ Weight: 2~
 STATISTICS:
 
 Combat abilities:
-– Lingering flame: on a failed Save vs. Spell, targets continue to burn, suffering 1d3 points of fire damage per round for 3 rounds
+– Searing Flame: on a failed Save vs. Spell, targets continue to burn, suffering 1d3 points of fire damage per round for 3 rounds. This stacks.
 
 THAC0: +3
 Damage: 2d4+3, plus 1d3+1 fire damage
@@ -675,7 +684,7 @@ Weight: 5~
 STATISTICS:
 
 Equipped abilities:
-– +20% cold resistance
+– Cold Resistance: +20%
 
 THAC0: +3
 Damage: 1d8+3, +1d2 cold damage
@@ -693,8 +702,8 @@ Weight: 3~
 STATISTICS:
 
 Combat abilities:
-– Cursed Wound: critical hits prevent most sources of healing for 5/2 rounds
-– Critical Hit chance: +5% (this weapon)
+– Cursed Wound: critical hits prevent most sources of healing for 15 seconds
+– Critical Hit Chance: +5% (this weapon)
 
 THAC0: +2
 Damage: 1d8+2 (slashing)
@@ -713,8 +722,8 @@ Weight: 4~
 STATISTICS:
 
 Combat abilities:
-– +10% critical chance (this weapon only)
-– Critical hits cause bleeding: 1d6 piercing damage per round for 3 rounds
+– Critical Hit Chance: +10% (this weapon)
+– Bleeding Strike: On critical hit, target takes 1d6 piercing damage per round for 3 rounds
 
 THAC0: +4
 Damage: 1d6+4 (piercing)
@@ -732,8 +741,8 @@ The Shadow's Blade was created to be the perfect assassin's tool. It is highly s
 STATISTICS:
 
 Combat abilities:
-– Backstab multiplier: +1 (single-classed Thieves only)
-– +2 THAC0 on main hand while holding the blade (single-classed Thieves only)
+– Backstab multiplier: +1 (single-classed thieves only)
+– THAC0 (main hand): +2 (single-classed thieves only)
 
 THAC0: +3
 Damage: 1d6+3 (piercing)
@@ -750,7 +759,7 @@ Weight: 3~
 STATISTICS:
 
 Equipped abilities:
-– Armor Class: +1, +3 vs. slashing attacks (Kensai)
+– Armor Class: +1, +3 vs. Slashing attacks (Kensai)
 
 THAC0: +1, +2 (Kensai)
 Damage: 1d8+1 (piercing)
@@ -769,8 +778,8 @@ STATISTICS:
 
 Equipped abilities:
 – Magic Resistance: +5%
-– Magic Damage Resistance: +10%, +25% for Wizard Slayers and Inquisitors
-– Save vs. Spell: +4 (Wizard Slayers and Inquisitors), +2 (others)
+– Magic Damage Resistance: +10%, +25% for wizard slayers and inquisitors
+– Save vs. Spell: +4 (wizard slayers and inquisitors), +2 (others)
 
 Combat abilities:
 – On a critical hit, the target will be affected by Dispel Magic, which always succeeds
@@ -792,11 +801,11 @@ There was a time before Neverwinter was warm and before the great Anauroch was d
 STATISTICS:
 
 Combat abilities:
-Acts as a +2 weapon in all respects. However, it is more powerful against regenerating, cold-using, and undead creatures:
- – Werewolves, trolls, planetars, and devas: it acts as a +3 weapon, and deals 1 extra fire damage
- – Solars: acts as a +4 weapon, and deals 1 extra fire damage
- – Winter wolves and silver dragons: acts as a +4 weapon, and deals 2 extra fire damage
- – Undead: acts as a +5 weapon, and deals 3 extra fire damage.
+Acts as a +2 weapon in all respects. However, its enchantmentl level varies for the purposes of what it can hit, and inflicts more fire damage, depending on the target being hit:
+ – Werewolves, trolls, planetars, and devas: acts as +3, +1 fire damage
+ – Solars: acts as +4, +1 fire damage
+ – Winter wolves, silver and white dragons: acts as +4, +2 fire damage
+ – Undead: acts as +5, +3 fire damage.
 
 THAC0: +2
 Damage: 1d8+2, +2 fire damage
@@ -815,7 +824,7 @@ STATISTICS:
 
 Equipped abilities:
 – Off-hand THAC0: +2 (monks only)
-– +5% critical chances while holding this weapon (monks only)
+– Critical Hit Chances: +5% (monks only)
 
 Combat abilities:
 – Attacks per round: +1
@@ -867,7 +876,7 @@ Equipped abilities:
 
 Combat abilities:
 – Double striking range
-– +5% critical hit chances with this weapon
+– Critical Hit Chance: +5% (this weapon)
 – Cursed Wound: critical hits prevent most sources of healing for 2 rounds
 – Each hit heals the wielder between 2 and 6 Hit Points. Lower healing amounts are more likely than higher ones
 
@@ -887,7 +896,7 @@ Weight: 3~
 STATISTICS:
 
 Equipped abilities:
-– Each time the wielder is attacked, there is a 7% chance to automatically gain the effects of Blur, as per the wizard spell.
+– Each time the wielder is attacked (not necessarily hit), there is a 7% chance to automatically gain the effects of Blur, as per the wizard spell.
 
 Charge abilities:
 – Mirror Image once per day

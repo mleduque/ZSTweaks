@@ -1,23 +1,39 @@
 ACTION_IF NOT VARIABLE_IS_SET ~zs_preinstall_check~ BEGIN
 
-    OUTER_SET is_bgee = GAME_IS ~bgee~
-    OUTER_SET is_bg2ee = GAME_IS ~bg2ee~
-    OUTER_SET is_iwdee = GAME_IS ~iwdee~
-    OUTER_SET is_eet = GAME_IS ~eet~
-    OUTER_SET includes_sod = GAME_INCLUDES "sod"
-    OUTER_SET is_bgee_with_sod = is_bgee AND includes_sod
+    OUTER_SET weidu_version = %WEIDU_VER% / 100
+    PRINT "[INFO]: Weidu version: v%short_v%"
 
-    OUTER_SET is_bg2ee_or_eet         = is_bg2ee OR is_eet
-    OUTER_SET is_bgee_or_eet          = is_bgee  OR is_eet
-    OUTER_SET is_bgee_or_iwdee        = is_bgee  OR is_iwdee
-    
-    OUTER_SET is_bgee_bg2ee_or_eet    = NOT is_iwdee
-    OUTER_SET is_iwdee_bg2ee_or_eet   = NOT is_bgee
-    OUTER_SET is_iwdee_bgee_or_eet    = NOT is_bg2ee
-    OUTER_SET is_iwdee_bgee_or_bg2ee  = NOT is_eet
+    ACTION_IF weidu_version != 249 BEGIN
+        LAF LOG_TEXT
+            INT_VAR
+                add_level_preamble = FALSE
+            STR_VAR
+                log_level = "info"
+                flog_preamble = "**** !!! "
+                message = "[WARN]: Mod was installed using WeiDu's version v%weidu_version%. This mod was only tested with v249. Bugs caused by the different version won't be addressed."
+        END
+        PRINT "[WARN]: Logging warning..."
+    END
+
+
+    OUTER_SET is_bgee                = GAME_IS ~bgee~
+    OUTER_SET is_bg2ee               = GAME_IS ~bg2ee~
+    OUTER_SET is_iwdee               = GAME_IS ~iwdee~
+    OUTER_SET is_eet                 = GAME_IS ~eet~
+    OUTER_SET includes_sod           = GAME_INCLUDES "sod"
+    OUTER_SET is_bgee_with_sod       = is_bgee AND includes_sod
+
+    OUTER_SET is_bg2ee_or_eet        = is_bg2ee OR is_eet
+    OUTER_SET is_bgee_or_eet         = is_bgee  OR is_eet
+    OUTER_SET is_bgee_or_iwdee       = is_bgee  OR is_iwdee
+
+    OUTER_SET is_bgee_bg2ee_or_eet   = NOT is_iwdee
+    OUTER_SET is_iwdee_bg2ee_or_eet  = NOT is_bgee
+    OUTER_SET is_iwdee_bgee_or_eet   = NOT is_bg2ee
+    OUTER_SET is_iwdee_bgee_or_bg2ee = NOT is_eet
 
     ACTION_IF is_bgee BEGIN
-        
+
         PRINT "[INFO]: Baldur's Gate: Enhanced Edition detected..."
         ACTION_IF includes_sod BEGIN
             PRINT "             ...with Siege of Dragonspear"
@@ -45,6 +61,12 @@ ACTION_IF NOT VARIABLE_IS_SET ~zs_preinstall_check~ BEGIN
         PRINT "[INFO]: EEFixpack detected"
     END
 
+    OUTER_SET has_EEex = MOD_IS_INSTALLED "EEex.tp2" "1"
+
+    ACTION_IF has_EEex BEGIN
+        PRINT "[INFO]: EEex detected"
+    END
+
     OUTER_SET has_iwdification_divine   = MOD_IS_INSTALLED "setup-iwdification.tp2" "40"
     OUTER_SET has_scs_iwd_spells_divine = MOD_IS_INSTALLED "setup-stratagems.tp2"   "1510"
     OUTER_SET has_tof_iwd_spells_divine = MOD_IS_INSTALLED "dw_talents.tp2"         "1510"
@@ -55,8 +77,10 @@ ACTION_IF NOT VARIABLE_IS_SET ~zs_preinstall_check~ BEGIN
         PRINT "[INFO]: IWD spells for divine classes detected..."
         ACTION_IF has_scs_iwd_spells_divine BEGIN
             PRINT "             ...installed through SCS"
+            LAF LOG_TEXT INT_VAR add_level_preamble=0 STR_VAR log_level="info" message = "[WARN]: IWD spells for divine classes installed through SCS. Bad idea! It's outdated!" END
         END ELSE ACTION_IF has_tof_iwd_spells_divine BEGIN
             PRINT "             ...installed through ToF"
+            LAF LOG_TEXT INT_VAR add_level_preamble=0 STR_VAR log_level="info" message = "[WARN]: IWD spells for divine classes installed through ToF. Bad idea! It's outdated!" END
         END ELSE ACTION_IF has_iwd_spells_divine BEGIN
             PRINT "             ...installed through IWDification"
         END
@@ -72,9 +96,15 @@ ACTION_IF NOT VARIABLE_IS_SET ~zs_preinstall_check~ BEGIN
 
         PRINT "[INFO]: IWD spells for arcane classes detected..."
         ACTION_IF has_scs_iwd_spells_arcane BEGIN
+
             PRINT "             ...installed through SCS"
+            LAF LOG_TEXT INT_VAR add_level_preamble=0 STR_VAR log_level="info" message = "[WARN]: IWD spells for arcane classes installed through SCS. Bad idea! It's outdated!" END
+
         END ELSE ACTION_IF has_tof_iwd_spells_arcane BEGIN
+
             PRINT "             ...installed through ToF"
+            LAF LOG_TEXT INT_VAR add_level_preamble=0 STR_VAR log_level="info" message = "[WARN]: IWD spells for arcane classes installed through TOF. Bad idea! It's outdated!" END
+
         END ELSE ACTION_IF has_iwd_spells_arcane BEGIN
             PRINT "             ...installed through IWDification"
         END
@@ -101,7 +131,8 @@ ACTION_IF NOT VARIABLE_IS_SET ~zs_preinstall_check~ BEGIN
 
     OUTER_SET has_scs_spell_nerf = MOD_IS_INSTALLED "setup-stratagems.tp2" "2060"
     ACTION_IF has_scs_spell_nerf BEGIN
-        PRINT "[INFO]: SCS spell nerf component detected. Here's hoping you have a good reason for installing SCS's spell tweaks before this one..."
+        PRINT "[INFO]: SCS spell nerf component detected."
+        LAF LOG_TEXT INT_VAR add_level_preamble=0 STR_VAR log_level="info" message = "[WARN]: SCS spell nerf component detected. Here's hoping you have a good reason for installing SCS's spell tweaks before this mod..." END
     END
 
     OUTER_SET has_zs_item_pack_kukris = FILE_EXISTS_IN_GAME ~zsipkuk0.itm~
@@ -128,13 +159,23 @@ ACTION_IF NOT VARIABLE_IS_SET ~zs_preinstall_check~ BEGIN
         PRINT "[INFO]: ZS_ItemPack pack generic rapiers detected"
         COPY_EXISTING ~zsiprap0.itm~ ~override~
             READ_LONG 0x08 zs_rapier_general_string_index
-            
+
     END
 
     OUTER_SET has_artisan_archer_kit = MOD_IS_INSTALLED "ArtisansKitpack.tp2" "2010"
     ACTION_IF has_artisan_archer_kit BEGIN
 
         PRINT "[INFO]: Artisan Kitpack Archer detected"
+    END
+
+    OUTER_SET has_pits_of_despair = MOD_IS_INSTALLED "zbpod.tp2" "0"
+    ACTION_IF has_pits_of_despair BEGIN
+        PRINT "[INFO]: Pits of Despair detected"
+    END
+
+    OUTER_SET has_willowisp_driders = MOD_IS_INSTALLED "WILLOWISP.tp2" "5"
+    ACTION_IF has_willowisp_driders BEGIN
+        PRINT "[INFO]: Will O' Wisp Drider component detected"
     END
 
     OUTER_SET zs_preinstall_check = 1

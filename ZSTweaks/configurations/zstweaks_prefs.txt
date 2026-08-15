@@ -6,15 +6,8 @@
 
 ////////////////////////////// Misc \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-OUTER_SET zs_debug = "0" // normally at 0 for users. Don't touch
-OUTER_SET zs_allow_prefixes = "1" // leave on to fix various issues, including things that are required to ensure functionality of some components. Change at your own risk, I don't recommend it and I probably won't help if there's a problem with this off.
-OUTER_SET crash_if_var_errors_found = "1" // crashes the execution of the mod (any component) if any values in the preferences are outside the valid ranges. This is the only variable that forces a crash if it's not set to either 0 or 1
-
-////////////////////////////// Pre-fixes \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-// In vanilla game, many creatures are inappropriately set to 'male' (never female, I wonder why?) even though they should be completely independent of it, such as golems, statues, mists, fungus, slimes, mind flayers... all of them are according to the lore, sexless and genderless creatures. This interferes with opcodes that target based on gender/sex, leading to results that will be anything but logical. It is recommended to leave this on if you're planning on installing something that targets "gender" of male or female, such as my Shar-Teel component
-
-OUTER_SET zst_gender_fix = "1" 
+OUTER_SET zs_debug                  = "0" // Mod is slower when on. Don't turn on (or leave on) unless you know what you're doing
+OUTER_SET crash_if_var_errors_found = "1" // crashes the installation of the mod (any component) if any values in the preferences are outside the valid ranges. This is the only variable that immediately forces a crash if it's not set to either 0 or 1
 
 ////////////////////////////// General tweaks \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -62,7 +55,7 @@ OUTER_SET zst_1361_halberds_crits = "1"
 // This modifies the blunt weapon tweak so the AC debuff only works against enemies that don't wear armor, such as dragons
 OUTER_SET zst_1362_blunt_only_nonarmored = "0"
 
-// save penalty/bonus for arrows of dispelling, valid values range from -10 to 10 
+// save penalty/bonus for arrows of dispelling, valid values range from -10 to 10
 OUTER_SET zst_1371_save_penalty = "-2"
 
 // allow or disallow weapon categories to be modified by the Finesse component (Component 1450)
@@ -98,8 +91,12 @@ OUTER_SET zst_1539_all_reqs       = "1" // all can use scrolls with stat require
 OUTER_SET zst_1539_rogues_no_reqs = "0" // rogues can use scrolls
 OUTER_SET zst_1539_rogues_reqs    = "0" // rogues can use scrolls with stat requirements
 
-// set to 1 to prevent chunking with vorpals hits in the vorpal component
-OUTER_SET zst_1541_vorpal_no_chunking = "0"
+// vorpal hit component
+OUTER_SET zst_1541_vorpal_no_chunking       = "0"
+OUTER_SET zst_1541_vorpal_no_spectral_races = "1"
+OUTER_SET zst_1541_vorpal_no_golems         = "1"
+OUTER_SET zst_1541_vorpal_no_slimes         = "1"
+OUTER_SET zst_1541_vorpal_no_elementals     = "0"
 
 // allow or disallow tweaks for component 1545 (stat tweaks)
 OUTER_SET zst_1545_strength_bonuses       = "1"
@@ -150,6 +147,11 @@ OUTER_SET zst_1532_add_1hp_to_body_armor = "0"
 OUTER_SET zst_1532_add_1hp_to_cloaks     = "0"
 OUTER_SET zst_1532_add_1hp_to_helmets    = "0"
 OUTER_SET zst_1532_add_1hp_to_shields    = "0"
+
+// specifics for morale break enforcement for charname and other player-created characters
+OUTER_SET zst_592_morale_break          = "3" // Most NPC break at 5, except Minsc who breaks at 2, and Sarevok who breaks at 1
+OUTER_SET zst_592_morale_break_duration = "30" // Most NPC break for 60 seconds. Half for Charname/PC seems like a good compromise
+OUTER_SET zst_592_morale                = "10" // Default seems to be 10 for most NPC. Sarevok is an exception, with 20, so he's very difficult to cause morale break to, relatively
 
 ////////////////////////////// Gear tweaks \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -230,6 +232,8 @@ OUTER_SET zst_1010_asp_nest_sbonus = "-4"
 
 /////////////////////////////// Arcane Magic Tweaks \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
+OUTER_SET zst_140_finger_death_no_projectile = "0"
+
 // allows the Luck tweaks
 OUTER_SET zst_145_luck_boost     = "1" // effect boost
 OUTER_SET zst_145_luck_dur_boost = "1" // effect duration boost
@@ -241,6 +245,10 @@ OUTER_SET zst_160_bbod                  = "1"
 OUTER_SET zst_160_goliro                = "1"
 OUTER_SET zst_160_bbod_reduction_only   = "0"
 OUTER_SET zst_160_goliro_reduction_only = "0"
+
+// Makes the one-time Limited Wish version of the spell use a modified Saving Throw
+OUTER_SET zst_170_wail_wish_bonus = "1" // add the edit for Limited Wish or not
+OUTER_SET zst_170_wail_save_bonus = "-4" // unaffected by Necromancer bonus, though, equally effective no matter the user
 
 // allows the Tenser's Transformation tweaks
 OUTER_SET zst_441_tenser_thac0                = "1" // THAC0 tweak
@@ -260,6 +268,12 @@ OUTER_SET zst_447_melf_no_mr = "1" // makes Melf's Acid Arrow bypass MR, since i
 
 OUTER_SET zst_561_web_save_nerf = "1" // enable or disable the nert to the save penalty in the web spell
 
+// power word kill config options
+OUTER_SET zst_585_pwk_magic_school        = "2" // 0 disables, 1 makes it enchantment, 2 makes it diviner
+OUTER_SET zst_585_pwk_chunking_death      = "1"
+OUTER_SET zst_585_pwk_60HP_10HD_MR_bypass = "1"
+OUTER_SET zst_585_pwk_HP_hard_limit       = "150" // determines current HP after which the spell fails to work, leave at 0 to disable. Valid range starts at 70. Thus enemies between 61 and the value of this variable would be the ones subject to any killing effects that allow for saving throws (or are up to 10 HD, which get no save regardless, but still respecting this range).
+
 /////////////////////////////// Divine Magic Tweaks \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 // allows the Flame Blade tweaks
@@ -272,9 +286,9 @@ OUTER_SET zst_190_hpower_apr                  = "1" // APR tweak
 OUTER_SET zst_190_hpower_apr_nonfighters_only = "1" // APR bonus only for nonfighters
 
 // allows certain parts of the tweaks to earthquake in the relevant component
-OUTER_SET zst_250_quake_pfriendly        = "1" // party friendly
-OUTER_SET zst_250_quake_shake_intensity  = "2" // 0 = no change, 1 = no shake, 2 = still present, dramatically less shake
-OUTER_SET zst_250_quake_boost            = "1" // effect boost
+OUTER_SET zst_250_quake_pfriendly       = "1" // party friendly
+OUTER_SET zst_250_quake_shake_intensity = "2" // 0 = no change, 1 = no shake, 2 = still present, dramatically less shake
+OUTER_SET zst_250_quake_boost           = "1" // effect boost
 
 // allows certain parts of the tweaks to nature's beauty in the relevant component
 OUTER_SET zst_320_natbeauty_boost      = "1"
@@ -310,6 +324,8 @@ OUTER_SET zst_507_disable_aidglow = "0" // disables the character color pulse wi
 
 OUTER_SET zst_508_restoration_stat_drain = "1"
 OUTER_SET zst_508_restoration_overhaul   = "1"
+
+OUTER_SET zst_5400_use_iwd_animation = "1"
 
 /////////////////////////////// NPC Tweaks \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -360,6 +376,12 @@ OUTER_SET zst_2270_allow_whirlwind = "1"
 OUTER_SET zst_2370_iwd_evade_critical_misses = "1"
 OUTER_SET zst_2370_iwd_evade_usability       = "2" // 0 (disabled), 1(only pure thieves), 2 (multiclass with a 50% chance to attempt the evade)
 
+// enabling this will give access to any wizard to Vampiric Feast
+OUTER_SET zst_2401_vampiric_feast_any_wizard = "0"
+
+// tweaks to Priest of Talos
+OUTER_SET zst_2408_electricity_boost      = "1"
+OUTER_SET zst_2408_electricity_boost_pctg = "5"
 
 /////////////////////////////// Creature Tweaks \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -370,5 +392,35 @@ OUTER_SET zst_3050_balor_vorpal_penalty = "-4"
 OUTER_SET zst_3030_devas     = "1"
 OUTER_SET zst_3030_planetars = "1"
 
-// sets the magic resistance of drow to a percentage of what they have (default: 75, valid range is 20-90)
+// sets the Magic Resistance of drow to a percentage of what they have (default: 75, valid range is 20-90)
 OUTER_SET zst_3150_drow_mr_pctg_of_base = "75"
+
+OUTER_SET zst_3180_immunity_by_type  = "1" // liches, demiliches, and dragons
+OUTER_SET zst_3180_immunity_by_power = "0" // immune if level 25 or above
+OUTER_SET zst_3180_only_once_per_sec = "1" // traps only affect a single creature once per second, can't rapidly stack
+OUTER_SET zst_3180_modify_trap_limit = "0" // Use a positive number to change the name of traps allowed (0 means don't change; vanilla default is 6)
+
+/////////////////////////////// End-of-installation tweaks \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+// allowed the MR tweaks to specific types of spells
+
+OUTER_SET zst_1531_glitterdust        = "1"
+OUTER_SET zst_1531_insects            = "1"
+OUTER_SET zst_1531_natures_beauty     = "1"
+OUTER_SET zst_1531_divinations        = "1"
+OUTER_SET zst_1531_sunray             = "1"
+OUTER_SET zst_1531_iwd_shouts         = "1"
+OUTER_SET zst_1531_iwd_smashing_wave  = "1"
+OUTER_SET zst_1531_iwd_thorn_spray    = "1"
+OUTER_SET zst_1531_iwd_mold_touch     = "1"
+OUTER_SET zst_1531_iwd_cloudburst     = "1"
+OUTER_SET zst_1531_iwd_spike_growth   = "1"
+OUTER_SET zst_1531_grease             = "1"
+OUTER_SET zst_1531_entangle           = "1"
+OUTER_SET zst_1531_web                = "1"
+OUTER_SET zst_1531_stinking_cloud     = "1"
+OUTER_SET zst_1531_summon_cow         = "1"
+OUTER_SET zst_1531_magical_stone      = "1"
+OUTER_SET zst_1531_call_lightning     = "1"
+OUTER_SET zst_1531_storm_vengeance    = "1"
+OUTER_SET zst_1531_wail_banshee_dlich = "1" // includes demilich howl

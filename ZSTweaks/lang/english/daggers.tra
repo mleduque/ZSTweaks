@@ -9,7 +9,7 @@ Combat abilities:
 – Elves, spiders, sahuagins and denizens native to the Underdark take an extra +5 piercing damage per hit
 
 THAC0: +4
-Damage: 1d4+4, +1d4 acid damage
+Damage: 1d4+4, +1d4 (acid)
 Damage type: Piercing
 Speed Factor: 0
 Proficiency Type: Dagger
@@ -52,8 +52,7 @@ Combat abilities:
 
 Charge abilities:
 – Heavenly Strike three times per day
-  Special: Raise the dagger to the sky, summoning a bolt of lightning and a column of fire to strike the target, dealing 6d6+24 electrical and fire damage (save vs. Breath at -5 to take a quarter less damage). Adjacent targets take 60% of the fire part of the damage. This action also empowers the wielder, adding +2 fire and electrical damage to all melee and ranged attacks for the next turn.
-  Area of Effect: 1 creature and adjacent allies
+  Special: Raise the dagger to the sky, summoning a bolt of lightning and a column of fire to strike one target, dealing 6d6+24 electrical and fire damage (Save vs. Breath at -5 to take a quarter less damage). Creatures within 7 ft. of the target take 60% of the fire damage. This action also empowers the wielder, adding +2 fire and electrical damage to all melee and ranged attacks with any weapon for the next turn.
 
 THAC0: +6
 Damage: 1d4+6, +2 fire and electricity damage
@@ -71,7 +70,7 @@ Weight: 1~
 STATISTICS:
 
 Combat abilities:
-– Target must save vs. Poison or suffer 2 points of damage per second for 10 seconds
+– Target must Save vs. Poison or suffer 2 points of damage per second for 10 seconds
 
 THAC0: +2
 Damage: 1d4+2 (piercing)
@@ -88,7 +87,7 @@ Weight: 1~
 STATISTICS:
 
 Combat abilities:
-– Hit target must save vs. Death at %zst_1000_sbonus% or suffer 2 points of poison damage per second for 10 seconds
+– Hit target must Save vs. Death at %zst_1000_sbonus% or suffer 2 points of poison damage per second for 10 seconds
 
 Damage: 1d4 (missile)
 Speed Factor: 2
@@ -106,7 +105,7 @@ The Jade Fang was the weapon of choice for famed Shou Lung thief Niu Weidan, who
 STATISTICS:
 
 Combat abilities:
-– 15% chance of stunning for 10 seconds if a save vs. Spell is failed; 5% chance of triggering with no save allowed
+– 15% chance of stunning for 10 seconds if a Save vs. Spell is failed; 5% chance of triggering with no save allowed
 – Each hit heals the wielder between 1 and 5 Hit Points. It's more likely to heal less than more
 
 THAC0: +3
@@ -142,9 +141,9 @@ Weight: 1~
 STATISTICS:
 
 Combat abilities:
-– 25% chance per hit that the target must save vs. Death or be held for 2 rounds
-– +5% critical chances
-– Persistent wounds: causes 2 extra piercing damage immediately, and once per round for the next 3 rounds
+– 25% chance per hit that the target must Save vs. Death or be held for 2 rounds
+– Critical Hit Chance: +5%
+– Persistent Wounds: causes 2 extra piercing damage immediately, and once per round for the next 3 rounds. No effect on the undead, mists, or constructs.
 
 THAC0: +2
 Damage: 1d4+2 (piercing)
@@ -161,7 +160,7 @@ Weight: 1~
 STATISTICS:
 
 Equipped abilities:
-– Magic resistance: +10%
+– Magic Resistance: +10%
 
 THAC0: +2
 Damage: 1d4+2, +1d4 magic damage (50% chance)
@@ -176,22 +175,20 @@ Weight: 1~
 
 @6930 = ~The mage who crafted this strange dagger was obsessed with the four elemental planes and sought to create a means to join them together. Opening portals to all of them at once, he managed to join their energies together to enchant this relic, giving it properties of each plane.
 
-Unfortunately, he happened to be standing between the portals, holding the dagger in his hand; when the energies converged, they converged on him. It was the mage’s apprentice who discovered the dagger, clutched in his master’s charred and frozen hands.
+Unfortunately, he happened to be standing between the portals, holding the dagger in his hand; when the energies converged, they converged on him. It was the mage's apprentice who discovered the dagger, clutched in his master's charred and frozen hands.
 
 STATISTICS:
 
 Equipped abilities:
-– +10% elemental resistance
+– Elemental Resistance: +15%
 
 Combat abilities:
-– Deals an extra 2d4 cold damage to fire elementals
-– Deals an extra 2d4 fire damage to water elementals
-– Deals an extra 2d4 acid damage to earth elementals
-– Deals an extra 2d4 electrical damage to air elementals
+– Deals an extra 2d4 extra damage to elementals. Fire elementals take cold damage, water elementals take fire damage, earth elementals take acid damage, and air elementals take electrical damage. 
+– Acts as +5 weapon vs. elementals for the purposes of what it can hit
+– Elemental Fury: Each hit deals +2 points of fire, cold, electrical, or acid damage. There is a 3% chance all elements are applied on hit, a 4% chance three of them apply, and a 6% chance two of them apply. Critical hits apply +2 damage of each element on top of what it would normally do.
 
 THAC0: +2
-Damage: 1d4+2, +2 fire, cold, electrical, or acid damage (random)
-Damage type: Piercing
+Damage: 1d4+2 (piercing)
 Speed Factor: 0
 Proficiency Type: Dagger
 Type: One-handed
@@ -207,7 +204,7 @@ Weight: 1~
 STATISTICS:
 
 Combat abilities:
-– 20% chance per hit that the target suffers a -2 penalty to Armor Class and 1d3 extra point of acid damage per round for 3 rounds
+– 20% chance per hit that the target suffers a -2 penalty to Armor Class and takes 1d3 extra points of acid damage per round for 3 rounds
 
 THAC0: +3
 Damage: 1d4+3, +1d3 (acid)
@@ -230,10 +227,10 @@ Equipped abilities:
 – Acts as a +3 weapon for the purposes of what it can hit
 
 Combat abilities:
-– 33% chance of inflicting an extra 1d4+2 magic damage
+– Arcane Blast: 33% chance of inflicting extra 1d4+2 magic damage
 
 THAC0: +2
-Damage: 1d4+2, +1d2 magic damage
+Damage: 1d4+2, +1d2 (magic)
 Damage type: Piercing
 Speed Factor: 0
 Proficiency Type: Dagger
@@ -264,7 +261,7 @@ Weight: 0~
 STATISTICS:
 
 Combat abilities:
-– Hit target takes 2 points of poison damage per second for 10 seconds unless they save vs. Death (ranged only)
+– Hit target takes 2 points of poison damage per second for 10 seconds unless they Save vs. Death (ranged only)
 
 Damage (ranged): 1d4 (missile)
 Damage (melee): 1d3 (piercing), +1d2 (poison, no save)
@@ -283,7 +280,7 @@ Weight: 0~
 STATISTICS:
 
 Combat abilities:
-– Hit target must save vs. Death at %zst_1000_sbonus% or suffer 2 points of poison damage per second for 10 seconds (ranged only)
+– Hit target must Save vs. Death at %zst_1000_sbonus% or suffer 2 points of poison damage per second for 10 seconds (ranged only)
 
 Damage (ranged): 1d4 (missile)
 Damage (melee): 1d3 (piercing), +1d2 (poison)
@@ -381,12 +378,13 @@ Requires:
 
 Weight: 0~
 
-@8570 = ~This dagger is a potent blade favored by assassins all across the realms. This particular dagger of venom was created for use by the Shadow Thieves of Amn. Every time it hits an opponent, it secretes a venom into the bloodstream of the creature. The venom works quickly and efficiently.
+@8570 = ~This dagger is a potent blade favored by assassins all across the realms. This particular dagger of venom was created for use by the Shadow Thieves of Amn. Every time it hits an opponent, it secretes a weakening venom into the bloodstream of the creature. The venom works quickly and efficiently.
 
 STATISTICS:
 
 Combat abilities:
-– Hit target suffers 1 point of poison damage per second for 15 seconds (Save vs. Poison negates)
+– Hit target must Save vs. Death or suffer 1 point of poison damage per second for 15 seconds. While poisoned, they take 1d4 extra poison damage from each hit of the dagger.
+– Weakening Toxin: Strength, Dexterity, Constitution, and Saving Throws are damaged by 1 while poisoned. This does not stack.
 
 THAC0: +2
 Damage: 1d4+2 (piercing)
@@ -396,7 +394,7 @@ Type: One-handed
 Requires:
  3 Strength
 
-Weight: 2~ // todo
+Weight: 2~
 
 @50110 = ~<CHARNAME> arranged to have this dagger constructed out of the soporiferous Pixie Prick and the deadly Boneblade. The result is a weapon worthy of any assassin.
 
@@ -406,9 +404,9 @@ Equipped abilities:
 – Acid Resistance: +50%
 
 Combat abilities:
-– +5% critical hit chances
+– Critical Hit Chance: +5%
 – Elves, spiders, and denizens native to the Underdark take an extra +6 piercing damage per hit
-– Hit target must save vs. Poison at -2 or fall asleep. When this triggers, the wielder gains a +5% bonus to critical hit chances (doesn't stack) and +1 to damage and THAC0 (stacks) for 2 rounds
+– Hit target must Save vs. Poison at -2 or fall asleep. When this triggers, the wielder gains a non-stacking +5% bonus to critical hit chances with the dagger and +2 to damage and THAC0 (stacks) for 2 rounds
 
 THAC0: +5
 Damage: 1d4+5, +1d6 acid damage

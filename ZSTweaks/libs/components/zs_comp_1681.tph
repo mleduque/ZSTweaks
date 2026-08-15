@@ -1,14 +1,64 @@
 ACTION_IF NOT is_iwdee BEGIN
 
     ACTION_IF FILE_EXISTS_IN_GAME ~bddagg01.itm~ BEGIN
+        
+        DEFINE_PATCH_MACRO patch_file BEGIN
+            LPF ADD_SPL_TGTEFF INT_VAR rd=0 pwr=0 p1=2 spec=1024 spec STR_VAR effects=~op=12,p2=%op12_fire%;op=12,p2=%op12_cold%;op=12,p2=%op12_acid%;op=12,p2=%op12_electricity%~ END
+        END
+        LAF CREATE_TG_SPL STR_VAR filename = "zstelf00" END // all element damage, always for crits
+
+        COPY_EXISTING ~zstelf00.spl~ ~override/zstelf01.spl~ // three (all but acid)
+            LPF DELETE_EFFECT INT_VAR match_parameter2 = op12_acid END
+        COPY_EXISTING ~zstelf00.spl~ ~override/zstelf02.spl~ // three (all but fire)
+            LPF DELETE_EFFECT INT_VAR match_parameter2 = op12_fire END
+        COPY_EXISTING ~zstelf00.spl~ ~override/zstelf03.spl~ // three (all but cold)
+            LPF DELETE_EFFECT INT_VAR match_parameter2 = op12_cold END 
+        COPY_EXISTING ~zstelf00.spl~ ~override/zstelf04.spl~ // three (all but electric)
+            LPF DELETE_EFFECT INT_VAR match_parameter2 = op12_electricity END
+
+        COPY_EXISTING ~zstelf00.spl~ ~override/zstelf05.spl~ // two (fire and cold)
+            LPF DELETE_EFFECT INT_VAR match_parameter2 = op12_acid END
+            LPF DELETE_EFFECT INT_VAR match_parameter2 = op12_electricity END
+        COPY_EXISTING ~zstelf00.spl~ ~override/zstelf06.spl~ // two (fire and electricity)
+            LPF DELETE_EFFECT INT_VAR match_parameter2 = op12_acid END
+            LPF DELETE_EFFECT INT_VAR match_parameter2 = op12_cold END
+        COPY_EXISTING ~zstelf00.spl~ ~override/zstelf07.spl~ // two (fire and acid)
+            LPF DELETE_EFFECT INT_VAR match_parameter2 = op12_electricity END
+            LPF DELETE_EFFECT INT_VAR match_parameter2 = op12_cold END
+        COPY_EXISTING ~zstelf00.spl~ ~override/zstelf08.spl~ // two (cold and acid)
+            LPF DELETE_EFFECT INT_VAR match_parameter2 = op12_electricity END
+            LPF DELETE_EFFECT INT_VAR match_parameter2 = op12_fire END
+        COPY_EXISTING ~zstelf00.spl~ ~override/zstelf09.spl~ // two (cold and electricity)
+            LPF DELETE_EFFECT INT_VAR match_parameter2 = op12_acid END
+            LPF DELETE_EFFECT INT_VAR match_parameter2 = op12_fire END
+        COPY_EXISTING ~zstelf00.spl~ ~override/zstelf10.spl~ // two (acid and electricity)
+            LPF DELETE_EFFECT INT_VAR match_parameter2 = op12_cold END
+            LPF DELETE_EFFECT INT_VAR match_parameter2 = op12_fire END
+
+        DEFINE_PATCH_MACRO patch_file BEGIN
+            LPF ADD_SPL_TGTEFF INT_VAR rd=0 pwr=0 p2=1 STR_VAR effects=~op=146,pro1=3,pro=3,res=zstelf01;op=146,pro1=4,pro2=4,res=zstelf02;op=146,pro1=5,pro2=5,res=zstelf03;op=146,pro1=6,pro2=6,res=zstelf04~ END
+        END
+        LAF CREATE_TG_SPL STR_VAR filename = "zstelf11" END // master spell for three-element choices
+
+        DEFINE_PATCH_MACRO patch_file BEGIN
+            LPF ADD_SPL_TGTEFF INT_VAR rd=0 pwr=0 p2=1 STR_VAR effects=~op=146,pro1=7,pro2=7,res=zstelf05;op=146,pro1=8,pro2=8,res=zstelf06;op=146,pro1=9,pro2=9,res=zstelf07;op=146,pro1=10,pro2=10,res=zstelf08;op=146,pro1=11,pro2=11,res=zstelf09;op=146,pro1=12,pro2=12,res=zstelf10~ END
+        END
+        LAF CREATE_TG_SPL STR_VAR filename = "zstelf12" END // master spell for two-element choices
+
+        COPY_EXISTING ~zstelf00.spl~ ~override/zstelf13.spl~ // one-element choices
+            LPF ALTER_EFFECT INT_VAR match_parameter2 = op12_fire probability1 = 34 probability2 = 13 END
+            LPF ALTER_EFFECT INT_VAR match_parameter2 = op12_cold probability1 = 56 probability2 = 35 END
+            LPF ALTER_EFFECT INT_VAR match_parameter2 = op12_acid probability1 = 78 probability2 = 57 END
+            LPF ALTER_EFFECT INT_VAR match_parameter2 = op12_electricity probability1 = 100 probability2 = 79 END
 
         COPY_EXISTING ~bddagg01.itm~ ~override~
             LPF ALTER_ITEM INT_VAR id_desc=RESOLVE_STR_REF(@6930) END
-            LPF ALTER_EFFECT INT_VAR match_opcode = 12 parameter1 = 2 special = 1024 END
-            LPF ADD_EQUIPPED_EFF INT_VAR p1 = 10 STR_VAR effects = ~op=27;op=28;op=29;op=30~ END
+            LPF DELETE_EFFECT INT_VAR check_globals=0 match_opcode=12 END
+            LPF ADD_EQUIPPED_EFF INT_VAR p1 = 15 STR_VAR effects = ~op=27;op=28;op=29;op=30;op=341,res=zstelf00,p1=0,p2=1;op=344,p2=4,p1=%race_elemental%,spec=5~ END
+            LPF ADD_ON_HIT_EFF INT_VAR p2=1 STR_VAR effects = ~op=146,res=zstelf00,pro1=2;op=146,res=zstelf11,pro1=6,pro2=3;op=146,res=zstelf12,pro1=12,pro2=7;op=146,res=zstelf13,pro1=100,pro2=13~ END
 
-            PATCH_IF MOD_IS_INSTALLED ~ZSTweaks.tp2~ ~1440~ OR 
-                     MOD_IS_INSTALLED ~ZSTweaks.tp2~ ~103~ AND zst_group_1440_dagger_boost 
+            PATCH_IF MOD_IS_INSTALLED ~ZSTweaks.tp2~ ~1440~ OR
+                     MOD_IS_INSTALLED ~ZSTweaks.tp2~ ~103~ AND zst_group_1440_dagger_boost
             BEGIN
                 READ_STRREF 0x54 desc
                 INNER_PATCH_SAVE desc ~%desc%~ BEGIN
@@ -17,10 +67,14 @@ ACTION_IF NOT is_iwdee BEGIN
                 SAY_EVALUATED 0x54 ~%desc%~
             END
 
-        COPY_EXISTING_REGEXP ~^bddagg1[a-d]\.eff$~ ~override~
+        COPY_EXISTING ~bddagg1a.eff~ ~override~
+                      ~bddagg1b.eff~ ~override~
+                      ~bddagg1c.eff~ ~override~
+                      ~bddagg1d.eff~ ~override~
             LPF ALTER_EFF_FILE INT_VAR dicenumber = 2 special=1024 END
-        BUT_ONLY
 
-    END ELSE ACTION_IF NOT group_component BEGIN WARN "[WARN]: bddagg01.itm not found in game" END
+    END ELSE BEGIN
+        LAF LOG_TEXT INT_VAR predicate_stdout = (NOT group_component) STR_VAR log_level="abort" message = "Element's Fury not found, skipping. -- Harmless unless it's EET or BGEE with SoD." END
+    END
 
 END

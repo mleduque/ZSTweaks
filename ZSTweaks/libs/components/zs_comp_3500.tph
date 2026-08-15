@@ -95,8 +95,8 @@ ACTION_IF NOT is_iwdee BEGIN
 	END
 
 	ACTION_IF NOT copied AND NOT group_component BEGIN
-
-		WARN "[WARN]: Shadow Plane not found in game files, skipping..."
+		
+		LAF LOG_TEXT INT_VAR predicate_stdout = (NOT copied AND NOT group_component) STR_VAR message = "Shadow Plane not found in game files, skipping... -- Harmless unless you are installing this where the Shadow Plane is present." END
 		
 	END
 

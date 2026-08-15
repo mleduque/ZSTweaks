@@ -2,7 +2,92 @@
 ///// alter_header                                     \\\\\
 /////                                                  \\\\\
 
-// got tired of crappy ALTER_ITEM_HEADER and ALTER_SPELL_HEADER
+/*
+
+This is a patch function for item or spell files that will match an existing header and alter it
+based on the defined variables. Numerous variables are available for matching the specified header
+and for specifying new values.
+
+The first batch of variables are meta-variables which will help determine the scope of the function:
+
+* INT_VAR header to check only the N-th header, counting the first header as 0. Set to -1 to check
+  all headers (default is -1)
+* INT_VAR multi_match to the number of headers to alter in the active stack. If you just want to match
+  the first header and have the function stop, use 1. Otherwise the function will continue matching until
+  the number of altered headers matches this value. The function will always make at least one change
+  (e.g. 0 or negative values are treated as 1). (default is 999).
+* INT_VAR verbose to whether the function should provide some rudimentary information on how many headers
+  were altered (default is 0).
+* INT_VAR silent to whether the function should suppress warnings when no headers were altered. This option
+  also suppresses the verbose option (default is 0).
+
+The next batch of variables sets the function boundaries on matching a header to alter. Any variables not
+specified will not be used to determine a match. The function will only determine a header is a match only if
+ALL of the variables specified are matched.
+
+* INT_VAR match_type
+* INT_VAR match_location
+* INT_VAR match_target
+* INT_VAR match_target_num
+* INT_VAR match_range
+* INT_VAR match_speed
+* INT_VAR match_projectile
+* STR_VAR match_icon
+* [spell only] INT_VAR match_level
+* [item only] INT_VAR match_identify
+* [item only] INT_VAR match_alt_dicesize
+* [item only] INT_VAR match_launcher
+* [item only] INT_VAR match_alt_dicenumber
+* [item only] INT_VAR match_alt_damage
+* [item only] INT_VAR match_to_hit
+* [item only] INT_VAR match_dicesize
+* [item only] INT_VAR match_primary
+* [item only] INT_VAR match_dicenumber
+* [item only] INT_VAR match_secondary
+* [item only] INT_VAR match_damage
+* [item only] INT_VAR match_damage_type
+* [item only] INT_VAR match_charges
+* [item only] INT_VAR match_drained
+* [item only] INT_VAR match_overhand
+* [item only] INT_VAR match_backhand
+* [item only] INT_VAR match_thrust
+* [item only] INT_VAR match_arrow
+* [item only] INT_VAR match_bolt
+* [item only] INT_VAR match_bullet
+* [item only, flags at 0x26] INT_VAR match_flag_strength
+* [item only, flags at 0x26] INT_VAR match_flag_break
+* [item only, flags at 0x26] INT_VAR match_flag_str_damage
+* [item only, flags at 0x26] INT_VAR match_flag_str_to_hit
+* [item only, flags at 0x26] INT_VAR match_flag_hostile
+* [item only, flags at 0x26] INT_VAR match_flag_recharge
+* [item only, flags at 0x26] INT_VAR match_flag_bypass
+* [item only, flags at 0x26] INT_VAR match_flag_keenedge
+* [item only, flags at 0x26] INT_VAR match_flag_backstab
+* [item only, flags at 0x26] INT_VAR match_flag_noinvisible
+
+Once matched, you use the same variables without the match_ prefix to set new values, e.g. the variable
+'range' will set the new range or 'target' to the new target.
+
+used:
+  bg2 fixpack, as bg2fixpack/lib/alter_header.tpa [symbolic link]
+  iwd fixpack, as iwdfixpack/lib/alter_header.tpa [symbolic link]
+  The Calling, as thecalling/lib/alter_header.tpa [symbolic link]
+  Tweaks Anthology, as cdtweaks/lib/alter_header.tpa [symbolic link]
+  EE Fixpack, as eefixpack/files/lib/alter_header.tpa [symbolic link]
+  Item Upgrade, as itemupgrade/lib/alter_header.tpa [symbolic link]
+  Project Javelin, as cd_javelins/lib/alter_header.tpa [symbolic link]
+  G3 Community Item Pack as g3cip/lib/alter_header.tpa [symbolic link]
+  The Divine Remix, as divine_remix/lib/alter_header.tpa [symbolic link]
+  Sword and Fist, as sword_and_fist/lib/alter_header.tpa [symbolic link]
+
+platform:
+  all except iwd2 and pst
+
+version history:
+  unknown
+  9/12/25 - added better documentation, better feedback
+
+*/
 
 DEFINE_PATCH_FUNCTION ALTER_HEADER
 
@@ -103,20 +188,21 @@ DEFINE_PATCH_FUNCTION ALTER_HEADER
           icon            = "SAME"
 BEGIN
 
-  READ_ASCII 0x00 sig (3)
+  READ_ASCII 0x04 version (4)
   SET abil_length = 0
   SET proceed = 0
   SET alter = 0
-  PATCH_IF ("%sig%" STRING_COMPARE_CASE "ITM" = 0) BEGIN
+  PATCH_IF ("%SOURCE_EXT%" STRING_COMPARE_CASE "ITM" = 0) BEGIN
     SET abil_length = 0x38
+    SET pro_off = 0x2a
   END ELSE
-  PATCH_IF ("%sig%" STRING_COMPARE_CASE "SPL" = 0) BEGIN
+  PATCH_IF ("%SOURCE_EXT%" STRING_COMPARE_CASE "SPL" = 0) BEGIN
     SET abil_length = 0x28
+    SET pro_off = 0x26
   END
   PATCH_IF abil_length = 0 BEGIN
     PATCH_WARN ~WARNING: file type not recognized on %SOURCE_FILE% for ALTER_HEADER macro.~
   END ELSE BEGIN
-    SET pro_off = abil_length = 0x38 ? 0x2a : 0x26
     READ_LONG   0x64 abil_off
     READ_SHORT  0x68 abil_num
     FOR (index = 0 ; index < abil_num ; ++index) BEGIN
@@ -294,13 +380,20 @@ BEGIN
   END
 
   PATCH_IF (verbose && !silent) BEGIN
-    READ_LONG 0x0c strref
-    PATCH_IF ((strref > 0) AND (strref < 200000)) BEGIN
-      READ_STRREF 0x0c name
-    END ELSE BEGIN
+    READ_STRREF 0x0c name
+    PATCH_IF ("%name%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~ = 0) BEGIN
       READ_STRREF 0x08 name
     END
-    PATCH_PRINT "              ~%SOURCE_FILE%~   ~override~ // %name%, %alter% effect(s) altered"
+    PATCH_IF ("%SOURCE_RES%" STRING_COMPARE_REGEXP "^........$" = 0) BEGIN SPRINT spc " " END ELSE
+    PATCH_IF ("%SOURCE_RES%" STRING_COMPARE_REGEXP "^.......$" = 0) BEGIN SPRINT spc "  " END ELSE
+    PATCH_IF ("%SOURCE_RES%" STRING_COMPARE_REGEXP "^......$" = 0) BEGIN SPRINT spc "   " END ELSE
+    PATCH_IF ("%SOURCE_RES%" STRING_COMPARE_REGEXP "^.....$" = 0) BEGIN SPRINT spc "    " END ELSE
+    PATCH_IF ("%SOURCE_RES%" STRING_COMPARE_REGEXP "^....$" = 0) BEGIN SPRINT spc "     " END ELSE
+    PATCH_IF ("%SOURCE_RES%" STRING_COMPARE_REGEXP "^...$" = 0) BEGIN SPRINT spc "      " END ELSE
+    PATCH_IF ("%SOURCE_RES%" STRING_COMPARE_REGEXP "^..$" = 0) BEGIN SPRINT spc "       " END ELSE
+                                                              BEGIN SPRINT spc "        " END
+    TO_LOWER SOURCE_FILE
+    PATCH_PRINT "              ~%SOURCE_FILE%~%spc%~override~ // %name%, %alter% abilities altered"
   END
 
 END
@@ -512,147 +605,6 @@ BEGIN
 
 END
 
-// run this on creatures with invalid selected weapons; it'll check the weapon slots and update the equipped weapon as needed
-DEFINE_PATCH_FUNCTION cd_equip_weapon BEGIN
-
-  READ_LONG  0x2b8 slot_off ELSE 0
-  READ_LONG  0x2c0 itm_num  ELSE 0
-  WRITE_SHORT (slot_off + 0x4c) 0xffff // null equipped weapon - either patch below will enter a valid value, or no valid value exists
-  FOR (index = 0 ; index < 4 ; ++index) BEGIN // search through weapon slots
-    READ_SHORT (slot_off + 0x12 + (index * 0x02)) ref
-    PATCH_IF ((ref != 0xffff) AND (ref < itm_num)) BEGIN // if valid reference in weapon slots
-//    PATCH_IF (ref != 0xffff) BEGIN // if valid reference in weapon slots
-      WRITE_SHORT (slot_off + 0x4c) index // equipped weapon
-      SET "index" = 4 // kills loop and prevents next patch_if
-    END
-  END
-
-END
-
-// run this on creatures with invalid selected weapons; it'll check the weapon slots and update the equipped weapon as needed
-DEFINE_PATCH_FUNCTION cd_equip_weapon_specific
-
-  // defines what we're going to check
-  STR_VAR item = ""
-
-BEGIN
-
-
-  READ_LONG  0x2b8 slot_off
-  READ_LONG  0x2bc itm_off
-  FOR (index = 0; index < 4; ++index) BEGIN // cycles through weapon slots
-    READ_SHORT (slot_off + 0x12 + (index * 0x02)) slot_num
-    PATCH_IF (slot_num < 37) BEGIN
-      READ_ASCII (itm_off + (slot_num * 0x14)) weapon
-      PATCH_IF ("%item%" STRING_COMPARE_CASE "%weapon%" = 0) BEGIN // if long sword
-        WRITE_SHORT (slot_off + 0x4c) index // sets weapon slot to selected weapon
-        SET index = 4
-      END
-    END
-  END
-
-END
-
-// this function moves an item in a creture file into a slot where it can't be pickocketed
-// also used to move items out of helmet slot for non-legit crit protection
-DEFINE_PATCH_FUNCTION cd_no_pickpocket
-
-  // defines what we're going to check
-  STR_VAR item = ""
-
-BEGIN
-
-  READ_LONG 0x2b8 slot_off ELSE 0
-  READ_LONG 0x2bc itm_off  ELSE 0
-  READ_LONG 0x2c0 itm_num  ELSE 0
-  SET added = 0
-  FOR (index = 0 ; index < itm_num ; ++index) BEGIN
-    READ_ASCII (itm_off + (0x14 * index)) file_item
-    PATCH_IF ("%item%" STRING_COMPARE_CASE "%file_item%" = 0) BEGIN
-      FOR (index2 = 0 ; index2 < 36 ; ++index2) BEGIN // search through item slots; first pass finds and/or removes
-        READ_SHORT (slot_off + (0x02 * index2)) ref
-        PATCH_IF (ref = index) BEGIN // if item in question
-          PATCH_IF ((index2 = 1) OR (index2 = 3) OR ((index2 > 6) AND (index2 < 18))) BEGIN // if legit slot (1, 3, 7-17)
-            SET added = 1
-          END ELSE BEGIN
-            WRITE_SHORT (slot_off + (0x02 * index2)) 0xffff // nulls reference
-          END
-        END
-      END
-      PATCH_IF added = 0 BEGIN // if not in a legit slot to begin with
-        FOR (index2 = 1 ; index2 < 36 ; ++index2) BEGIN // search through item slots (skipping helmet at 0); first pass finds and/or removes
-          PATCH_IF (index2 =  2) BEGIN SET index2 =  3 END // skip shield slot
-          PATCH_IF (index2 =  4) BEGIN SET index2 =  7 END // skip rings & amulet
-          PATCH_IF (index2 = 18) BEGIN SET index2 = 21 END // skip quick slots
-          READ_SHORT (slot_off + (0x02 * index2)) ref
-          PATCH_IF (ref = 0xffff) BEGIN // if empty, legit slot
-            WRITE_SHORT (slot_off + (0x02 * index2)) index // adds reference
-            SET index  = itm_num  // kill loops
-            SET index2 = 36       // kill loops
-          END
-        END
-      END
-    END
-  END
-
-END
-
-// found by Ardanis in Rogue Rebalancing, had apparently been written by Nythrun
-// fixed two things, wrapped a function over it
-
-DEFINE_PATCH_FUNCTION ~FJ_SPL_ITM_REINDEX~ BEGIN
-
-  PATCH_IF !(~%SOURCE_FILE%~ STRING_MATCHES_REGEXP ~^.+\.spl~) BEGIN
-    hs = 0x28
-    WRITE_LONG 0xc ~-1~ //Identified name
-    WRITE_LONG 0x54 ~-1~ //Identified description
-    PATCH_FOR_EACH tz IN 0x44 0x48 0x58 0x5c BEGIN
-      WRITE_LONG tz 0
-    END
-  END ELSE PATCH_IF !(~%SOURCE_FILE%~ STRING_MATCHES_REGEXP ~^.+\.itm~) BEGIN
-    hs = 0x38
-  END
-  READ_LONG 0x64 hf //Extended header offset
-  READ_SHORT 0x68 hc //Extended header count
-  READ_LONG 0x6a fb //Feature block table offset
-  READ_SHORT 0x70 fc //Feature block count
-  PATCH_IF ((hf > fb) AND (hc > 0)) BEGIN // Ardanis: fixed "hc > 1" to "hc > 0"
-    READ_ASCII hf ~eh~ ELSE ~fail~ (hs * hc)
-    PATCH_IF (~%eh%~ STRING_EQUAL ~fail~) BEGIN
-      WHILE ((~%eh%~ STRING_EQUAL ~fail~) AND (hc > 0)) BEGIN
-        READ_ASCII hf ~eh~ ELSE ~fail~ (hs * hc)
-        hc -= 1
-      END
-    END
-    DELETE_BYTES hf (hs * hc)
-    hf = 0x72
-    WRITE_LONG 0x64 hf
-    WRITE_SHORT 0x68 hc
-    fb = (0x72 + (hs * hc))
-    WRITE_LONG 0x6a fb
-    PATCH_IF !(~%eh%~ STRING_EQUAL ~fail~) BEGIN
-      INSERT_BYTES hf (hs * hc)
-      WRITE_ASCIIE hf ~%eh%~
-    END
-  END ELSE PATCH_IF ((hf != 0x72) AND (hc = 0)) BEGIN
-    hf = 0x72
-    WRITE_LONG 0x64 hf
-  END
-  FOR (i1 = 0; i1 < (hs * hc); i1 += hs) BEGIN
-    WRITE_SHORT (hf + i1 + 0x20) fc
-    READ_SHORT (hf + i1 + 0x1e) cx
-    fc += cx
-  END
-  PATCH_IF (SOURCE_SIZE > (0x72 + (hs * hc) + (0x30 * fc))) BEGIN
-    DELETE_BYTES (0x72 + (hs * hc) + (0x30 * fc)) (SOURCE_SIZE - (0x72 + (hs * hc) + (0x30 * fc)))
-  END
-
-  // added by Ardanis
-  WRITE_SHORT 0x6e 0
-
-END // end of function
-
-
 /////                                                  \\\\\
 ///// cd_make_subspell                                 \\\\\
 /////                                                  \\\\\
@@ -663,243 +615,6 @@ DEFINE_PATCH_MACRO ~cd_make_subspell~ BEGIN
   WRITE_ASCII 0x22 ~~ #6 // blank casting anim, school, secondary
   LPF ALTER_HEADER INT_VAR projectile = 1 END
   LPF ALTER_EFFECT INT_VAR power = 0 resist_dispel = 0 savingthrow = 0 END
-END
-
-/////                                                  \\\\\
-///// cd_move_actor action/patch function              \\\\\
-/////                                                  \\\\\
-
-DEFINE_ACTION_FUNCTION cd_move_actor
-
-  INT_VAR old_x = "-1" // old coordinates for matching
-          old_y = "-1"
-          new_x = "-1" // new coordinates
-          new_y = "-1"
-  STR_VAR area  = "none" // area to patch w/o .are extension
-
-BEGIN
-
-  COPY_EXISTING ~%area%.are~ ~override~
-    LPF cd_move_actor INT_VAR old_x old_y new_x new_y END
-    BUT_ONLY IF_EXISTS // formally, should ACTION_IF with a WARNING if %area%.are not found... but meh
-
-END
-
-DEFINE_PATCH_FUNCTION cd_move_actor
-
-  INT_VAR old_x = "-1" // old coordinates for matching
-          old_y = "-1"
-          new_x = "-1" // new coordinates
-          new_y = "-1"
-BEGIN
-
-  READ_LONG  0x54 actor_off
-  READ_SHORT 0x58 actor_num
-  FOR (index = 0 ; index < actor_num ; ++index) BEGIN
-    READ_SHORT (actor_off + 0x20 + (index * 0x110)) test_x
-    READ_SHORT (actor_off + 0x22 + (index * 0x110)) test_y
-    PATCH_IF ((test_x = old_x) AND (test_y = old_y)) BEGIN
-      WRITE_SHORT (actor_off + 0x20 + (index * 0x110)) new_x // location
-      WRITE_SHORT (actor_off + 0x22 + (index * 0x110)) new_y
-      WRITE_SHORT (actor_off + 0x24 + (index * 0x110)) new_x // destination
-      WRITE_SHORT (actor_off + 0x26 + (index * 0x110)) new_y
-    END
-  END
-
-END
-
-/////                                                  \\\\\
-///// cd_define_area_vertices                          \\\\\
-/////                                                  \\\\\
-
-/*
-angel found a number of opened doors with broken/missing vertices, and fixes
-them in his MiH Fixes & Restorations. Unfortunately, they were fixed with SFO
-so they needed to be converted to bogstandard functions. This function allow
-you to alter the vertices of any area structure--containers, regions, or the
-four sets of vertices used by doors--by deleting the existing vertices and
-using an external cd_define_area_vertices_array for the new vertices. This
-array *must* be defined prior to the function launch.
-
-The bounding box and launch points are optional to specify, though the
-bounding box values are ignored for impeded door vertices since they don't
-have a bounding box.
-*/
-
-DEFINE_PATCH_FUNCTION cd_define_area_vertices
-  INT_VAR bounding_left   = "-1" // optional
-          bounding_top    = "-1" // optional
-          bounding_right  = "-1" // optional
-          bounding_bottom = "-1" // optional
-          launch_point_x  = "-1" // optional
-          launch_point_y  = "-1" // optional
-  STR_VAR struct_name  = ~~ // required: name of the door/region/container to be patched
-          struct_type  = ~~ // required with allowed values: container, region, door_open, door_closed, door_impeded_open, door_impeded_closed
-BEGIN
-
-  SET door_internal = "-1"
-  PATCH_IF ("%struct_type%" STRING_COMPARE_REGEXP "door_\(open\|closed\|impeded_open\|impeded_closed\)" = 0) BEGIN // any door
-    READ_LONG  0xa4 struct_num
-    READ_LONG  0xa8 struct_off
-    SET struct_length = 0xc8
-    SET local_launch_off = 0x74
-    PATCH_IF ("%struct_type%" STRING_COMPARE_CASE "door_open" = 0) BEGIN // open door
-      SET local_bound_off = 0x38
-      SET local_vert_idx_off = 0x2c
-      SET local_vert_num_off = 0x30
-      SET door_internal = 4
-    END ELSE
-    PATCH_IF ("%struct_type%" STRING_COMPARE_CASE "door_closed" = 0) BEGIN // closed door
-      SET local_bound_off = 0x40
-      SET local_vert_idx_off = 0x34
-      SET local_vert_num_off = 0x32
-      SET door_internal = 3
-    END ELSE
-    PATCH_IF ("%struct_type%" STRING_COMPARE_CASE "door_impeded_open" = 0) BEGIN // open, impeded door
-      SET local_bound_off = 0
-      SET local_vert_idx_off = 0x48
-      SET local_vert_num_off = 0x4c
-      SET door_internal = 2
-    END ELSE BEGIN // closed, impeded door
-      SET local_bound_off = 0
-      SET local_vert_idx_off = 0x50
-      SET local_vert_num_off = 0x4e
-      SET door_internal = 1
-    END
-  END ELSE
-  PATCH_IF ("%struct_type%" STRING_COMPARE_CASE "container" = 0) BEGIN // container
-    SET local_bound_off = 0x38
-    SET local_vert_idx_off = 0x54
-    SET local_vert_num_off = 0x50
-    SET local_launch_off = 0x34
-    READ_SHORT 0x74 struct_num
-    READ_LONG  0x70 struct_off
-    SET struct_length = 0xc0
-    SET door_internal = 0
-  END ELSE
-  PATCH_IF ("%struct_type%" STRING_COMPARE_CASE "region" = 0) BEGIN // region/trigger
-    SET local_bound_off = 0x22
-    SET local_vert_idx_off = 0x2c
-    SET local_vert_num_off = 0x2a
-    SET local_launch_off = 0x70
-    READ_SHORT 0x5a struct_num
-    READ_LONG  0x5c struct_off
-    SET struct_length = 0xc4
-    SET door_internal = 0
-  END
-  PATCH_IF door_internal < 0 BEGIN
-    PATCH_PRINT ~ == No changes made with cd_define_area_vertices: Unknown structure type specified (%struct_type%)~
-  END ELSE BEGIN
-    SET vert_delta = 0
-    READ_LONG  0x7c vert_off
-    READ_SHORT 0x80 vert_num
-    FOR (index = 0 ; index < struct_num ; ++index) BEGIN
-      READ_ASCII (struct_off + 0x00 + (index * struct_length)) name_check
-      PATCH_IF ("%name_check%" STRING_COMPARE_CASE "%struct_name%") BEGIN // NOT the matched door/region/container
-        PATCH_IF vert_delta != 0 BEGIN // don't bother if number of vertices hasn't changed (yet)
-          PATCH_IF door_internal = 0 BEGIN // update container/region
-            WRITE_LONG (struct_off + local_vert_idx_off + (index * struct_length)) THIS + vert_delta // update vertex index
-          END ELSE BEGIN // update four door indices
-            WRITE_LONG (struct_off + 0x2c + (index * struct_length)) THIS + vert_delta // open door vertex index
-            WRITE_LONG (struct_off + 0x34 + (index * struct_length)) THIS + vert_delta // closed door vertex index
-            WRITE_LONG (struct_off + 0x48 + (index * struct_length)) THIS + vert_delta // impeded-open door vertex index
-            WRITE_LONG (struct_off + 0x50 + (index * struct_length)) THIS + vert_delta // impeded-closed door vertex index
-          END
-        END
-      END ELSE BEGIN // matched door/region/container
-        PATCH_IF local_bound_off != 0 BEGIN // skip for impeded doors
-          PATCH_IF bounding_left >= 0 BEGIN // only if set
-            WRITE_SHORT (struct_off + local_bound_off + 0x00 + (index * struct_length)) bounding_left   // set the new bounding box
-          END
-          PATCH_IF bounding_top >= 0 BEGIN // only if set
-            WRITE_SHORT (struct_off + local_bound_off + 0x02 + (index * struct_length)) bounding_top    // set the new bounding box
-          END
-          PATCH_IF bounding_right >= 0 BEGIN // only if set
-            WRITE_SHORT (struct_off + local_bound_off + 0x04 + (index * struct_length)) bounding_right  // set the new bounding box
-          END
-          PATCH_IF bounding_bottom >= 0 BEGIN // only if set
-            WRITE_SHORT (struct_off + local_bound_off + 0x06 + (index * struct_length)) bounding_bottom // set the new bounding box
-          END
-        END
-        PATCH_IF launch_point_x >= 0 BEGIN // only if set
-          WRITE_SHORT (struct_off + local_launch_off + 0x00 + (index * struct_length)) launch_point_x    // set the new x launch coordinates
-        END
-        PATCH_IF launch_point_y >= 0 BEGIN // only if set
-          WRITE_SHORT (struct_off + local_launch_off + 0x02 + (index * struct_length)) launch_point_y    // set the new y launch coordinates
-        END
-        READ_LONG   (struct_off + local_vert_idx_off + (index * struct_length)) struct_vert_idx
-        READ_SHORT  (struct_off + local_vert_num_off + (index * struct_length)) struct_vert_num
-        PATCH_IF struct_vert_num != 0 BEGIN // delete old vertices first
-          DELETE_BYTES (vert_off + (0x04 * struct_vert_idx)) (struct_vert_num * 0x04)
-          SET vert_delta -= struct_vert_num
-          SET struct_vert_num = 0
-        END
-        PATCH_PHP_EACH cd_define_area_vertices_array AS coords => foo BEGIN
-          INSERT_BYTES (vert_off + 0x00 + (0x04 * (struct_vert_num + struct_vert_idx))) 0x04
-          WRITE_SHORT  (vert_off + 0x00 + (0x04 * (struct_vert_num + struct_vert_idx))) coords_0
-          WRITE_SHORT  (vert_off + 0x02 + (0x04 * (struct_vert_num + struct_vert_idx))) coords_1
-          SET struct_vert_num += 1
-          SET vert_delta += 1
-        END
-        WRITE_SHORT  (struct_off + local_vert_num_off + (index * struct_length)) struct_vert_num
-        // since doors have four vertex indices, may need additional vertex index updates for anything other than the last one (impeded-closed)
-        PATCH_IF door_internal > 1 BEGIN      // impeded-open, closed, or open
-          WRITE_LONG (struct_off + 0x50 + (index * struct_length)) THIS + vert_delta     // impeded-closed index
-          PATCH_IF door_internal > 2  BEGIN   // closed or open
-            WRITE_LONG (struct_off + 0x48 + (index * struct_length)) THIS + vert_delta   // impeded-open index
-            PATCH_IF door_internal > 3  BEGIN // open
-              WRITE_LONG (struct_off + 0x34 + (index * struct_length)) THIS + vert_delta // closed index
-            END
-          END
-        END // bonus door check
-      END // match name check
-    END // end structure loop
-
-    // now, to check everything else that uses vertices and update their indices if are listed after the new insertions/deletions
-    PATCH_IF vert_delta != 0 BEGIN // don't bother if same number of vertices
-      PATCH_FOR_EACH offset IN 0x54 0x5c 0x60 0x68 0x70 0x78 /* 0x7c */ 0x84 0x88 0x90 0xa0 0xa8 0xb0 0xb8 0xbc 0xc0 0xc4 0xcc BEGIN
-        READ_LONG offset off_check
-        PATCH_IF off_check > vert_off BEGIN // if section is after vertices, adjust accordingly
-          WRITE_LONG offset (THIS + (0x04 * vert_delta))
-        END
-      END
-      PATCH_IF ("%struct_type%" STRING_COMPARE_CASE "region") BEGIN // update region indices for containers/door patches
-        READ_SHORT 0x5a region_num
-        READ_LONG  0x5c region_off
-        FOR (index = 0 ; index < region_num ; ++index) BEGIN
-          READ_LONG (region_off + 0x2c + (index * 0xc4)) vert_idx
-          PATCH_IF vert_idx > struct_vert_idx BEGIN
-            WRITE_LONG (region_off + 0x2c + (index * 0xc4)) vert_idx + vert_delta
-          END
-        END
-      END
-      PATCH_IF ("%struct_type%" STRING_COMPARE_CASE "container") BEGIN // update container indices for region/door patches
-        READ_SHORT 0x74 cont_num
-        READ_LONG  0x70 cont_off
-        FOR (index = 0 ; index < cont_num ; ++index) BEGIN
-          READ_LONG (cont_off + 0x50 + (index * 0xc0)) vert_idx
-          PATCH_IF vert_idx > struct_vert_idx BEGIN
-            WRITE_LONG (cont_off + 0x50 + (index * 0xc0)) vert_idx + vert_delta
-          END
-        END
-      END
-      PATCH_IF !door_internal BEGIN // update door indices for container/region patches
-        READ_LONG 0xa4 door_num
-        READ_LONG 0xa8 door_off
-        FOR (index = 0 ; index < door_num ; ++index) BEGIN
-          PATCH_FOR_EACH local_off IN 0x2c 0x34 0x48 0x50 BEGIN // checks open door index, closed door index, impeded-open index, impeded-closed index
-            READ_LONG (door_off + local_off + (index * 0xc8)) vert_idx
-            PATCH_IF vert_idx > struct_vert_idx BEGIN
-              WRITE_LONG (door_off + local_off + (index * 0xc8)) vert_idx + vert_delta
-            END
-          END
-        END
-      END
-      WRITE_SHORT 0x80 vert_num + vert_delta
-    END // vert_delta check
-
-  END // end valid structure check
-
 END
 
 /////                                                  \\\\\
@@ -2835,7 +2550,6 @@ DEFINE_PATCH_FUNCTION DELETE_HEADER
           match_flag_backstab      = "-1" // tobex only, toggle backstab, bit25
           match_flag_noinvisible   = "-1" // tobex only, cannot target invisible, bit26
 
-
   // same for match and new STR_VAR
   STR_VAR match_icon      = "SAME"
   RET abil_delta
@@ -3191,7 +2905,6 @@ DEFINE_PATCH_FUNCTION DELETE_HEADER
           match_flag_backstab      = "-1" // tobex only, toggle backstab, bit25
           match_flag_noinvisible   = "-1" // tobex only, cannot target invisible, bit26
 
-
   // same for match and new STR_VAR
   STR_VAR match_icon      = "SAME"
   RET abil_delta
@@ -3372,7 +3085,7 @@ END
 
 /*
 
-Part of the ALTER/CLONE/DELETE_HEADER series of functions. 
+Part of the ALTER/CLONE/DELETE_HEADER series of functions.
 Check the ALTER_HEADER documentation for more information as
 the function variables are the same except as noted below:
 
@@ -3386,8 +3099,8 @@ used:
 
 platform:
   all except iwd2 and pst
- 
-version history: 
+
+version history:
   9/12/25 creation
 
 */
@@ -3490,7 +3203,7 @@ DEFINE_PATCH_FUNCTION CLONE_HEADER
   STR_VAR match_icon      = "SAME"
           icon            = "SAME"
           insert          = "below"
-  RET     abil_delta   
+  RET     abil_delta
 BEGIN
 
   SET abil_length = 0
@@ -3627,27 +3340,27 @@ BEGIN
               INSERT_BYTES (fx_off + 0x00 + (abil_fx_idx * 0x30)) (abil_fx_num * 0x30)
               WRITE_ASCIIE (fx_off + 0x00 + (abil_fx_idx * 0x30)) ~%cloned_fx%~
               SET fx_delta += abil_fx_num
-            END  
-            // now, clone the ability  
+            END
+            // now, clone the ability
             READ_ASCII (base) cloned_abil (abil_length)
             PATCH_IF ("%insert%" STRING_COMPARE_CASE "above" = 0) BEGIN
               INSERT_BYTES (base) (abil_length)
-              WRITE_ASCIIE (base) ~%cloned_abil%~  
+              WRITE_ASCIIE (base) ~%cloned_abil%~
               PATCH_IF abil_fx_num BEGIN // correct index
                 WRITE_SHORT (base + abil_length + 0x20) THIS + abil_fx_num
-              END   
-            END ELSE BEGIN  
+              END
+            END ELSE BEGIN
               INSERT_BYTES (base + abil_length) (abil_length)
               SET base += abil_length // reset the base so that all future read/writes go to the new ability
-              WRITE_ASCIIE (base) ~%cloned_abil%~  
+              WRITE_ASCIIE (base) ~%cloned_abil%~
               PATCH_IF abil_fx_num BEGIN // correct index
                 WRITE_SHORT (base + 0x20) THIS + abil_fx_num
-              END   
-            END  
-            SET abil_delta += 1 
-            SET abil_num += 1 
-            SET index += 1             
-            SET fx_off += abil_length        
+              END
+            END
+            SET abil_delta += 1
+            SET abil_num += 1
+            SET index += 1
+            SET fx_off += abil_length
             // now the normal adjustments for newly cloned header
             SET multi_match -= 1
             PATCH_IF (type >= 0)       BEGIN WRITE_BYTE  (base + 0x00) type END
@@ -3679,7 +3392,7 @@ BEGIN
               PATCH_IF (arrow >= 0)          BEGIN WRITE_SHORT (base + 0x32) arrow          END
               PATCH_IF (bolt >= 0)           BEGIN WRITE_SHORT (base + 0x34) bolt           END
               PATCH_IF (bullet >= 0)         BEGIN WRITE_SHORT (base + 0x36) bullet         END
-  
+
               PATCH_IF (flag_strength = 0)    BEGIN WRITE_LONG (base + 0x26) (THIS &  `BIT0)  END
               PATCH_IF (flag_strength > 0)    BEGIN WRITE_LONG (base + 0x26) (THIS BOR BIT0)  END
               PATCH_IF (flag_break = 0)       BEGIN WRITE_LONG (base + 0x26) (THIS &  `BIT1)  END
@@ -3709,11 +3422,11 @@ BEGIN
       END // for loop
     END // header check
   END // abil_length check
-  
+
   PATCH_IF abil_delta BEGIN // if we've added abilities
     WRITE_SHORT  0x68 abil_num
     WRITE_LONG   0x6a fx_off
-  END   
+  END
 
   PATCH_IF (abil_delta = 0 && !silent) BEGIN
     PATCH_WARN "WARNING: no effects altered on %SOURCE_FILE% via ALTER_HEADER"
@@ -3732,7 +3445,7 @@ BEGIN
     PATCH_IF ("%SOURCE_RES%" STRING_COMPARE_REGEXP "^...$" = 0) BEGIN SPRINT spc "      " END ELSE
     PATCH_IF ("%SOURCE_RES%" STRING_COMPARE_REGEXP "^..$" = 0) BEGIN SPRINT spc "       " END ELSE
                                                               BEGIN SPRINT spc "        " END
-    TO_LOWER SOURCE_FILE    
+    TO_LOWER SOURCE_FILE
     PATCH_PRINT "              ~%SOURCE_FILE%~%spc%~override~ // %name%, %abil_delta% abilities deleted"
   END
 

@@ -9,7 +9,7 @@ Casting Time: 8
 Area of Effect: 15-ft. radius
 Saving Throw: Special
 
-Ghostly figures called by the Shaman swirl around the battlefield, tormenting the Shaman's adversaries. All enemies within the area of effect take 6d6 points of magic damage per round for the next 3 rounds (no save). In addition, all living enemies (undead and constructs are unaffected) must Save vs. Spell or lose 2 points of Strength every round for 5 rounds. The Strength loss is cumulative, but this spell cannot reduce the Strength of a creature below 1.~
+Ghostly figures called by the Shaman swirl around the battlefield, tormenting the Shaman's adversaries. All enemies within the area of effect take 8d6 points of magic damage per round for the next 3 rounds (no save). In addition, all living enemies (undead and constructs are unaffected) must Save vs. Spell or lose 2 points of Strength every round for 5 rounds. The Strength loss is cumulative, but this spell cannot reduce the Strength of a creature below 1.~
 
 @6300 = ~Set Exploding Trap
 This ability allows the rogue to set a powerful trap that unleashes a fireball which causes 15d6 damage (Save vs. Breath for half damage) and will knock its victims off their feet for 1 round unless they Save vs. Spell at -10.~
@@ -71,7 +71,7 @@ Casting Time: 4
 Area of Effect: 15-ft. radius
 Saving Throw: Special
 
-As the Shaman casts this spell, energies gather from the spirit world and form a pale blue sphere. The Shaman can throw the sphere so that it explodes into a burst of ghostly, azure flames, which deliver 1d4+1 points of magic damage per level of the Shaman (up to a maximum of 12d4+12). There is also a 33% chance that every enemy within the area of effect will be afflicted by the Doom spell (-2 penalty to saving throws and attack rolls for 1 turn). A successful Save vs. Spell halves the damage, but not the Doom effect. Spirits, fey creatures, elementals, and spectral undead take double damage.~
+As the Shaman casts this spell, energies gather from the spirit world and form a pale blue sphere. The Shaman can throw the sphere so that it explodes into a burst of ghostly, azure flames, which deliver 1d4+1 points of magic damage per level of the Shaman (up to a maximum of 12d4+12). There is also a 33% chance that every enemy within the area of effect will be afflicted by the Doom spell (-2 penalty to Saving Throws and attack rolls for 1 turn). A successful Save vs. Spell halves the damage, but not the Doom effect. Spirits, fey creatures, elementals, and spectral undead take double damage.~
 
 @7530 = ~Favored of the Spirits
 
@@ -89,7 +89,7 @@ Requires: Spirit Form~
 The character emits a dazzling burst of light that strikes at all other creatures within a 15-ft. radius. The Sun Soulbeam does not automatically hit all targets, but makes a melee attack using the character's current THAC0 (+3 to hit vs. undead). Struck creatures suffer 9d6 points of fire damage (12d6+3 if undead), unless they Save vs. Spell for half. In addition, all creatures except the character must Save vs. Spell or be blinded for 2 hours.~
 
 @7800 = ~Sun Soulray
-The character projects a blast of light from <PRO_HISHER> open palm, dealing 1d8 fire damage for every 2 caster levels (up to a maximum of 5d8 damage) to a single target. Undead creatures take an additional 6 points of damage (which increases by 2 every 2 caster levels). There is no saving throw against this ability.~
+The character projects a blast of light from <PRO_HISHER> open palm, dealing 1d8 fire damage for every 2 caster levels (up to a maximum of 5d8 damage) to a single target. Undead creatures take an additional 6 points of damage (which increases by 2 every 2 caster levels). There is no Saving Throw against this ability.~
 
 @8080 = ~Assassination
 Using every clever trick an experienced Thief has learned in countless battles, this ability causes every strike in the next 7 seconds to count as a backstab, using the Thief's existing backstab modifier to determine damage. Additionally, during this time and for 1 round longer, critical misses are not possible, and critical hit chance increases by 10%.
@@ -101,7 +101,7 @@ Specialized thieves (single-classed) benefit more from this:
 – +1 Attacks per round~
 
 @8180 = ~Avoid Death
-With extraordinary effort, a high-level rogue can avoid almost certain death. The effect lasts for 5 rounds, and during this time, the rogue's saving throws vs. Death receive a bonus of 5, Hit Points are increased by 20, and the rogue becomes immune to death magic and level drain. Additionally, during the first round, the rogue will succeed in all saving throws, and their hit points may not go below 1 for the first half of that round.~
+With extraordinary effort, a high-level rogue can avoid almost certain death. The effect lasts for 5 rounds, and during this time, the rogue's Saving Throws vs. Death receive a bonus of 5, Hit Points are increased by 20, and the rogue becomes immune to death magic and level drain. Additionally, during the first round, the rogue will succeed in all Saving Throws, and their hit points may not go below 1 for the first half of that round.~
 
 @8191 = ~Defensive Spin
 During the next 4 rounds, the character moves at half their normal speed, gains a +1 bonus to Armor Class per level, and becomes immune to backstab.~
@@ -135,13 +135,13 @@ This ability allows the warrior to unleash a flurry of super-fast blows. The abi
 @8880 = ~Throw Sand~
 @8881 = ~Throw Sand
 
-A rogue's best weapon is <PRO_HISHER> willingness to not play by the rules. Once per turn, they can throw sand in an opponent's eyes.
+A rogue's best weapon is <PRO_HISHER> willingness to not play by the rules. Once per turn, they can throw sand or dirt in an opponent's eyes.
 
 – 1d2 nonlethal damage (Save vs. Breath)
-– If a Save vs. Breath is failed at +2, Armor Class and Attacks per Round are reduced by 2, and Saving Throws by 1 (1 round), and the target is confused and moves 40% slower (half a round)
+– If a Save vs. Breath is failed at +2, Armor Class and attacks per round are reduced by 2, and Saving Throws by 1 (1 round), and the target is confused and moves 40% slower (half a round)
 – 50% chance: Blindness for 1 round if Save vs. Breath is failed at +4
 
-The saving throw becomes harsher as the rogue levels up, improving every tenth level. Many creatures, such as the undead, golems, the sightless, and elementals, are resistant or immune to this ability.~
+The Saving Throw penalty becomes harsher as the rogue levels up, improving every tenth level by 1. Many creatures, such as the undead, golems, the sightless, and elementals, are resistant or immune to this ability.~
 
 @8882 = ~Discombobulated~
 @8883 = ~Throw Sand is available for use~
@@ -149,12 +149,11 @@ The saving throw becomes harsher as the rogue levels up, improving every tenth l
 @8890 = ~Advanced Evasion~
 @8891 = ~Advanced Evasion
 
-Once per day, a dextrous user can perform a sudden, very fast maneuver to avoid most projectiles, damaging area-of-effect spells and spell-like effects (but does not include abilities that cause instant damage like Horrid Wilting, or effects that don't cause direct physical damage). For about one and a half seconds, the character becomes immune to such effects and gains a +1 bonus to saving throws, a +2 bonus to Armor Class, and movement rate is 4 points higher. 
+Once per day, a dextrous user can perform a sudden, very fast maneuver to avoid most projectiles, damaging area-of-effect spells and spell-like effects (but does not include abilities that cause instant damage like Horrid Wilting, or effects that don't cause direct damage). For about one and a half seconds, the character becomes immune to such effects and gains a +1 bonus to Saving Throws, a +2 bonus to Armor Class, and movement rate is 4 points higher.
 
-Hence, the user becomes immune to all fireball-like spells and abilities, all basic projectiles (arrows, bolts, throwing weapons, etc), all dragon breath attacks, and the spells Dragon Breath, Comet, Produce Fire, Smashing Wave, Thorn Spray, Skull Trap, Glyph of Warding, Holy Smite, Unholy Blight, Burning Hands, and Cone of Cold. However, these immunities may only occur in characters that possess at least 16 Dexterity, as they are hard to perform. 
+Hence, the user becomes immune to all fireball-like spells and abilities, all basic projectiles (arrows, bolts, throwing weapons, etc), all dragon breath attacks, and the spells Dragon Breath, Comet, Produce Fire, Smashing Wave, Thorn Spray, Skull Trap, Glyph of Warding, Holy Smite, Unholy Blight, Burning Hands, and Cone of Cold. However, these immunities may only occur in characters that possess at least 16 Dexterity, as they are hard to perform.
 
 Finally, as the duration is very short, failure to time it correctly will render the ability largely irrelevant.~
-
 
 @8900 = ~Defensive Stance
 For 1 turn, the character gains +50% resistance to all forms of physical damage and a +2 bonus to Saving Throws and Armor Class, but incurs the following penalties:
@@ -167,3 +166,24 @@ For 1 turn, the character gains +50% resistance to all forms of physical damage 
 Additionally, Defensive Stance may not be used in conjunction with the High-Level Ability Hardiness.~
 
 @8950 = ~Backstab: Crippling Strike (-%penalty%)~
+
+@9000 = ~Seeking Sword
+This spell creates a sword in the character's hand that cannot be dropped or unequipped. The sword is enchanted as a +4 weapon for the purposes of what it can hit and it lasts for 3 rounds plus 1 extra round per level. The sword improves with levels as follows:
+
+1st  – 2d4+0, +1 THAC0, 2 attacks per round
+4th  – 2d4+1, +1 THAC0, 2 attacks per round
+8th  – 2d4+2, +2 THAC0, 5/2 attacks per round
+12th – 2d4+2, +3 THAC0, 5/2 attacks per round
+16th – 2d4+3, +3 THAC0, 3 attacks per round
+20th – 2d4+3, +4 THAC0, 3 attacks per round
+24th – 2d4+4, +4 THAC0, 7/2 attacks per round
+28th – 2d4+4, +5 THAC0, 7/2 attacks per round
+32nd – 2d4+5, +5 THAC0, 4 attacks per round
+36th – 2d4+5, +6 THAC0, 4 attacks per round
+40th – 2d4+6, +6 THAC0, 9/2 attacks per round~
+
+@9010 = ~Divine Favor
+This spell grants the caster a +1 bonus to hit and damage rolls every 3 levels of the caster, up to +7 at level 21. The spell lasts for 2 rounds plus half a round each time it upgrades, up to 5 rounds at level 21.~
+
+@9020 = ~Boon of Lathander
+This spell lasts 3 rounds plus 1 round per level of the caster. It gives the caster a +1 bonus to attack and damage rolls, a +1 bonus to all Saving Throws, increases maximum HP by 10, and grants 1.5 extra attacks per round (a third of that if the caster has warrior levels). It also protects the caster from level drain.~

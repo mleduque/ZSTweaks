@@ -8,7 +8,7 @@ Casting Time: 9
 Area of Effect: 15-ft. radius
 Saving Throw: None
 
-When the caster utters the words to this powerful spell, <PRO_HESHE> calls upon powerful forces indeed. These forces pull down meteors from above, hurling them randomly at anyone in the area of effect. Anyone caught in the destructive path of the meteors—whether friend or foe—will suffer 2d10 points of damage plus 1 per level of the caster (i.e. 2d10 + 1/level) with no saving throw or magic resistance check allowed to resist it. The caster is well advised to be careful in <PRO_HISHER> use of this spell.~
+When the caster utters the words to this powerful spell, <PRO_HESHE> calls upon powerful forces indeed. These forces pull down meteors from above, hurling them randomly at anyone in the area of effect. Anyone caught in the destructive path of the meteors—whether friend or foe—will suffer 2d10 points of damage plus 1 per level of the caster (i.e. 2d10 + 1/level) with no Saving Throw or Magic Resistance check allowed to resist it. The caster is well advised to be careful in <PRO_HISHER> use of this spell.~
 
 @5050 = ~Horror
 (Enchantment)
@@ -46,7 +46,7 @@ Casting Time: 9
 Area of Effect: 12-ft. radius
 Saving Throw: Neg.
 
-Symbol, Death is a powerful enchantment that allows the wizard to inscribe a symbol on the ground or any other surface. The symbol will remain there until someone comes too close, at which point it will explode, causing all those within the area to make a Save vs. Death or die. Creatures with more than 60 current Hit Points are significantly less likely to be killed, gaining a +6 bonus to their saving throw.~
+Symbol, Death is a powerful enchantment that allows the wizard to inscribe a symbol on the ground or any other surface. The symbol will remain there until someone comes too close, at which point it will explode, causing all those within the area to make a Save vs. Death or die. Creatures with more than 60 current Hit Points are significantly less likely to be killed, gaining a +6 bonus to their Saving Throw.~
 
 @5220 = ~Ray of Enfeeblement
 (Necromancy)
@@ -96,7 +96,25 @@ Casting Time: 3
 Area of Effect: 1 creature
 Saving Throw: None
 
-The casting of this spell opens a channel between the caster's plane and the Negative Energy Plane. The caster of the spell acts as a conduit between the two planes, sucking life from a victim and transferring it to the Negative Energy Plane, draining <PRO_HIMHER> of 6 levels of experience. The target of this spell loses levels, Hit Dice, Hit Points, and abilities permanently. These levels can only be restored by a priest's Restoration spell.~
+The casting of this spell opens a channel between the caster's plane and the Negative Energy Plane. The caster of the spell acts as a conduit between the two planes, sucking life from a living victim and draining them of 6 levels of experience. The target of this spell loses levels, Hit Dice, Hit Points, and abilities permanently, and if they die within 1 turn after Energy Drain is cast on them, their body is utterly destroyed, replaced by a powerful allied Devil Shade. These levels can only be restored by a priest's Restoration spell. The caster is, in turn, temporarily empowered by it, effectively taking some of the power that was drained to temporarily empower themselves for 4 hours (20 turns):
+
+– 50% of their maximum Hit Points plus 3d6 extra are healed instantly, and any level drain they might have is also cured
+– Spell recovery: 1 arcane spell of up to level 8 and 2 more of up to level 7 are recovered. Divine spells are also affected, recovering 1 divine spell from up to level 7 and 2 more of up to level 6.
+– +6 THAC0 (+3 for mages/thieves, +1 for mages with fighter classes)
+– +2 Strength, +2 attack damage (none for mages with fighter classes)
+– This effect cannot be dispelled, and the target of Energy Drain must not be an ally for the caster to benefit from this
+– This effect may only occur once per 8 hours on the caster, subsequent castings of Energy Drain within a short period of time will not continuously yield this benefit. However, the healing part of it will always apply.
+
+Finally, this spell also acts in the opposite manner on the undead, empowering them for 8 hours instead:
+
+– Fully healed, and their maximum Hit Points are increased by 20%
+– +3 Strength, +1 attack per round, and they always attack as if they wielded at least +4 weapons
+– Armor Class improves by 4, and their damage resistances increase by 15% (30% in the case of magic damage)
+– Movement rate increases by 50%
+– Immunity to turning~
+
+@5651 = ~Devil Shade~
+@5652 = ~Undead empowered by Energy Drain~
 
 @6210 = ~Abi-Dalzim's Horrid Wilting
 (Necromancy)
@@ -108,7 +126,7 @@ Casting Time: 8
 Area of Effect: 15-ft. radius
 Saving Throw: 1/2
 
-This spell evaporates moisture from the bodies of every living creature within the area of effect, inflicting 1d7+1 damage per level of the caster. Affected creatures are allowed a saving throw vs. Spell for half damage. This spell is especially devastating to water elementals and plant-based creatures (including fungal creatures such as myconids), who receive a penalty of -2 to their saving throws and always take the maximum damage possible. This spell will not harm party members.~
+This spell evaporates moisture from the bodies of every living creature within the area of effect, inflicting 1d7+1 damage per level of the caster. Affected creatures are allowed a Saving Throw vs. Spell for half damage. This spell is especially devastating to water elementals and plant-based creatures (including fungal creatures such as myconids), who receive a penalty of -2 to their Saving Throws and always take the maximum damage possible. This spell will not harm party members.~
 
 @6290 = ~Grease
 (Conjuration/Summoning)
@@ -120,9 +138,9 @@ Casting Time: 1
 Area of Effect: 15-ft. radius
 Saving Throw: Special
 
-A Grease spell covers a material surface with a slippery, highly flammable layer of a fatty, greasy nature. Any creature entering the area or caught in it when the spell is cast must Save vs. Spell at +2 or slip and slide, unable to move effectively (80% slower). Those who successfully save can move, albeit slowly (25% slower), for the rest of the round (but will need to Save vs. Spell again the following round). Regardless of whether they save against the effect, the oil will make them take 25% more fire damage for 1 round due to the volatile nature of the oils. Those who remain in the area are allowed a saving throw each round until they escape the area.
+A Grease spell covers a material surface with a slippery, highly flammable layer of a fatty, greasy nature. Any creature entering the area or caught in it when the spell is cast must Save vs. Spell at +2 or slip and slide, unable to move effectively (80% slower, -2 Armor Class). Those who successfully save can move, albeit slowly (25% slower, -1 Armor Class), for the rest of the round (but will need to Save vs. Spell again the following round). Regardless of whether they save against the effect, the oil will make them take 25% more fire damage for 1 round due to the volatile nature of the oils. Those who remain in the area are allowed a Saving Throw each round until they escape the area.
 
-Because this spell simply conjures plain grease, it is not affected by magic resistance.~
+Because this spell simply conjures grease, it is not affected by Magic Resistance.~
 
 @6430 = ~Comet
 (Any School)
@@ -134,7 +152,7 @@ Casting Time: 3
 Area of Effect: 15-ft. radius
 Saving Throw: Special
 
-This spell is a more powerful and specialized version of Meteor Swarm. A huge comet strikes the earth, damaging all enemies in its path and sending out a powerful shockwave that knocks away all foes in the area of effect. Those knocked down must Save vs. Paralysis or remain stunned for 3 rounds. The comet itself does 2d10+10 fire damage, 2d10+10 cold damage, and 3d10+10 crushing damage with no save or magic resistance allowed.
+This spell is a more powerful and specialized version of Meteor Swarm. A huge comet strikes the earth, damaging all enemies in its path and sending out a powerful shockwave that knocks away all foes in the area of effect. Those knocked down must Save vs. Paralysis or remain stunned for 3 rounds. The comet itself does 3d10+15 fire damage, 3d10+15 cold damage, and 4d10+20 crushing damage with no save allowed to take half, or Magic Resistance to resist its effects.
 
 This spell will not harm party members.~
 
@@ -225,7 +243,7 @@ Casting Time: 2
 Area of Effect: 1 creature
 Saving Throw: None
 
-The recipient of this spell gains extraordinary luck for the next turn, receiving a +1 bonus to <PRO_HISHER> saving throws, attack rolls, and minimum damage/healing rolls as well as +5% to all thieving skills. Furthermore, damage dice for all effects outside a weapon's base damage are reduced by 1. For example, a 6d6 fireball will do 6d5 damage, and a flaming long sword that deals 1d8+2 slashing plus 1d3 fire damage will deal 1d8+2 slashing plus 1d2 fire damage instead.~
+The recipient of this spell gains extraordinary luck for the next turn, receiving a +1 bonus to <PRO_HISHER> Saving Throws, attack rolls, and minimum damage/healing rolls as well as +5% to all thieving skills. Furthermore, damage dice for all effects outside a weapon's base damage are reduced by 1. For example, a 6d6 fireball will do 6d5 damage, and a flaming long sword that deals 1d8+2 slashing plus 1d3 fire damage will deal 1d8+2 slashing plus 1d2 fire damage instead.~
 
 // luck boost only
 @6720 = ~Luck
@@ -238,7 +256,7 @@ Casting Time: 2
 Area of Effect: 1 creature
 Saving Throw: None
 
-The recipient of this spell gains extraordinary luck for the next 3 rounds, receiving a +1 bonus to <PRO_HISHER> saving throws, attack rolls, and minimum damage/healing rolls as well as +10% to all thieving skills. Furthermore, Armor Class receives a bonus of 2, critical hit chances improve by 5%, and damage dice for all effects outside a weapon's base damage are reduced by 1. For example, a 6d6 fireball will do 6d5 damage, and a flaming long sword that deals 1d8+2 slashing plus 1d3 fire damage will deal 1d8+2 slashing plus 1d2 fire damage instead.~
+The recipient of this spell gains extraordinary luck for the next 3 rounds, receiving a +1 bonus to <PRO_HISHER> Saving Throws, attack rolls, and minimum damage/healing rolls as well as +10% to all thieving skills. Furthermore, Armor Class receives a bonus of 2, critical hit chances improve by 5%, and damage dice for all effects outside a weapon's base damage are reduced by 1. For example, a 6d6 fireball will do 6d5 damage, and a flaming long sword that deals 1d8+2 slashing plus 1d3 fire damage will deal 1d8+2 slashing plus 1d2 fire damage instead.~
 
 // luck duration + boost
 @6730 = ~Luck
@@ -251,7 +269,7 @@ Casting Time: 2
 Area of Effect: 1 creature
 Saving Throw: None
 
-The recipient of this spell gains extraordinary luck for the next turn, receiving a +1 bonus to <PRO_HISHER> saving throws, attack rolls, and minimum damage/healing rolls as well as +10% to all thieving skills. Furthermore, Armor Class receives a bonus of 2, critical hit chances improve by 5%, and damage dice for all effects outside a weapon's base damage are reduced by 1. For example, a 6d6 fireball will do 6d5 damage, and a flaming long sword that deals 1d8+2 slashing plus 1d3 fire damage will deal 1d8+2 slashing plus 1d2 fire damage instead.~
+The recipient of this spell gains extraordinary luck for the next turn, receiving a +1 bonus to <PRO_HISHER> Saving Throws, attack rolls, and minimum damage/healing rolls as well as +10% to all thieving skills. Furthermore, Armor Class receives a bonus of 2, critical hit chances improve by 5%, and damage dice for all effects outside a weapon's base damage are reduced by 1. For example, a 6d6 fireball will do 6d5 damage, and a flaming long sword that deals 1d8+2 slashing plus 1d3 fire damage will deal 1d8+2 slashing plus 1d2 fire damage instead.~
 
 @6950 = ~Flesh to Stone
 (Alteration)
@@ -263,7 +281,7 @@ Casting Time: 6
 Area of Effect: 1 creature
 Saving Throw: Neg.
 
-This spell turns flesh of any sort to stone. All possessions on the person of the creature likewise turn to stone. The intended subject of the spell receives a saving throw vs. Petrification to avoid the effect. If a statue created by this spell is subjected to attacks of any sort, it will shatter into tiny pieces, making it impossible for the creature to be returned to flesh. The reverse of this spell may be cast upon the victim in order to restore life, but this is the only way.~
+This spell turns flesh of any sort to stone. All possessions on the person of the creature likewise turn to stone. The intended subject of the spell receives a Saving Throw vs. Petrification to avoid the effect. If a statue created by this spell is subjected to attacks of any sort, it will shatter into tiny pieces, making it impossible for the creature to be returned to flesh. The reverse of this spell may be cast upon the victim in order to restore life, but this is the only way.~
 
 @7360 = ~Wail of the Banshee
 (Necromancy)
@@ -275,7 +293,7 @@ Casting Time: 9
 Area of Effect: 15-ft. radius
 Saving Throw: Neg.
 
-At the culmination of this dreadful spell, the wizard screams like a banshee (groaning spirit). Everyone in the area of effect hears the awful cry. Those who fail a saving throw vs. Death die instantly; those who succeed still suffer 3d6+3 magic damage and deafness for 2 rounds without any save allowed. The caster and companions are immune to the effects of the wail.~
+At the culmination of this dreadful spell, the wizard screams like a banshee (groaning spirit). Everyone in the area of effect hears the awful cry. Those who have 8 HD or less, or fail a Saving Throw vs. Death die instantly (and those with 60 HP or less must do so at a -2 penalty); otherwise, they still suffer 3d6+3 magic damage and deafness for 2 rounds without any save allowed. The caster and companions are immune to the effects of the wail.~
 
 @7370 = ~Ice Storm
 (Evocation)
@@ -309,7 +327,7 @@ An extradimensional space is brought into being upon utterance of a maze spell. 
 – 15 to 17: 2d4 rounds
 – 18 and up: 1d4 rounds
 
-Note that if the 9th-level spell Freedom is cast in the area where a creature is mazed, it will effectively bring <PRO_HIMHER> back to this plane, ending the spell prematurely, but it cannot be ended with any other magic-dispelling spells. This spell is not subject to magic resistance, and minotaurs are immune to this effect.~
+Note that if the 9th-level spell Freedom is cast in the area where a creature is mazed, it will effectively bring <PRO_HIMHER> back to this plane, ending the spell prematurely, but it cannot be ended with any other magic-dispelling spells. This spell is not subject to Magic Resistance, and minotaurs are immune to this effect.~
 
 @7381 = ~Bigby's Clenched Fist
 (Evocation)
@@ -333,7 +351,7 @@ Casting Time: 9
 Area of Effect: 1 creature
 Saving Throw: Special
 
-This spell creates a huge disembodied fist that crushes the target and pins them to the ground. In the first round, the spell does 6d6+6 crushing damage. The victim can save at -6 vs. Paralysis to avoid being pinned. If they fail, the hand does 8d6+8 crushing damage the next round. The victim can again Save vs. Paralysis at -4. If they fail to save, the hand does a final 10d6+10 crushing damage and disappears. This spell will not be stopped by magic resistance.~
+This spell creates a huge disembodied fist that crushes the target and pins them to the ground. In the first round, the spell does 6d6+6 crushing damage. The victim can save at -6 vs. Paralysis to avoid being pinned. If they fail, the hand does 8d6+8 crushing damage the next round. The victim can again Save vs. Paralysis at -4. If they fail to save, the hand does a final 10d6+10 crushing damage and disappears. This spell will not be stopped by Magic Resistance.~
 
 @7520 = ~Fireball
 (Evocation)
@@ -345,7 +363,7 @@ Casting Time: 3
 Area of Effect: 15-ft. radius
 Saving Throw: 1/2
 
-A Fireball is an explosive burst of flame, which detonates with a low roar and delivers damage proportional to the level of the wizard who cast it—1d6 points of damage for each level of experience of the caster, up to a maximum of 10d6. After level 10, an extra point of fire damage is added per level until level 20 (maximum of 10d6+10). The wizard points <PRO_HISHER> finger and speaks the range (distance and height) at which the Fireball is to burst. A streak flashes from the pointing digit and, unless it impacts upon a material body or solid barrier prior to attaining the prescribed range, blossoms into the fireball (an early impact results in an early detonation). Creatures failing their saving throws each suffer full damage from the blast. Those who roll successful saving throws manage to dodge, fall flat, or roll aside, each receiving half.~
+A Fireball is an explosive burst of flame, which detonates with a low roar and delivers damage proportional to the level of the wizard who cast it—1d6 points of damage for each level of experience of the caster, up to a maximum of 10d6. After level 10, an extra point of fire damage is added per level until level 20 (maximum of 10d6+10). The wizard points <PRO_HISHER> finger and speaks the range (distance and height) at which the Fireball is to burst. A streak flashes from the pointing digit and, unless it impacts upon a material body or solid barrier prior to attaining the prescribed range, blossoms into the fireball (an early impact results in an early detonation). Creatures failing their Saving Throws each suffer full damage from the blast. Those who roll successful Saving Throws manage to dodge, fall flat, or roll aside, each receiving half.~
 
 @7521 = ~Sunfire
 (Evocation)
@@ -357,13 +375,13 @@ Casting Time: 3
 Area of Effect: 15-ft. radius
 Saving Throw: 1/2
 
-The wizard gestures with <PRO_HISHER> hand, and the entire area around <PRO_HIMHER> erupts in flames, striking everyone except the caster <PRO_HIMHER>self. The damage increases with the level of the caster in the following pattern:
+The wizard gestures with <PRO_HISHER> hand, and the entire area around <PRO_HIMHER> erupts in flames, striking everyone except the caster <PRO_HIMHER>self. The damage increases with the level of the caster in the following way:
 
 Up to level 10: 1d6 points of damage per level of the caster, up to 10d6
 From level 10 to 15: damage increases by 1d6+1 per level, up to 15d6+5
 From level 15 to 20: damage increases by +2 until level 20, up to 15d6+15.
 
-Creatures failing their saving throws take full damage from the blast; those who roll successful saving throws manage to dodge, fall flat, or roll aside, each taking half damage.~
+Creatures failing their Saving Throws take full damage from the blast; those who roll successful Saving Throws manage to dodge, fall flat, or roll aside, each taking half damage.~
 
 @7522 = ~Delayed Blast Fireball
 (Invocation/Evocation)
@@ -375,7 +393,7 @@ Casting Time: 7
 Area of Effect: 15-ft. radius
 Saving Throw: 1/2
 
-This spell creates a Fireball that hovers at a point determined by the caster. The Fireball will stay in position until someone comes too close to it; at that point, it will explode, dealing 13d6 points of fire damage, which increases by 1d6+2 each level until level 18 (18d6+10), and then increases again by +5 at levels 19 and 20, reaching a maximum of 18d6+20. Victims are allowed a saving throw vs. Spell for half damage.~
+This spell creates a Fireball that hovers at a point determined by the caster. The Fireball will stay in position until someone comes too close to it; at that point, it will explode, dealing 13d6 points of fire damage, which increases by 1d6+2 each level until level 18 (18d6+10), and then increases again by +5 at levels 19 and 20, reaching a maximum of 18d6+20. Victims are allowed a Saving Throw vs. Spell for half damage.~
 
 @7523 = ~Dragon's Breath
 (Any School)
@@ -401,7 +419,7 @@ Casting Time: 2
 Area of Effect: 1 creature
 Saving Throw: Special
 
-By means of this spell, the wizard creates a magical arrow that speeds to its target unerringly. The arrow has no attack or damage bonus, but inflicts 2d4 points of acid damage (no save allowed), which may splash to adjacent enemies, causing the same amount of damage, unless they Save vs. Breath at -2. For every 3 levels of the caster, the acid lasts for another round, unless somehow dispelled, inflicting another 2d4 points of damage each round. So at 3rd-5th level, the acid lasts 2 rounds, at 6th-8th level, the acid lasts for 3 rounds, and so on. Splashed enemies do not receive more damage over time.~
+By means of this spell, the wizard creates a magical arrow that speeds to its target unerringly. The arrow inflicts 2d4 points of acid damage (no save allowed), which may splash to adjacent enemies, causing the same amount of damage, unless they succeed at a Saving Throw vs. Breath at -2. For every 3 levels of the caster, the acid lasts for another round, unless somehow dispelled, inflicting another 2d4 points of damage each round. So at 3rd-5th level, the acid lasts 2 rounds, at 6th-8th level, the acid lasts for 3 rounds, and so on. Splashed enemies do not receive more damage over time.~
 
 @8225 = ~Decastave
 (Evocation)
@@ -437,7 +455,7 @@ Casting Time: 5
 Area of Effect: Special
 Saving Throw: 1/2
 
-When the wizard casts Chain Lightning, arcs of electrical energy burst from <PRO_HISHER> fingertips. These brilliant arcs of lightning leap at all enemies near the caster, burning them with electrical damage. The lightning causes 2d6 plus 1d6 points of damage for every 2 levels of the caster. If the target of the lightning saves vs. Spell, only half damage is inflicted. Thus, a 12th-level wizard will cause 8d6 damage to a victim (4d6 if the victim makes <PRO_HISHER> saving throw vs. Spell).~
+When the wizard casts Chain Lightning, arcs of electrical energy burst from <PRO_HISHER> fingertips. These brilliant arcs of lightning leap at all enemies near the caster, burning them with electrical damage. The lightning causes 5d6 plus 1d6+1 points of damage for every 2 levels of the caster, up to 15d6+10. If the target of the lightning saves vs. Spell, only half damage is inflicted. Thus, a 14th-level wizard will cause 12d6+7 damage to a victim or half if the victim makes <PRO_HISHER> Saving Throw vs. Spell.~
 
 @8350 = ~Icelance
 (Evocation)
@@ -519,6 +537,7 @@ Eye of Fortitude: This eye blocks one stunning, deafness, blindness, or silence 
 
 Eye of Stone: This eye shields the caster from a single petrification attack. It can also be used as the 5th-level wizard spell Hold Monster, rendering creatures immobile for 1 round/level (Save vs. Spell at -2 negates).~
 
+// TODO terrible spell dammit
 @8465 = ~Soul Eater
 (Necromancy)
 
@@ -553,7 +572,7 @@ Casting Time: 3
 Area of Effect: 1 creature and any enemies within 4 ft.
 Saving Throw: Neg.
 
-This spell holds 1d4 undead creatures rigidly immobile and in place. The effect is centered on the victim selected by the caster. Any enemies within 4 ft. of the target are also affected. Those who succeed on their saving throw vs. Spell at -1 are totally unaffected by the spell. Held creatures cannot move or speak, but they remain aware of events around them and can use abilities not requiring motion or speech. Being held does not prevent the worsening of the subject's condition due to wounds. Undead cannot resist this spell through Magic Resistance.~
+This spell holds 1d4 undead creatures rigidly immobile and in place. The effect is centered on the victim selected by the caster. Any enemies within 4 ft. of the target are also affected. Those who succeed on their Saving Throw vs. Spell at -1 are totally unaffected by the spell. Held creatures cannot move or speak, but they remain aware of events around them and can use abilities not requiring motion or speech. Being held does not prevent the worsening of the subject's condition due to wounds. Undead cannot resist this spell through Magic Resistance.~
 
 @8630 = ~Disintegrate
 (Alteration)
@@ -565,9 +584,9 @@ Casting Time: 6
 Area of Effect: 1 creature
 Saving Throw: Neg.
 
-When this spell is cast at another creature, a thin green ray is shot out. Upon contact with the ray, the creature must make a Saving Throw vs. Spell or be transformed into dust. This transformation is instantaneous and irreversible—they are gone forever. There is also a good chance that this will destroy some if not all the items that the creature is carrying. 
+When this spell is cast at another creature, a thin green ray is shot out. Upon contact with the ray, the creature must make a Saving Throw vs. Spell or be transformed into dust. This transformation is instantaneous and irreversible—they are gone forever. There is also a good chance that this will destroy some if not all the items that the creature is carrying.
 
-Clay, sand, brain, and magic golems, while normally immune to magic, are susceptible to this spell in a special way, taking 1d12 crushing damage instantly, becoming less functional for 2 rounds with no save allowed, which reduces their movement speed down to a third, and inflicts a -2 penalty to their Armor Class and Saving Throws, a -4 penalty to their combat rolls, a -10 penalty to their speed factor, and finally, it reduces their attacks per round by 1/2.~
+Clay, sand, brain, and magic golems, while normally immune to magic, are susceptible to this spell in a special way, taking 1d12 crushing damage instantly, becoming less functional for 2 rounds with no save allowed, reducing their movement speed down to a third, and inflicting a -2 penalty to their Armor Class and Saving Throws, a -4 penalty to their combat rolls, a -10 penalty to their speed factor, and finally, it reduces their attacks per round by 1/2.~
 
 @8640 = ~Stone to Flesh
 (Alteration)
@@ -579,7 +598,7 @@ Casting Time: 6
 Area of Effect: 1 creature
 Saving Throw: Special
 
-This spell is the reverse of Flesh to Stone and will return any creature that has been turned to stone back to flesh. All possessions on the creature likewise return to normal. The effect is instantaneous and no saving throw is required. An exception is when this spell is cast on stone golems, where they will lose their immunity to weapons up to +2 enchantment permanently, if they fail a Save vs. Spell.~
+This spell is the reverse of Flesh to Stone and will return any creature that has been turned to stone back to flesh. All possessions on the creature likewise return to normal. The effect is instantaneous and no Saving Throw is required. An exception is when this spell is cast on stone golems, where they will lose their immunity to weapons up to +2 enchantment permanently, if they fail a Save vs. Spell.~
 
 @8641 = ~This scroll will remove the effects of petrification from anyone afflicted by such an unfortunate condition. Simply approach the victim who has been turned to stone, read the scroll, and target the statue. This will also make stone golems lose their immunity to weapons up to +2 enchantment permanently, if they fail a Save vs. Spell.
 
@@ -617,9 +636,9 @@ LIGHT BLUE: Causes 2d4+1 cold damage and inflicts Slow on the target for 1 round
 
 GREEN: Cause 2d4+1 poison damage and the target becomes poisoned if they fail a Save vs. Death, taking 4 points of damage over 2 rounds. At level 7, the poisoning damage increases to 6. At level 10, it becomes 12.
 
-YELLOW: Cause 2d4+1 acid damage that bypasses magic resistance. Damage increases by +1 every 2 levels up to level 15. At level 15 and 20 the damage also increases by 1d4 every three levels, up to 4d4+10 acid damage.
+YELLOW: Cause 2d4+1 acid damage that bypasses Magic Resistance. Damage increases by +1 every 2 levels up to level 15. At level 15 and 20 the damage also increases by 1d4 every three levels, up to 4d4+10 acid damage.
 
-PURPLE: Causes a thunderous sonic thud that causes 1d4+2 crushing damage and 1d4 magic damage, deafening them, causing a 30% casting failure and -1 saving throw penalty for 2 rounds without any save allowed, as well as stunning them for 1 round if they fail a Save vs. Death. Golems and other constructs are susceptible to this version, suffering 4d4 irresistible damage. At level 13, the saving throw penalty increases to -2, and at level 16, the stun duration increases by half a round.
+PURPLE: Causes a thunderous sonic thud that causes 1d4+2 crushing damage and 1d4 magic damage, deafening them, causing a 30% casting failure and -1 Saving Throw penalty for 2 rounds without any save allowed, as well as stunning them for 1 round if they fail a Save vs. Death. Golems and other constructs are susceptible to this version, suffering 4d4 irresistible damage. At level 13, the Saving Throw penalty increases to -2, and at level 16, the stun duration increases by half a round.
 
 BLACK: Causes 1d4+1 magic damage and slays the target if they fail a Save vs. Spell at +6. Save bonus is reduced by 1 at level 16 and 19.~
 
@@ -645,3 +664,87 @@ This spell creates up to five missiles of magical energy that dart forth from th
 
 @75200 = ~Instantly and once per round~
 @75201 = ~Instantly and once each round~
+
+@76000 = ~Power Word, Kill
+%magic_school%
+
+Level: 9
+Range: Visual range of the caster
+Duration: Instant
+Casting Time: 1
+Area of Effect: 1 creature
+Saving Throw: Special
+
+When a Power Word, Kill spell is uttered, one creature within the spell range is instantly slain if they're too weak to resist its overwhelming power. The weaker the creature it is, the more certain their death is:
+
+– If the creature has 60 or fewer current Hit Points it dies immediately without any Saving Throw%mr_check% allowed.
+– Similarly, if the creature has 10 HD or less, it also dies without any Saving Throw%mr_check% allowed.
+– If the creature has more than 60 current Hit Points and their HD is 11 or 12, they die if a Save vs. Spell is failed.
+– If the creature has more than 60 current Hit Points and their HD is higher than 12, they die if a Save vs. Spell at +4 is failed.%hard_limit%
+
+%chunking_str%Lastly, even if they resist the spell through their Saving Throws, they take 4d6 magic damage instantly.~
+
+@76001 = ~(Conjuration/Summoning)~
+@76002 = ~(Divination)~
+@76003 = ~(Enchantment/Charm)~
+@76004 = ~Those killed through the spell have their body utterly destroyed, and thus may not be resurrected by normal means. ~
+@76005 = ~ or Magic Resistance check~
+@76006 =
+~
+– However, creatures with more than %zst_585_pwk_HP_hard_limit% Hit Points are completely unaffected.~
+
+@77000 = ~Haste
+(Alteration)
+
+Level: 3
+Range: 15 ft.
+Duration: 1 round per 3 levels
+Casting Time: 3
+Area of Effect: 15-ft. radius
+Saving Throw: None
+
+When this spell is cast, all creatures affected function at double their normal movement rate, gain a +2 speed factor bonus, and sets their attacks per round to the next closest whole number (up to 6, if the target can attack five times per round). Thus, a creature moving at 6 and attacking once per round would move at 12 and attack twice per round, and if such creature attacked 5/2 times per round, they would attack instead 3 times per round. At the instant the spell is completed, it affects all allied creatures in a 15-ft. radius centered on a point selected by the caster (thus, creatures leaving the area are still subject to the spell's effect; those entering the area after the casting is completed are not). This spell is not cumulative with itself or with other similar magic. Spellcasting and spell effects are not affected. Note that this spell negates the effects of a Slow spell.~
+
+@77010 = ~Improved Haste
+(Alteration)
+
+Level: 6
+Range: 40 ft.
+Duration: 1 round per 4 levels
+Casting Time: 3
+Area of Effect: 1 creature
+Saving Throw: None
+
+The affected creature functions at double its normal movement and attack rates and receives a +2 bonus to its speed factor. Thus, a creature moving at 6 and attacking three times per round would move at 12 and attack six times per round. Spellcasting and spell effects are not sped up. Unlike the third-level Haste spell, this spell affects only one creature and causes no fatigue upon them. This spell also negates the effects of a Slow spell, but it is not cumulative with itself or with other similar magic. Its effects will last for the duration or until dispelled.~
+
+@77020 = ~Haste
+When circumstances demand it, Mazzy can move at incredible speeds for brief periods of time. Using this ability, she resembles nothing so much as a body imbued with a wizard's Haste spell; she can run twice her normal distance in the same amount of time and sets their attacks per round to the next closest whole number (up to 6). Such a pace cannot be maintained indefinitely, however. The effect only lasts for 1 round per three levels before she slows again to her standard speed.~
+
+@80100 = ~Vampiric Feast~
+@80101 = ~Vampiric Feast
+(Any School)
+
+Level: 10
+Range: 0
+Duration: Instant
+Casting Time: 6
+Area of Effect: 10-feet radius around the caster
+Saving Throw: Special
+
+When this spell is cast, the caster drinks in the life force of all enemies in the area of effect. Creatures who succeed at a Save vs. Death at -2 lose only a third of the maximum Hit Points and 5 levels of experience, while those who fail their Saving Throw are instantly slain and destroyed forever. Moreover, the life-force of each slain creature coalesces as a newly-born Greater Shadow, which will attack any surviving enemies.
+
+The total amount of damage done by this spell is then added to the caster's Hit Point total. The caster is only able to absorb sufficient Hit Points to return to full health. Any remaining life force dissipates into the fabric of the Weave. Constructs and the undead are unaffected.~
+
+@81000 = ~Otiluke's Resilient Sphere
+(Alteration)
+
+Level: 4
+Range: 40 ft.
+Duration: 1 turn
+Casting Time: 3
+Area of Effect: 1 creature
+Saving Throw: Neg.
+
+When this spell is cast, the result is a globe of shimmering force that encloses the subject creature if it fails to Save vs. Spell. The resilient sphere will contain its subject for the duration of the spell. The sphere is completely immune to all damage; in fact, the only method of removing the sphere is a successful Dispel Magic. Hence, the creature caught inside the globe is completely safe from all attacks, but at the same time completely unable to affect the outside world.
+
+If the caster targets themselves, an ally, or an innocent non-hostile target, the spell will not be resisted.~

@@ -1,6 +1,81 @@
 ACTION_IF zst_1545_constitution_bonuses BEGIN
+    
     COPY ~%MOD_FOLDER%/2da/tweaks/hpconbon.2da~ ~override~
         PRETTY_PRINT_2DA
+
+    DEFINE_PATCH_MACRO report_if_debug BEGIN
+        ++matches
+        PATCH_IF zs_debug BEGIN
+            READ_STRREF 0x08 name ELSE "Unknown name"
+            PATCH_PRINT "[DEBUG][INFO]: Found creature %name% (%SOURCE_RES%) with %con% CON and %max_hp% Max HP"
+        END
+    END
+
+    PRINT "[INFO]: Patching creatures to ensure they don't die upon spawning with the current Constitution table..."
+    OUTER_SET matches = 0
+    COPY_EXISTING_REGEXP ~^.+\.cre$~ ~override~
+
+        READ_SHORT 0x26 max_hp
+        READ_LONG 0x20 flags
+
+        LPF IS_BIT_SET INT_VAR bit=11 bit_field=flags RET is_dead = result END
+
+        PATCH_IF max_hp > 0 AND NOT is_dead BEGIN
+
+            READ_BYTE 0x273 class
+            PATCH_IF class = class_bard                OR
+                     class = class_cleric              OR
+                     class = class_druid               OR
+                     class = class_fighter             OR
+                     class = class_thief               OR
+                     class = class_sorcerer            OR
+                     class = class_shaman              OR
+                     class = class_monk                OR
+                     class = class_paladin             OR
+                     class = class_mage                OR
+                     class = class_ranger              OR
+                     class = class_cleric_mage         OR
+                     class = class_cleric_ranger       OR
+                     class = class_cleric_thief        OR
+                     class = class_fighter_cleric      OR
+                     class = class_fighter_mage_cleric OR
+                     class = class_fighter_druid       OR
+                     class = class_fighter_mage        OR
+                     class = class_fighter_mage_thief  OR
+                     class = class_fighter_thief       OR
+                     class = class_mage_thief
+            BEGIN
+                READ_BYTE 0x23d con
+                PATCH_IF con = 1 AND max_hp <= 5 BEGIN
+                    WRITE_SHORT 0x24 6
+                    WRITE_SHORT 0x26 6
+                    LPM report_if_debug
+                END ELSE PATCH_IF con = 2 AND max_hp <= 4 BEGIN
+                    WRITE_SHORT 0x24 5
+                    WRITE_SHORT 0x26 5
+                    LPM report_if_debug
+                END ELSE PATCH_IF (con = 3 OR con = 4) AND max_hp <= 3 BEGIN
+                    WRITE_SHORT 0x24 4
+                    WRITE_SHORT 0x26 4
+                    LPM report_if_debug
+                END ELSE PATCH_IF (con = 5 OR con = 6) AND max_hp <= 2 BEGIN
+                    WRITE_SHORT 0x24 3
+                    WRITE_SHORT 0x26 3
+                    LPM report_if_debug
+                END PATCH_IF (con = 7 OR con = 8) AND max_hp = 1 BEGIN
+                    WRITE_SHORT 0x24 2
+                    WRITE_SHORT 0x26 2
+                    LPM report_if_debug
+                END
+            END
+        END
+
+    BUT_ONLY
+
+    ACTION_IF zs_debug BEGIN
+        PRINT "[DEBUG][INFO]: Found %matches% matches with inappropriate stats for CON overhaul"
+    END
+
 END
 
 ACTION_IF zst_1545_dexterity_bonuses BEGIN
@@ -38,15 +113,10 @@ END
 ACTION_IF zst_1545_shorty_bonuses > 0 BEGIN
 
     ACTION_MATCH zst_1545_shorty_bonuses WITH
-        1
-            BEGIN COPY ~%MOD_FOLDER%/2da/tweaks/shorty_bonuses/nullified~ ~override~  END
-        2
-            BEGIN COPY ~%MOD_FOLDER%/2da/tweaks/shorty_bonuses/toned_down~ ~override~ END
-        3
-            BEGIN COPY ~%MOD_FOLDER%/2da/tweaks/shorty_bonuses/standardized~ ~override~ END
-        DEFAULT
-            WARN "[WARN]: shorty bonuses not applied, invalid option: %zst_1545_shorty_bonuses% (1: nullify, 2: toned down, 3: standardized)"
-    END
+        1 BEGIN COPY ~%MOD_FOLDER%/2da/tweaks/shorty_bonuses/nullified~ ~override~  END
+        2 BEGIN COPY ~%MOD_FOLDER%/2da/tweaks/shorty_bonuses/toned_down~ ~override~ END
+        3 BEGIN COPY ~%MOD_FOLDER%/2da/tweaks/shorty_bonuses/standardized~ ~override~ END
+          DEFAULT END
 
 END
 
@@ -81,9 +151,9 @@ ACTION_IF zst_1545_weapon_style_bonuses BEGIN
     ACTION_IF zst_1545_weapon_style_shield BEGIN
 
         COPY_EXISTING ~stylbonu.2da~ ~override~
-            REPLACE_TEXTUALLY ~^\(SWORDANDSHIELD-0\).+$~ ~\1 -1 0 1 0 0 1 0 0~
-            REPLACE_TEXTUALLY ~^\(SWORDANDSHIELD-1\).+$~ ~\1 0 0 0 0 0 -2 0 0~
-            REPLACE_TEXTUALLY ~^\(SWORDANDSHIELD-2\).+$~ ~\1 0 0 0 0 -1 -3 0 0~
+            REPLACE_TEXTUALLY ~^\(SWORDANDSHIELD-0\).+$~ ~\1 -1 0 1 0  0  1 0 0~
+            REPLACE_TEXTUALLY ~^\(SWORDANDSHIELD-1\).+$~ ~\1  0 0 0 0  0 -2 0 0~
+            REPLACE_TEXTUALLY ~^\(SWORDANDSHIELD-2\).+$~ ~\1  0 0 0 0 -1 -3 0 0~
 
         COPY_EXISTING ~weapprof.2da~ ~override~
             SET new_str = RESOLVE_STR_REF(@8801)
@@ -116,36 +186,36 @@ ACTION_IF zst_1545_weapon_style_bonuses BEGIN
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY death_rogue_table BEGIN
             1 => 13 5 => 12 9  => 11 13 => 10 17 => 9 21 => 8
-            2 => 13 6 => 12 10 => 11 14 => 10 18 => 9 
-            3 => 13 7 => 12 11 => 11 15 => 10 19 => 9 
-            4 => 13 8 => 12 12 => 11 16 => 10 20 => 9 
+            2 => 13 6 => 12 10 => 11 14 => 10 18 => 9
+            3 => 13 7 => 12 11 => 11 15 => 10 19 => 9
+            4 => 13 8 => 12 12 => 11 16 => 10 20 => 9
         END
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY wands_rogue_table BEGIN
             1 => 14 5 => 12 9  => 10 13 => 8 17 => 6  21 => 4
-            2 => 14 6 => 12 10 => 10 14 => 8 18 => 6 
-            3 => 14 7 => 12 11 => 10 15 => 8 19 => 6 
+            2 => 14 6 => 12 10 => 10 14 => 8 18 => 6
+            3 => 14 7 => 12 11 => 10 15 => 8 19 => 6
             4 => 14 8 => 12 12 => 10 16 => 8 20 => 6
-        END 
+        END
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY poly_rogue_table BEGIN
             1 => 12 5 => 11 9  => 10 13 => 9 17 => 8 21 => 7
-            2 => 12 6 => 11 10 => 10 14 => 9 18 => 8 
-            3 => 12 7 => 11 11 => 10 15 => 9 19 => 8 
+            2 => 12 6 => 11 10 => 10 14 => 9 18 => 8
+            3 => 12 7 => 11 11 => 10 15 => 9 19 => 8
             4 => 12 8 => 11 12 => 10 16 => 9 20 => 8
         END
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY breath_rogue_table BEGIN
             1 => 13 5 => 11 9  => 9 13 => 8 17 => 6 21 => 5
-            2 => 13 6 => 11 10 => 9 14 => 8 18 => 6 
-            3 => 13 7 => 11 11 => 9 15 => 8 19 => 6 
+            2 => 13 6 => 11 10 => 9 14 => 8 18 => 6
+            3 => 13 7 => 11 11 => 9 15 => 8 19 => 6
             4 => 13 8 => 11 12 => 9 16 => 8 20 => 6
         END
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY spell_rogue_table BEGIN
-            1 => 16 5 => 14 9  => 12 13 => 10 17 => 8 21 => 6 
-            2 => 16 6 => 14 10 => 12 14 => 10 18 => 8 
-            3 => 16 7 => 14 11 => 12 15 => 10 19 => 8 
+            1 => 16 5 => 14 9  => 12 13 => 10 17 => 8 21 => 6
+            2 => 16 6 => 14 10 => 12 14 => 10 18 => 8
+            3 => 16 7 => 14 11 => 12 15 => 10 19 => 8
             4 => 16 8 => 14 12 => 12 16 => 10 20 => 8
         END
     END
@@ -157,30 +227,30 @@ ACTION_IF zst_1545_weapon_style_bonuses BEGIN
         ACTION_DEFINE_ASSOCIATIVE_ARRAY death_priest_table BEGIN
             1 => 11  4 => 10  7 => 8  10 => 7  13 => 6  16 => 5  19 => 3
             2 => 11  5 => 10  8 => 8  11 => 7  14 => 6  17 => 5
-            3 => 11  6 => 10  9 => 8  12 => 7  15 => 6  18 => 5  
+            3 => 11  6 => 10  9 => 8  12 => 7  15 => 6  18 => 5
         END
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY wands_priest_table BEGIN
             1 => 14  4 => 13  7 => 11  10 => 10  13 => 9  16 => 8  19 => 6
-            2 => 14  5 => 13  8 => 11  11 => 10  14 => 9  17 => 8  
+            2 => 14  5 => 13  8 => 11  11 => 10  14 => 9  17 => 8
             3 => 14  6 => 13  9 => 11  12 => 10  15 => 9  18 => 8
         END
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY poly_priest_table BEGIN
             1 => 13  4 => 12  7 => 10  10 => 9  13 => 8  16 => 7  19 => 5
-            2 => 13  5 => 12  8 => 10  11 => 9  14 => 8  17 => 7  
+            2 => 13  5 => 12  8 => 10  11 => 9  14 => 8  17 => 7
             3 => 13  6 => 12  9 => 10  12 => 9  15 => 8  18 => 7
         END
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY breath_priest_table BEGIN
             1 => 18  4 => 16  7 => 15  10 => 14  13 => 13  16 => 12  19 => 10
-            2 => 18  5 => 16  8 => 15  11 => 14  14 => 13  17 => 12  
+            2 => 18  5 => 16  8 => 15  11 => 14  14 => 13  17 => 12
             3 => 18  6 => 16  9 => 15  12 => 14  15 => 13  18 => 12
         END
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY spell_priest_table BEGIN
             1 => 15  4 => 14  7 => 12  10 => 11  13 => 10  16 => 9  19 => 7
-            2 => 15  5 => 14  8 => 12  11 => 11  14 => 10  17 => 9  
+            2 => 15  5 => 14  8 => 12  11 => 11  14 => 10  17 => 9
             3 => 15  6 => 14  9 => 12  12 => 11  15 => 10  18 => 9
         END
     END
@@ -188,7 +258,7 @@ ACTION_IF zst_1545_weapon_style_bonuses BEGIN
     ACTION_IF zst_1545_saving_throws_warrior BEGIN
         COPY ~%MOD_FOLDER%/2da/tweaks/SAVEWAR.2DA~ ~override~
         OUTER_SET incl = 1
-        
+
         ACTION_DEFINE_ASSOCIATIVE_ARRAY death_warrior_table BEGIN
             1 => 14  3 => 13  5 => 11  7 => 10  9  => 8  11 => 7  13 => 5
             2 => 14  4 => 13  6 => 11  8 => 10  10 => 8  12 => 7  14 => 5
@@ -236,41 +306,41 @@ ACTION_IF zst_1545_weapon_style_bonuses BEGIN
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY death_wizard_table BEGIN
             1 => 16 6  => 15  11 => 13  16 => 12  21 => 10
-            2 => 16 7  => 15  12 => 13  17 => 12  
-            3 => 16 8  => 15  13 => 13  18 => 12  
-            4 => 16 9  => 15  14 => 13  19 => 12  
+            2 => 16 7  => 15  12 => 13  17 => 12
+            3 => 16 8  => 15  13 => 13  18 => 12
+            4 => 16 9  => 15  14 => 13  19 => 12
             5 => 16 10 => 15  15 => 13  20 => 12
         END
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY wands_wizard_table BEGIN
             1 => 11 6  => 9  11 => 7  16 => 5  21 => 3
-            2 => 11 7  => 9  12 => 7  17 => 5  
-            3 => 11 8  => 9  13 => 7  18 => 5  
-            4 => 11 9  => 9  14 => 7  19 => 5  
+            2 => 11 7  => 9  12 => 7  17 => 5
+            3 => 11 8  => 9  13 => 7  18 => 5
+            4 => 11 9  => 9  14 => 7  19 => 5
             5 => 11 10 => 9  15 => 7  20 => 5
         END
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY poly_wizard_table BEGIN
             1 => 13 6  => 11  11 => 9  16 => 7  21 => 5
-            2 => 13 7  => 11  12 => 9  17 => 7  
-            3 => 13 8  => 11  13 => 9  18 => 7  
-            4 => 13 9  => 11  14 => 9  19 => 7  
+            2 => 13 7  => 11  12 => 9  17 => 7
+            3 => 13 8  => 11  13 => 9  18 => 7
+            4 => 13 9  => 11  14 => 9  19 => 7
             5 => 13 10 => 11  15 => 9  20 => 7
         END
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY breath_wizard_table BEGIN
             1 => 14 6  => 13  11 => 12  16 => 10  21 => 8
-            2 => 14 7  => 13  12 => 12  17 => 10  
-            3 => 14 8  => 13  13 => 12  18 => 10  
-            4 => 14 9  => 13  14 => 12  19 => 10  
+            2 => 14 7  => 13  12 => 12  17 => 10
+            3 => 14 8  => 13  13 => 12  18 => 10
+            4 => 14 9  => 13  14 => 12  19 => 10
             5 => 14 10 => 13  15 => 12  20 => 10
         END
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY spell_wizard_table BEGIN
             1 => 12 6  => 10  11 => 8  16 => 6  21 => 4
-            2 => 12 7  => 10  12 => 8  17 => 6  
-            3 => 12 8  => 10  13 => 8  18 => 6  
-            4 => 12 9  => 10  14 => 8  19 => 6  
+            2 => 12 7  => 10  12 => 8  17 => 6
+            3 => 12 8  => 10  13 => 8  18 => 6
+            4 => 12 9  => 10  14 => 8  19 => 6
             5 => 12 10 => 10  15 => 8  20 => 6
         END
     END
@@ -282,37 +352,37 @@ ACTION_IF zst_1545_weapon_style_bonuses BEGIN
         ACTION_DEFINE_ASSOCIATIVE_ARRAY death_monk_table BEGIN
             1 => 10  4 => 9  7 => 7  9 =>  6  11 => 5  13 => 4  16 => 3  19 => 2
             2 => 10  5 => 9  8 => 7  10 => 6  12 => 5  14 => 4  17 => 3
-            3 => 10  6 => 9                            15 => 4  18 => 3  
+            3 => 10  6 => 9                            15 => 4  18 => 3
         END
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY wands_monk_table BEGIN
             1 => 14  4 => 13  7 => 11  9 => 10 10 => 9   13 => 8  16 => 7  19 => 5
             2 => 14  5 => 13  8 => 11          11 => 9   14 => 8  17 => 7
-            3 => 14  6 => 13                   12 => 9   15 => 8  18 => 7  
+            3 => 14  6 => 13                   12 => 9   15 => 8  18 => 7
         END
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY poly_monk_table BEGIN
             1 => 13  4 => 12  7 => 10  9 => 9  10 => 8   13 => 7  16 => 6  19 => 4
             2 => 13  5 => 12  8 => 10          11 => 8   14 => 7  17 => 6
-            3 => 13  6 => 12                   12 => 8   15 => 7  18 => 6  
+            3 => 13  6 => 12                   12 => 8   15 => 7  18 => 6
         END
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY breath_monk_table BEGIN
             1 => 16  4 => 15  7 => 13  9 => 12  10 => 10  13 => 9  16 => 7  19 => 6
             2 => 16  5 => 15  8 => 13           11 => 10  14 => 9  17 => 7
-            3 => 16  6 => 15                    12 => 10  15 => 9  18 => 7  
+            3 => 16  6 => 15                    12 => 10  15 => 9  18 => 7
         END
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY spell_monk_table BEGIN
             1 => 13  4 => 12  7 => 11  9  => 10  11 => 9  12 => 8  15 => 7  19 => 5
-            2 => 13  5 => 12  8 => 11  10 => 10           13 => 8  16 => 7 
-            3 => 13  6 => 12                              14 => 8  17 => 7   
+            2 => 13  5 => 12  8 => 11  10 => 10           13 => 8  16 => 7
+            3 => 13  6 => 12                              14 => 8  17 => 7
                                                                    18 => 7
         END
     END
 
     ACTION_IF zst_1545_saving_throws_patch AND incl BEGIN
-        PRINT "[INFO]: Patching creatures with the new saving throw tables..."
+        PRINT "[INFO]: Patching creatures with the new Saving Throw tables..."
         OUTER_SET tolerance = 2
 
         COPY_EXISTING_REGEXP ~^.+\.cre$~ ~override~
@@ -348,7 +418,7 @@ ACTION_IF zst_1545_weapon_style_bonuses BEGIN
 
                     PATCH_IF ABS (save_spell - $spell_rogue_table("%resolved_level%")) > tolerance BEGIN
                         WRITE_BYTE 0x58 $spell_rogue_table("%resolved_level%")
-                    END                   
+                    END
 
                 END ELSE PATCH_IF zst_1545_saving_throws_priest AND class = class_cleric OR class = class_druid OR class = class_shaman BEGIN
 
@@ -371,7 +441,7 @@ ACTION_IF zst_1545_weapon_style_bonuses BEGIN
 
                     PATCH_IF ABS (save_spell - $spell_priest_table("%resolved_level%")) > tolerance BEGIN
                         WRITE_BYTE 0x58 $spell_priest_table("%resolved_level%")
-                    END                   
+                    END
 
                 END ELSE PATCH_IF zst_1545_saving_throws_warrior AND class = class_fighter OR class = class_paladin OR class = class_ranger BEGIN
 
@@ -394,10 +464,10 @@ ACTION_IF zst_1545_weapon_style_bonuses BEGIN
 
                     PATCH_IF ABS (save_spell - $spell_warrior_table("%resolved_level%")) > tolerance BEGIN
                         WRITE_BYTE 0x58 $spell_warrior_table("%resolved_level%")
-                    END  
+                    END
 
                 END ELSE PATCH_IF zst_1545_saving_throws_wizard AND class = class_mage OR class = class_sorcerer BEGIN
-                    
+
                     SET resolved_level = first_level > 21 ? 21 : first_level
                     PATCH_IF ABS (save_death - $death_wizard_table("%resolved_level%")) > tolerance BEGIN
                         WRITE_BYTE 0x54 $death_wizard_table("%resolved_level%")
@@ -417,7 +487,7 @@ ACTION_IF zst_1545_weapon_style_bonuses BEGIN
 
                     PATCH_IF ABS (save_spell - $spell_wizard_table("%resolved_level%")) > tolerance BEGIN
                         WRITE_BYTE 0x58 $spell_wizard_table("%resolved_level%")
-                    END 
+                    END
 
                 END ELSE PATCH_IF zst_1545_saving_throws_monk AND class = class_monk BEGIN
 
@@ -440,14 +510,14 @@ ACTION_IF zst_1545_weapon_style_bonuses BEGIN
 
                     PATCH_IF ABS (save_spell - $spell_monk_table("%resolved_level%")) > tolerance BEGIN
                         WRITE_BYTE 0x58 $spell_monk_table("%resolved_level%")
-                    END 
+                    END
 
                 END
 
             END
-                
+
         BUT_ONLY
 
     END
-        
+
 END

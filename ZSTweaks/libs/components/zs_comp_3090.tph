@@ -3,6 +3,12 @@ OUTER_SET opcode2 = 176
 
 DEFINE_PATCH_MACRO modify_shadow
 BEGIN
+    PATCH_IF zs_debug BEGIN
+        ++patches
+        READ_STRREF 0x8 name
+        LPF LOG_TEXT STR_VAR filename="debug" log_level="debug" message = "Patching likely shadow creature %SOURCE_RES% -- %name%" END
+    END
+
     WRITE_SHORT 0x46 (THIS - 2)
     WRITE_SHORT 0x48 (THIS - 2)
     WRITE_SHORT 0x4c (THIS - 2)
@@ -22,7 +28,7 @@ BEGIN
     PATCH_IF BYTE_AT(0x63) < 30 BEGIN
         WRITE_BYTE 0x63 30
     END
-  
+
     SET present = 0
     LPM CRE_OP_PRESENT
     PATCH_IF NOT present BEGIN
@@ -34,8 +40,15 @@ ACTION_IF has_zs_shadowdancer_overhaul BEGIN
     PRINT "[INFO]: Skipping shadow adjustments to shadow summons in ZS_ShadowdancerOverhaul."
 END
 
+ACTION_IF zs_debug BEGIN
+    LAF LOG_TEXT STR_VAR filename="debug" log_level="debug" message = "-- START OF SHADOW CREATURE PATCHING --" END
+END
+
+OUTER_SET patches = 0
 COPY_EXISTING_REGEXP ~^.+\.cre$~ ~override~
     READ_BYTE 0x272 race
+    READ_BYTE 0x271 general
+
     PATCH_IF race = race_shadow BEGIN
 
         PATCH_IF has_zs_shadowdancer_overhaul BEGIN
@@ -47,26 +60,27 @@ COPY_EXISTING_REGEXP ~^.+\.cre$~ ~override~
         END ELSE BEGIN
             LPM modify_shadow
         END
-        
+
+    END ELSE
+
+    PATCH_IF race = race_wraith          OR
+             race = race_spectral_undead OR
+             race = race_specter         OR
+             (general = general_undead AND race = race_mist)
+    BEGIN
+        LPM modify_shadow
     END
+
 BUT_ONLY
 
+ACTION_IF zs_debug BEGIN
+    PRINT "[DEBUG][INFO]: Patched %patches% shadow creatures."
+    LAF LOG_TEXT STR_VAR filename="debug" log_level="debug" message = "-- END OF SHADOW CREATURE PATCHING --" END
+END
+
 COPY_EXISTING ~shadowwp.itm~ ~override~
-    LPF ALTER_EFFECT INT_VAR match_duration = 60 duration = 2400 END
-BUT_ONLY IF_EXISTS
-
-COPY_EXISTING ~spidwr1.itm~ ~override~
-    PATCH_IF is_iwdee BEGIN
-        LPF ALTER_EFFECT INT_VAR match_duration = 60 duration = 2400 END
-    END ELSE BEGIN
-        LPF ALTER_EFFECT INT_VAR match_duration = 300 duration = 2400 END
-    END
-BUT_ONLY IF_EXISTS
-
-COPY_EXISTING ~trollspi.itm~ ~override~
-    LPF ALTER_EFFECT INT_VAR match_duration = 300 duration = 2400 END
-BUT_ONLY IF_EXISTS
-
-COPY_EXISTING ~bdshadgr.ITM~ ~override~
-    LPF ALTER_EFFECT INT_VAR match_duration = 180 duration = 2400 END
+              ~spidwr1.itm~  ~override~
+              ~trollspi.itm~ ~override~
+              ~bdshadgr.ITM~ ~override~
+    LPF ALTER_EFFECT_EX INT_VAR duration = 2400 STR_VAR match_duration_ex = "(o_duration >= 6)" END
 BUT_ONLY IF_EXISTS

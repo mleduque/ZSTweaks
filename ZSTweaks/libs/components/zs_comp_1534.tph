@@ -12,7 +12,7 @@ ACTION_IF zst_1534_potions_cannot_self_stack BEGIN
 
     COPY_EXISTING_REGEXP ~^.+\.itm$~ ~override~
         READ_SHORT 0x1c cat
-        PATCH_IF cat = 9 OR cat = 13 BEGIN 
+        PATCH_IF cat = 9 OR cat = 13 BEGIN
 
             PATCH_IF NOT "%SOURCE_RES%" STR_EQ "gberry" BEGIN
                 LPF ADD_ON_HIT_EFF STR_VAR effects = ~op=321,t=3,tgt=1,res=%SOURCE_RES%,ip=0~ END
@@ -22,12 +22,12 @@ ACTION_IF zst_1534_potions_cannot_self_stack BEGIN
 
     BUT_ONLY
 
-    ACTION_IF NOT MOD_IS_INSTALLED "ZSTweaks.tp2" "240" AND 
+    ACTION_IF NOT MOD_IS_INSTALLED "ZSTweaks.tp2" "240" AND
               NOT (zst_group_240_goodberry AND MOD_IS_INSTALLED "ZSTweaks.tp2" "99")
     BEGIN
         COPY_EXISTING ~gberry.itm~ ~override~
             LPF ADD_ON_HIT_EFF STR_VAR effects = ~op=321,t=3,tgt=1,res=%SOURCE_RES%,ip=0~ END
-        BUT_ONLY IF_EXISTS
+        IF_EXISTS
     END
 
 END
@@ -43,7 +43,7 @@ ACTION_IF zst_1534_potion_overhaul BEGIN
         COPY_EXISTING ~spin713.spl~ ~override~
             LPF ALTER_HEADER INT_VAR match_type = 2 projectile = 160 END
             LPF ALTER_EFFECT_EX INT_VAR duration = 18 STR_VAR match_duration_ex = "(o_duration >= 6)" END
-            LPF ALTER_EFFECT INT_VAR match_opcode = 30 parameter1=75 parameter2=0 END
+            LPF ALTER_EFFECT INT_VAR match_opcode = 30 parameter1=85 parameter2=0 END
             LPF ALTER_EFFECT INT_VAR match_opcode = 141 parameter2 = 29 END
             LPF DELETE_EFFECT INT_VAR match_opcode = 61 END
             LPF RGB INT_VAR red = 50 green = 181 blue = 199 RET color = result END
@@ -58,7 +58,7 @@ ACTION_IF zst_1534_potion_overhaul BEGIN
         LPF ALTER_EFFECT INT_VAR check_globals=0 header_type=3 match_opcode=17 dicesize=0 dicenumber=0 parameter1=27 END
         LPF ADD_ON_HIT_EFF INT_VAR t=3 p1=1 tgt=1 dur=60 tmg=0 STR_VAR effects=~op=10;op=44~ END
         LPF ADD_ON_HIT_EFF INT_VAR t=3 tgt=1 tmg=0 STR_VAR effects=~op=321,res=%SOURCE_RES%,ip=0~ END
-    BUT_ONLY IF_EXISTS
+    IF_EXISTS
 
     // potion of healing (basic)
     COPY_EXISTING ~potn08.itm~ ~override~
@@ -110,9 +110,12 @@ ACTION_IF zst_1534_potion_overhaul BEGIN
 
     ACTION_IF NOT zst_1534_potions_usable_everyone BEGIN
 
-        COPY_EXISTING_REGEXP "^potn0[3-7]\.itm$" ~override~
+        COPY_EXISTING "potn03.itm" ~override~
+                      "potn04.itm" ~override~
+                      "potn05.itm" ~override~
+                      "potn06.itm" ~override~
+                      "potn07.itm" ~override~
             LPF ALTER_ITEM INT_VAR unusable0=0 END
-        BUT_ONLY
 
         COPY_EXISTING "potn12.itm" ~override~
             LPF ALTER_ITEM INT_VAR unusable0=0 END
@@ -123,6 +126,5 @@ ACTION_IF zst_1534_potion_overhaul BEGIN
                   ~potn26.itm~ ~override~
                   ~potn27.itm~ ~override~
         LPF ALTER_EFFECT INT_VAR check_globals = 0 resist_dispel = 0 END
-
 
 END

@@ -15,9 +15,5 @@ ACTION_IF spell_righteous_wrath_faithful > 0 BEGIN
   BUT_ONLY IF_EXISTS
 
 END ELSE BEGIN
-
-  ACTION_IF NOT group_component BEGIN
-    WARN "[WARN]: No changes made too Righteous Wrath of the Faithful, spell not found."
-  END
-    
+  LAF LOG_TEXT INT_VAR predicate_stdout = (NOT group_component) STR_VAR log_level="abort" message = "Righteous Wrath of the Faithful spell not found. -- Harmless if no IWD spells present" END
 END

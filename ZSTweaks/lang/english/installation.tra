@@ -1,8 +1,8 @@
 @10 = ~General~
 @11 = ~Gear~
 @12 = ~Daggers~
-@13 = ~Two-handed~
-@14 = ~One-handed Swords~
+@13 = ~Two-Handed~
+@14 = ~One-Handed Swords~
 @15 = ~Axes & Blunt~
 @16 = ~Ranged~
 @17 = ~Joinable Characters~
@@ -17,18 +17,15 @@
 @49 = ~This component is only compatible with BGEE~
 @50 = ~This component is only compatible with BGEE and EET~
 @52 = ~This component is only compatible with BG2EE and EET~
-@53 = ~This component is only compatible with BGEE, BG2EE and EET~
-@54 = ~This component is only compatible with IWDEE, BGEE, BG2EE and EET~
-@55 = ~Tweak already installed elsewhere~
-@56 = ~This component is only compatible with IWDEE, BG2EE and EET~
-@57 = ~Can't install groups of components if individual components (without subcomponents) are installed already~
+@53 = ~This component is only compatible with BGEE, BG2EE, and EET~
+@54 = ~This component is only compatible with IWDEE, BGEE, BG2EE, and EET~
+@56 = ~This component is only compatible with IWDEE, BG2EE, and EET~
+@57 = ~Can't install groups of components if individual components are installed already~
 @58 = ~Can't install components included in components that install groups of other components~
-@59 = ~This component must be installed before the next scroll tweak~
-@60 = ~This component is already effectively installed through the Fixpack~
 
 @10000 = ~Install user-selected components in the General group~
 @10001 = ~Install user-selected components in the Gear group~
-@10002 = ~Install user-selected components in the Dagger group~
+@10002 = ~Install user-selected components in the Daggers group~
 @10003 = ~Install user-selected components in the Two-handed group~
 @10004 = ~Install user-selected components in the One-handed Swords group~
 @10005 = ~Install user-selected components in the Axes & Blunt group~
@@ -37,7 +34,7 @@
 @10008 = ~Install user-selected components in the Arcane Magic group~
 @10009 = ~Install user-selected components in the Divine Magic group~
 @10010 = ~Install user-selected components in the Classes group~
-@10011 = ~Install user-selected components in the Creature group~
+@10011 = ~Install user-selected components in the Creatures group~
 @10012 = ~Install user-selected components in the End-of-install-order group~
 
 /// General Item & Spell Tweaks
@@ -57,7 +54,7 @@
 @1650 = ~Make mage robes without cloaks cloaked~
 @1541 = ~Make vorpal hits fail if target has stoneskins~
 @1538 = ~Make jewelry more valuable~
-@1539 = ~Make every class or just rogues able to use scrolls~
+@1539 = ~Make more classes able to use scrolls freely~
 @1544 = ~Make scrolls always cast at the character level regardless of class~
 @1545 = ~Make character stats more streamlined or interesting~
 @1546 = ~Make shield types more distinct and change shield usability~
@@ -72,6 +69,7 @@
 @1548 = ~Make Void-weapons slightly more effective and logical~
 @1559 = ~Make Protection From Magic scroll not a cheesy way to dispel all magic from an enemy~
 @582 = ~Make True Sight dispel illusions once per second instead of once per round~
+@592 = ~Make created characters susceptible to morale failure instead of fearless by default~
 
 /// ARMOR/GEAR/MISC ITEM TWEAKS
 @1170 = "Make Shadow Dragon Scale behave less like a Black Dragon Scale"
@@ -91,13 +89,13 @@
 @1652 = ~Make Grandmaster's Armor better and grant perks to backstabbers~
 @1653 = ~Make Thieves' Hood better and grant perks to single-classed thieves~
 @1654 = ~Make Star-Strewn Boots better and favor Inquisitors too~
-@1655 = ~Make Crown of Lies more consequential when used (SoD)~
+@1655 = ~Make Crown of Lies more consequential when used~
 @1656 = ~Make the Helmet of Dumathoin slightly more powerful~
 @1657 = ~Make The Visage grant Aura of Despair once per day and improve powers~
 @1658 = ~Make Dragon Helm add protection against acid and saves vs. breath~
 @1659 = ~Make the Helm of the Rock more protective and commanding~
 @1661 = ~Make Cloak of the Sewers also protect vs. poison~
-@1662 = ~Make Montolio's Cloak grant a damage and THAC0 bonus to rangers~
+@1662 = ~Make Montolio's Cloak grant extra perks to rangers~
 @1663 = ~Make Sandthief Ring consistently grant one use of invisibility per day~
 @1664 = ~Make ioun stones and/or circlets protect vs. critical hits~
 @1665 = ~Make ioun stones and circlets a bit more interesting or powerful~
@@ -118,7 +116,7 @@
 @1195 = ~Make Gloves of Healing worth more than what you get by selling them~
 @1197 = ~Make a number of quest items functionally useful~
 @1198 = ~Make Ring of the Crusade grant combat bonuses vs. demons and devils~
-@1203 = ~Make Girdle of Fortitude set Constitution to 18 on equip~
+@1203 = ~Make Girdle of Fortitude more generally useful~
 @1204 = "Make Rhino Beetle Gear have a more balanced set of resistances"
 @1206 = ~Make Ring of Purity benefit the good-aligned more~
 @1207 = ~Make Protector of the Second more powerful when used by rangers~
@@ -142,6 +140,12 @@
 @1351 = ~Make Tzu-Zan's bracers a better competitor to Gauntlets of Crushing~
 @1365 = ~Make Shield of Balduran less of an auto-win item~
 @1366 = "Make Helm of Balduran work as it does in BG3"
+@1369 = ~Make Fallorain's Plate +1 more distinctive~
+@1373 = ~Make Pride of the Legion +2 more distinctive~
+@1375 = ~Make Armor of the Hart +3 more distinctive~
+@1385 = ~Make T'rachie's Plate +5 more distinctive~
+@1395 = ~Make Mail of the Dead +2 more distinctive~
+@1404 = ~Make Jester's Chain +4 more distinctive~
 
 /// DAGGER TWEAKS
 @1000 = "Make throwing poisoned daggers less rare and more likely to poison enemies"
@@ -158,6 +162,7 @@
 @1684 = ~Make basic throwing daggers usable as melee weapons~
 @1686 = ~Make Life-Stealer +4 a more powerful cursed weapon~
 @1530 = ~Make throwing dagger's damage standardized~
+@1563 = ~Make Dagger of Venom slightly more powerful~
 
 /// TWO-HANDED MELEE WEAPONS
 @1200 = "Make Ixil's Spike allow Haste and Improved Haste and improve it slightly"
@@ -184,15 +189,15 @@
 @1606 = ~Make the Ravager halberd more balanced~
 @1607 = ~Make Gram, the Sword of Grief able to become +6 and rebalance effects~
 @1608 = ~Make Aule's Staff more effective for non-fighter wizards and sorcerers~
-@1609 = ~Make the Impaler slightly more scary: +5% higher critical hit chance, +5 more impaling damage on crits~
+@1609 = ~Make the Impaler slightly more scary~
 @1696 = ~Make Harbinger more convenient~
-@1698 = ~Make Staff of Power more interesting and balanced~
+@1698 = ~Make Staff of Power more interesting and balanced~ // TODO
 @1708 = ~Make Sword of Chaos reflect BG3's take on it~
 
 /// ONE-HANDED SWORDS
 @1125 = "Make Ninjatô of the Scarlet Brotherhood better and more available"
 @1126 = ~Make Blackrazor able to hit targets immune to +3~
-@1127 = ~Make Peridan more powerful against dragons and wyverns and less misleading in the description~
+@1127 = ~Make Peridan more powerful vs. dragons and wyverns with a better description~
 @1210 = "Make The Equalizer slightly more powerful"
 @1220 = "Make Ras, the Dancing Sword slightly better"
 @1230 = "Make Short Sword of Mask +5 slightly more powerful"
@@ -227,7 +232,7 @@
 @1314 = "Make Jerrod's Mace behave as a +3 weapon"
 @1320 = "Make Flail of Ages +5 allow Haste and Improved Haste and improve it slightly"
 @1321 = "Make Bone Club reflect the description better and improve it slightly"
-@1324 = ~Make Wyvern's Tail more poisonous~
+@1324 = ~Make Wyvern's Tail more venomous~
 @1325 = ~Make Borok's Fist different from Ashideena~
 @1327 = ~Make Club of Detonation better and its fireball power class-agnostic~
 @1328 = ~Make Storm Star more shockingly electrifying~
@@ -243,8 +248,9 @@
 @1346 = ~Make Arrows of Piercing always cause at least half of the extra piercing damage~
 @1347 = ~Make Bolts of Biting slightly more deadly~
 @1348 = ~Make projectiles from Shortbow of Gesen as fast as regular arrows~
-@1371 = ~Make Arrows of Dispelling force a save vs. Spell at -2 for them to work~
-@1388 = ~Make Acid Arrow's extra damage not subject to magic resistance~
+@1371 = ~Make Arrows of Dispelling force a Save vs. Spell at -2 for them to work~
+@1388 = ~Make Acid Arrow's extra damage not subject to Magic Resistance~
+@1011 = ~Make basic ammunition more expensive~
 
 // JOINABLE CHARACTERS TWEAKS
 @1380 = "Make Chaos and Entropy grant 1/2 APR each and improve them slightly"
@@ -259,39 +265,40 @@
 @1644 = ~Make NPC gear no longer bound to unnecessary stat restrictions~
 @1645 = ~Make Cernd's cloak more powerful~
 @1646 = ~Make Sarevok's Deathbringer assault a bit more balanced~
-@1647 = ~Make Shar-Teel especially effective when fighting male-gendered opponents~
+@1647 = ~Make Shar-Teel especially effective when fighting men and equivalent~
 @2240 = ~Make Hexxat's Blood Drain have a cooldown instead of being usable once per day~
 @2250 = ~Make Edwin's amulet nuanced in the privileges it grants to that snake~
 @1556 = ~Make minor improvements to Jaheira-specific items~
+@1381 = ~Make Handmaiden's Mace +2 reflect BG3's take on it~
 
 // WIZARD SPELLS
 @140 = "Make Finger of Death's magical damage on a successful save standardized"
 @145 = ~Make Luck last longer and benefit more~
 @160 = "Make Black Blade of Disaster and golem iron fist unsuitable for backstabs"
-@170 = "Make Wail of the Banshee cause side effects on successful save and bypass Magic Resistance"
-@180 = "Make Meteor Swarm do more minimum damage and bypass magic resistance"
+@170 = "Make Wail of the Banshee more generally effective"
+@180 = "Make Meteor Swarm do more minimum damage and bypass Magic Resistance"
 @210 = "Make Horror an Enchantment spell"
 @220 = "Make Ice Storm do more damage, including piercing damage"
 @370 = "Make Ray of Enfeeblement a Necromancy spell"
 @380 = "Make Contagion cause 4 points of Strength and Dexterity damage"
 @390 = "Make Death Fog better and closer to PnP somewhat"
-@400 = "Make Energy Drain take 6 levels instead of 2"
+@400 = "Make Energy Drain significantly more powerful"
 @405 = ~Make Maze bypass Magic Resistance and make minotaurs immune to it~
-@407 = ~Make base imp familiars have 12/24 HP like the other familiars~
+@407 = ~Make base Imp familiars have 12/24 HP like the other familiars~
 @410 = ~Make Horrid Wilting more effective vs. plants and Water Elementals and increase minimum damage~
 @430 = ~Make Grease bypass Magic Resistance and more useful tactically~
-@440 = ~Make Comet bypass magic resistance and deal a mix of cold, fire, and crushing damage~
+@440 = ~Make Comet bypass Magic Resistance and deal a mix of cold, fire, and crushing damage~
 @441 = "Make Tenser's Transformation grant a THAC0 of 0 at max level and APR at the appropriate levels"
 @444 = ~Make Flesh to Stone and Stone to Flesh more unique~
 @445 = ~Make Bigby's spells more powerful~
 @446 = ~Make fireball-type spells improve more with level and/or improve explosion animations~
-@447 = ~Make Melf's Acid Arrow have a chance of splashing enemies and bypass magic resistance~
+@447 = ~Make Melf's Acid Arrow have a chance of splashing enemies and bypass Magic Resistance~
 @448 = ~Make Decastave grant one extra proficiency point with staves while it's held~
 @449 = ~Make Otiluke's Freezing Sphere deal half damage on save~
 @451 = ~Make Chain Lightning scale more strongly and spread faster to enemies~
 @452 = ~Make Icelance upgrade damage every 2 levels up to 10d6~
 @499 = ~Make Seven Eyes' granted abilities more powerful~
-@500 = ~Make Control Undead bypass magic resistance and have a -2 penalty to the saving throw~
+@500 = ~Make Control Undead bypass Magic Resistance and have a -2 penalty to the Saving Throw~
 @502 = ~Make Hold Undead bypass Magic Resistance~
 @522 = ~Make Disintegrate cause damage and slow some golems, as per PnP~
 @555 = ~Make Chromatic Orb more interesting by providing party-only chromatic varieties~
@@ -299,12 +306,15 @@
 @561 = ~Make Web force saves vs. Breath at +0 instead of saves vs. Spell at -2 for balance~
 @562 = ~Make Imprisonment prevent movement while the animation plays out~
 @572 = ~Make Magic Missiles inflict 1d5+2 magic damage when cast by Invokers~
+@577 = ~Make Haste and Improved Haste more balanced through much shorter durations~
+@585 = ~Make Power Word, Kill more effective as a 9th-level spell~
+@487 = ~Make Otiluke's Resilient Sphere protect NPCs marked as innocents~
 
 // CLERIC SPELLS
 @100 = "Make Glyph of Warding do damage on a failed save and extend damage up to level 20"
 @101 = ~Make Flame Blade be more effective vs. undead, and last for as long as it does in IWDEE~
 @110 = "Make Bless and Curse last longer and increase the casting speed from 6 to 3"
-@130 = "Make Hold Person saving throw penalties standardized at -1"
+@130 = "Make Hold Person Saving Throw penalties standardized at -1"
 @190 = "Make Holy Power grant a THAC0 of 0 at max level and APR at the appropriate levels"
 @230 = "Make Cloak of Fear work as a temporary aura of fear"
 @240 = "Make Goodberries more genuinely useful"
@@ -314,12 +324,12 @@
 @280 = "Make Poison spell do half damage on a failed save"
 @300 = "Make Iron Skins cast as fast a Stoneskin"
 @310 = "Make Fire Seeds markedly more useful and powerful"
-@320 = "Make Nature's Beauty better and more logical in how it works"
+@320 = "Make Nature's Beauty better and more logical"
 @330 = "Make Cleric's level 7 version of confusion act like Chaos"
 @420 = ~Make Armor of Faith also add Armor Class and poison damage resistance~
 @450 = ~Make cure and cause wound spells other than Heal/Harm more worth using~
 @461 = ~Make Bolt of Glory slightly more effective and reorganize the damage distribution per type of enemy~
-@462 = ~Make Magical Stone bypass magic resistance and deal both magic and missile damage~
+@462 = ~Make Magical Stone bypass Magic Resistance and deal both magic and missile damage~
 @463 = ~Make Dolorous Decay more powerful~
 @464 = ~Make Wondrous Recall also recall wizard spells, and a higher number of them~
 @466 = ~Make Shield of Archons absorb more spell levels and closer to PnP~
@@ -327,14 +337,14 @@
 @468 = ~Make Call Lightning's damage and scaling more balanced~
 @505 = ~Make Repulse Undead more useful by causing damage and Slow when they're repulsed~
 @506 = ~Make Wall of Moonlight more effective~
-@507 = ~Make Aid a party buff~
-@508 = ~Make Restoration-type spells restore stat draining by mind flayers and shadow-creatures~
+@507 = ~Make Aid a party buff and optionally disable the character glow~
+@508 = ~Make Restoration-type spells restore stat draining and make Greater version an area of effect spell~
 @509 = ~Make Silence 15ft Radius party-friendly~
 @510 = ~Make Righteous Wrath of the Faithful slightly better~
 @511 = ~Make Unfailing Endurance an area spell that cures the fatigue of the whole party~
 @512 = ~Make Alicorn Lance more effective by increasing damage by 1 dice every 2 levels, up to 8d6~
 @513 = ~Make Whirlwind more effective and able to damage more creatures before dissipating~
-@477 = ~Make Smashing Wave a bit more powerful and bypass magic resistance~
+@477 = ~Make Smashing Wave a bit more powerful and bypass Magic Resistance~
 @479 = ~Make Static Charge electrocute twice as often, but for half the damage~
 @485 = ~Make Cloudburst last longer and less horrendously bad~
 @488 = ~Make Thorn Spray more powerful and scale with level~
@@ -344,6 +354,9 @@
 @497 = ~Make Produce Fire a much more effective spell~
 @515 = ~Make Aura of Flaming Death increase fire resistance instead of setting it to 90%~
 @539 = ~Make Holy and Unholy Word more effective~
+@5400 = ~Make Sanctuary match the IWD version~
+@5402 = ~Make Hold Animal affect many more beast types~
+@5440 = ~Make Cloud of Pestilence more effective and closer to its PnP version~
 
 // KITS AND CLASSES
 @2100 = "Make Sun Soul Ray and Sun Soulbeam more powerful"
@@ -351,16 +364,16 @@
 @2120 = "Make War Cry significantly more useful"
 @2130 = "Make some Thief HLAs more effective"
 @2150 = "Make a selection of HLAs unable to be breached"
-@2160 = ~Make Quivering Palm's saving throw improve twice at later levels~
+@2160 = ~Make Quivering Palm's slightly better and scale with level~
 @2170 = ~Make the THAC0 progression of Thieves and Bards better and more streamlined~
-@2171 = ~Make vanilla Swashbuckler THAC0 consistent Thief THAC0 improvement is installed~
+@2171 = ~Make vanilla Swashbuckler THAC0 consistent if Thief THAC0 improvement is installed~
 @2190 = ~Make Poison Weapon improve twice more every 4 levels~
 @2200 = ~Make Blackguards able to backstab as if they had a 2x multiplier~
 @3500 = ~Make Shadowstep impossible to use while in the Shadow Plane~
 @2230 = ~Make RR's Crippling strike no longer able to increase Strength~
 @2231 = ~Make Dragon Disciples able to access most arcane fire spells automatically and increase fire damage dealt~
 @2232 = ~Make Called Shot directly increase ranged weapon damage~
-@2260 = ~Make Blades, Skalds, and Swashbucklers and Priest of Tempus get more warrior-type benefits~
+@2260 = ~Make Blades, Skalds, and Swashbucklers, and Priests of Tempus get more warrior-type benefits~
 @2265 = ~Make Defensive Spin protect against backstabs for its duration and allow very slow movement~
 @2270 = ~Make Whirlwind and Evasion grant once 3 uses of the Improved variants~
 @2280 = ~Make single-classed thieves and bards able to throw sand in the enemy's eyes~
@@ -368,28 +381,35 @@
 @2300 = ~Make Defensive Stance slightly more balanced~
 @2350 = ~Make all single-classed thieves apply a Sneak Attack Crippling strike on backstabs~
 @2400 = ~Make multi-classed thieves always incur in a -1 backstab multiplier for balance~
+@2401 = ~Make NWN2's Epic Spell 'Vampiric Feast' available as an HLA to necromancers~ // TODO
+@2405 = ~Make Seeking Sword scale with level without disabling spellcasting~
+@2408 = ~Make Priests of Talos able to cast all electricity spells and deal slightly more electricity damage~
+@3190 = ~Make Divine Favor's duration scale slowly with level~
+@3200 = ~Make Boon of Lathander improve slightly with level~
 
 // CRE TWEAKS
-@3010 = ~Make inappropriately aligned creatures in BG2 more correct~
+@3010 = ~Make inappropriately aligned creatures more correct~
 @3020 = ~Make summoned demons grant XP to the party when they kill something~
 @3030 = ~Make celestial summons more powerful or balanced~
 @3040 = ~Make the Planetar more balanced and allow it to grant allies passive partial spell invulnerability~
-@3050 = ~Make the Balor's vorpal attack not guaranteed to succeed but affected by a saving throw~
+@3050 = ~Make the Balor's vorpal attack not guaranteed to succeed but affected by a Saving Throw~
 @3060 = ~Make that dumb Mencar Pebblemuncher a fair fighter for his level~
 @3070 = ~Make lions and other cat creatures not slow as molasses~
-@3080 = ~Make creature on-hit effects that should be natural not behave as magical attacks~
-@3090 = ~Make Shadow creatures slightly more dangerous~
+@3080 = ~Make creature abilities that should be natural not behave as magical attacks~
+@3090 = ~Make Spectral creatures slightly more dangerous~
 @3100 = ~Make Beetles more resistant to non-crushing weapons~
 @3110 = ~Make Yuan-ti slightly more powerful~
 @3120 = ~Make some golem creatures more unique~
 @3130 = ~Make minotaurs tougher and more dangerous~
 @3140 = ~Make ogre / oni mages regenerating fiends, as per PnP~
-@3150 = ~Make drow's magic resistance lower (configurable)~
-@3160 = ~Make the effects on-hit of Otyugh attacks nonmagical and subject to saving throws~
+@3150 = ~Make drow Magic Resistance lower (configurable)~
+@3160 = ~Make the effects on-hit of Otyugh attacks nonmagical and subject to Saving Throws~
+@3165 = ~Make familiars use female voices when casting spells~
+@3170 = ~Make succubi and erinyes use the female winged-elf animation~
+@3180 = ~Make certain creatures immune to Thief Trap exploits~
+@3210 = ~Make Pit Fiends comparable to Balors in power, improving the Gate spell~
 
 // END-OF-INSTALL ORDER TWEAKS
-@1381 = ~Make Handmaiden's Mace +2 (Viconia's romance) reflect BG3's take on it~
 @2370 = ~Make IWD evasion balanced~
-@1531 = ~Make a selection of spells ignore magic resistance~
+@1531 = ~Make a selection of spells ignore Magic Resistance~
 
-@6542 = ~This component is only available if the previous tweak was installed~

@@ -1,6 +1,10 @@
 ACTION_IF is_bg2ee_or_eet BEGIN
 
-  COPY ~%MOD_FOLDER%/items/gnasher~ ~override~
+  DEFINE_PATCH_MACRO patch_file BEGIN
+    LPF ADD_SPL_TGTEFF INT_VAR rd=0 dur=12 pwr=0 STR_VAR effects = ~op=321,dur=0,res=%SOURCE_RES%;op=0,p1=-1;op=73,p1=-1;op=278,p1=-1;op=142,p2=137~ END
+  END
+  LAF CREATE_TG_SPL STR_VAR filename = "zstwpain" END
+
   COPY_EXISTING ~blun24.itm~ ~override~
     LPF ALTER_ITEM INT_VAR id_desc=RESOLVE_STR_REF(@6182) END
     LPF ALTER_EFFECT INT_VAR match_opcode = 12 special = 1024 END
@@ -13,6 +17,6 @@ ACTION_IF is_bg2ee_or_eet BEGIN
     LPF ALTER_EFFECT INT_VAR match_opcode = 12 special = 1024 END
     LPF ALTER_HEADER INT_VAR speed = 0 END
     LPF ADD_ON_HIT_EFF STR_VAR effects = ~op=146,res=zstwpain,p2=1,tmg=1,rd=2~ END
-  BUT_ONLY IF_EXISTS
+  IF_EXISTS
 
 END

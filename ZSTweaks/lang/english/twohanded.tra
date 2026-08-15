@@ -4,7 +4,7 @@ Carsomyr is a weapon of legend, perhaps one of the most powerful blades ever for
 STATISTICS:
 
 Equipped abilities:
-– Magic Resistance: 50%
+– Magic Resistance: +50%
 
 Combat abilities:
 – Dispel Magic at level 30 on each hit
@@ -33,7 +33,7 @@ Now combined with the Eye of Tyr, even such a powerful weapon was made greater s
 STATISTICS:
 
 Equipped abilities:
-– Magic Resistance: 50%
+– Magic Resistance: +50%
 
 Combat abilities:
 – Dispel Magic at level 30 whenever the sword strikes an opponent
@@ -61,7 +61,7 @@ Carsomyr is a weapon of legend, perhaps one of the most powerful blades ever for
 STATISTICS:
 
 Equipped abilities:
-– Magic Resistance: 50%
+– Magic Resistance: +50%
 
 Combat abilities:
 – Dispel Magic at level 30 on a failed Save vs. Spell
@@ -89,7 +89,7 @@ Carsomyr is a weapon of legend, perhaps one of the most powerful blades ever for
 STATISTICS:
 
 Equipped abilities:
-– Magic Resistance: 50%
+– Magic Resistance: +50%
 
 Combat abilities:
 – Dispel Magic at level 30 on a failed Save vs. Spell
@@ -119,7 +119,7 @@ Now combined with the Eye of Tyr, even such a powerful weapon was made greater s
 STATISTICS:
 
 Equipped abilities:
-– Magic Resistance: 50%
+– Magic Resistance: +50%
 
 Combat abilities:
 – Dispel Magic at level 30 whenever the sword strikes an opponent if a Save vs. Spell at -2 is failed
@@ -149,7 +149,7 @@ Now combined with the Eye of Tyr, even such a powerful weapon was made greater s
 STATISTICS:
 
 Equipped abilities:
-– Magic Resistance: 50%
+– Magic Resistance: +50%
 
 Combat abilities:
 – Dispel Magic at level 30 whenever the sword strikes an opponent if a Save vs. Spell at -2 is failed
@@ -347,8 +347,8 @@ Weight: 4~
 STATISTICS:
 
 Combat abilities:
-– 15% chance of draining the victim of water (+15 cold damage)
-– Slays fire elementals, efreet, and salamanders
+– 15% chance of draining the victim of water, inflicting 15 cold damage
+– Slays fire elementals, efreet, and salamanders on hit
 
 THAC0: +4
 Damage: 1d10+4, +3 cold damage (tripled vs. giants)
@@ -395,7 +395,7 @@ Equipped abilities:
 – Immunity to charm and confusion
 
 Combat abilities:
-– 25% chance per hit to cause confusion on the target for 2 rounds, unless a Save vs. Spell succeeds
+– 25% chance per hit to cause Confusion on the target for 2 rounds, unless a Save vs. Spell succeeds
 
 THAC0: +3
 Damage: 1d10+3 (slashing)
@@ -487,7 +487,7 @@ STATISTICS:
 
 Combat abilities:
 – Deals an extra 2d5+2 points of slashing damage on a critical hit
-– Critical Hit chance: +5% (this weapon only)
+– Critical Hit Chance: +5% (this weapon only)
 
 THAC0: +2
 Damage: 1d10+2 (slashing)
@@ -524,7 +524,7 @@ Requires:
 
 Weight: 3~
 
-@7130 = ~Carved from the heart of a rotten treant, this spear smells of death. When held in your hands, it groans a little, as if reluctant to allow a living thing to touch it. In battle, the Spear of Withering spits a foul poison into its target upon each successful hit.
+@7130 = ~Carved from the heart of a rotten treant, this spear smells of death. When held in your hands, it groans a little, as if reluctant to allow a living thing to touch it. In battle, it spits a foul poison into its target upon each successful hit.
 
 STATISTICS:
 
@@ -532,7 +532,7 @@ Combat abilities:
 – Hit target is poisoned for 1 round, suffering 12 poison damage in total, unless a Save vs. Death at -2 succeeds
 
 THAC0: +4
-Damage: 1d6+4, +4 poison damage
+Damage: 1d6+4, +4 (poison)
 Damage type: Piercing
 Speed Factor: 2
 Proficiency Type: Spear
@@ -571,12 +571,12 @@ Equipped abilities:
 – Fire Resistance: +25%
 
 Combat abilities:
-– Hits with this weapon reduce the target's Fire Resistance by 25% for 2 rounds (does not stack) 
+– Hits with this weapon reduce the target's Fire Resistance by 25% for 2 rounds (does not stack)
 
 Charge abilities:
 – Cast Wrath of the Witch once per day
   Area of Effect: All enemies within 15 ft of the caster. Does not affect allies.
-  Damage: 8d6+10 fire damage. Targets affected by Panic take 4d6+10 more damage. No save is allowed.
+  Damage: 8d6+10 fire damage. Targets affected by panic take 4d6+10 more damage. No save is allowed.
   Special: Targets will be affected by Panic and Slow for 3 rounds unless a Save vs. Spell at -2 is made.
 
 THAC0: +4
@@ -592,12 +592,12 @@ Weight: 3~
 
 @7591 = ~Wrath of the Witch~
 
-@7640 = ~When activated, this rod may be used as a powerful magical staff. Any creature hit by the rod must make a saving throw vs. Spell or become paralyzed in terror, fearing the wielder as if he or she were a flesh-eating demon from the Abyss, which may kill them if the fear goes out of control. There is a drawback to using this rod, however: each time the rod is used, there is a chance that the wielder loses one point of constitution for 24 hours.
+@7640 = ~When activated, this rod may be used as a powerful magical staff. Any creature hit by the rod must make a Saving Throw vs. Spell or become paralyzed in terror, fearing the wielder as if he or she were a flesh-eating demon from the Abyss, which may kill them if the fear goes out of control. There is a drawback to using this rod, however: each time the rod is used, there is a chance that the wielder loses one point of constitution for 24 hours.
 
 STATISTICS:
 
 Combat abilities:
-– Target must Save vs. Spell or flee in terror for 2 rounds. After one round, if the target is still panicking, there's a 20% chance the target dies from the shock if they fail a Save vs. Death; if they survive, they become rooted in place for the remainder of the round.
+– Target must Save vs. Spell or become panicked for 2 rounds. During the first round, the target is unable to move, and there's a 25% chance the target will die from the shock if they fail another Save vs. Spell.
 – Every time the rod hits an opponent, there's a 10% chance the wielder will lose 1 point of Constitution for 24 hours
 
 THAC0: +3
@@ -619,14 +619,14 @@ The githyanki's unwavering devotion to their queen inspires both awe and unease.
 STATISTICS:
 
 Equipped abilities:
-– Unaffected by mind blasts and domination attempts by Mind Flayers
+– Unaffected by mind blasts and domination attempts by illithids
 
 Combat abilities:
-– 25% chance per hit the target must Save vs. Death at -2 or die from decapitation. Targets killed this way cannot be resurrected without a True Resurrection spell or divine intervention
-– Psychic Assault: inflicts 2d8 irresistible damage on a critical hit, which also causes confusion for 10 seconds if a Save vs. Spell at -2 is failed. This psychic damage cannot be resisted, but mindless or brainless creatures will not be affected.
+– Vorpal Strike: 25% chance per hit the target must Save vs. Death at -2 or die from decapitation or any other fatal dismemberment
+– Psychic Assault: inflicts 2d8 irresistible psychic damage on a critical hit, which also causes confusion for 10 seconds if a Save vs. Spell at -2 is failed. This damage cannot be resisted, but mindless and brainless creatures will not be affected.
 
-THAC0: +3, +5 vs. Mind Flayers
-Damage: 1d10+3, +5 vs. Mind Flayers (slashing)
+THAC0: +3, +5 vs. illithids
+Damage: 1d10+3, +5 vs. illithids (slashing)
 Speed Factor: 6
 Proficiency Type: Two-handed Sword
 Type: Two-handed
@@ -647,8 +647,8 @@ Equipped abilities:
 Combat abilities:
 – Struck illithids must Save vs. Death at -3 or die instantly. This effect can only affect a particular illithid once per round.
 
-THAC0: +5, +7 against Mind Flayers
-Damage: 1d10+5, +7 vs. Mind Flayers (slashing)
+THAC0: +5, +7 against illithids
+Damage: 1d10+5, +7 vs. illithids (slashing)
 Speed Factor: 5
 Proficiency Type: Two-handed Sword
 Type: Two-handed
@@ -697,8 +697,8 @@ Weight: 12~
 STATISTICS:
 
 Combat abilities:
-– Like the touch of shadows, every hit has a 25% chance of reducing the target's Strength by 2 for 5 rounds. If the target already has less than 3 Strength, the attack drains Constitution instead
-– If the target fails to Save vs. Death, the essence of undeath in this weapon unleashes an extra 1d6 cold damage
+– Shadow Touch: 25% chance of reducing the target's Strength by 2 for 5 rounds. If the target already has less than 3 Strength, the attack drains Constitution instead
+– If the target fails to Save vs. Death, the essence of undeath in this weapon unleashes extra 1d6 cold damage
 
 THAC0: +2
 Damage: 1d10+2, +2 cold damage
@@ -719,7 +719,7 @@ Weight: 12~
 STATISTICS:
 
 Equipped abilities:
-– Unaffected by spells that restrict movement
+– Unaffected by effects that restrict movement
 
 Combat abilities:
 – Hit target is pinned for 3 rounds and takes an additional 1d8+6 piercing damage each round (Save vs. Paralysis negates)
@@ -772,16 +772,16 @@ Now combined with the Serpent Shaft, this dark halberd has the ability to slay a
 
 STATISTICS:
 
+Combat abilities:
+– Hit target must Save vs. Poison or suffer 2d6 points of poison damage and become poisoned, suffering 12 points of poison damage over 1 round
+– 10% chance of decapitating opponent with each successful attack (Save vs. Death at -4 negates)
+
 Charge abilities:
 – Cloak of Fear three times per day
   Special: Affected enemies flee in terror for 4 rounds (Save vs. Spell negates)
   Range: 0
   Duration: Instant
   Area of Effect: 15-ft. radius
-
-Combat abilities:
-– Hit target must Save vs. Poison or suffer 2d6 points of poison damage and become poisoned, suffering 12 points of poison damage over 1 round
-– 10% chance of decapitating opponent with each successful attack (Save vs. Death at -4 negates)
 
 THAC0: +6
 Damage: 1d10+6 (piercing or slashing)
@@ -822,7 +822,7 @@ Equipped abilities:
 
 Combat abilities:
 – 15% chance of inflicting 2d6+12 poison damage with each hit
-– Target must Save vs. Death at -5 or become weakened for 2 rounds, dealing 20% less damage from all sources. This effect does not stack.
+– Target must Save vs. Death at -5 or become weakened for 2 rounds, dealing 25% less damage with all their attacks. This effect does not stack.
 
 THAC0: +6
 Damage: 1d10+6 (slashing)
@@ -839,10 +839,10 @@ Weight: 9~
 STATISTICS:
 
 Combat abilities:
-– +5% to score a critical hit, inflicting 5 extra piercing damage on a critical hit
+– Critical Hits: +5% chance; inflicts 5 extra piercing damage
 
 THAC0: +3
-Damage: 1d8+3, +10 piercing damage
+Damage: 1d6+3, +10 piercing damage
 Damage type: Piercing
 Speed Factor: 3
 Proficiency Type: Spear
@@ -851,8 +851,6 @@ Requires:
  5 Strength
 
 Weight: 3~
-
-
 
 // my item pack
 @8620 = ~– Undead must Save vs. Death or be utterly destroyed~
@@ -876,7 +874,7 @@ Equipped abilities:
 – Immunity to intelligence changes
 
 Combat abilities:
-– 30% chance per hit to cause confusion on the target for 2 rounds, unless a Save vs. Spell at -2 succeeds
+– 30% chance per hit to cause Confusion on the target for 2 rounds, unless a Save vs. Spell at -2 succeeds
 
 THAC0: +5
 Damage: 1d10+5 (slashing)
@@ -901,7 +899,7 @@ Combat abilities:
 – Each hit makes the target receive a cumulative 2-point penalty to their THAC0 for 5 rounds unless a Save vs. Spell at -5 succeeds
 
 THAC0: +6
-Damage: 1d12+6, +1d3 magic damage
+Damage: 1d12+6, +1d3 (magic)
 Speed Factor: 4
 Proficiency Type: Two-handed Sword
 Type: Two-handed
@@ -909,7 +907,6 @@ Requires:
  14 Strength
 
 Weight: 10~
-
 
 @41236 = ~When the hero Trueblood destroyed the Harbinger, a demon gorging itself on the blood of peasant folk near Luskan, he bound its essence in the only vessel capable of holding it, his fabled sword, Deliverance. Though the evil creature was dominated by the will of the semi-sentient blade, it was not truly defeated, and it transformed the weapon from within. Now it acts much like any other enchanted weapon, but when it strikes, there is a small chance that a fireball erupts, a sign that the demon within still rages at its imprisonment. There is also a chance that any ogre it hits will be turned to stone. Whether this is an ability of the demon or a vestigial power of the original blade is not known.
 
@@ -929,7 +926,7 @@ Requires:
 
 Weight: 10~
 
-@42424 = ~A mage's staff is far more than just a gilded walking stick, most being enchanted to an impressive degree. This one is no exception, and whoever the previous owner was, they were powerful indeed. It enables a mage to better escape hostile magic and avoid physical blows, and can erect a Globe of Invulnerability once per day. Offensively, it can launch magic missiles at enemies from a safe distance, though the mage must still aim them with skill, and allows the mage to cast a paralyzing Lightning Bolt twice per day. 
+@42424 = ~A mage's staff is far more than just a gilded walking stick, most being enchanted to an impressive degree. This one is no exception, and whoever the previous owner was, they were powerful indeed. It enables a mage to better escape hostile magic and avoid physical blows, and can erect a Globe of Invulnerability once per day. Offensively, it can launch magic missiles at enemies from a safe distance, though the mage must still aim them with skill, and allows the mage to cast a paralyzing Lightning Bolt twice per day.
 
 STATISTICS:
 
@@ -940,7 +937,7 @@ Equipped abilities:
 – Attacks per round: Set to 2 (sorcerers and single-classed mages)
 – Casting level: +1
 – 5% chance to inflict double magic damage on ranged attacks
-– Melee hits have a 10% chance of stunning the target for 5/2 rounds if a Save vs. Spell is failed
+– Melee hits have a 10% chance of stunning the target for 15 seconds if a Save vs. Spell is failed
 – Acts as a +4 weapon for the purposes of what it can hit
 
 Charge abilities:
@@ -951,7 +948,7 @@ Charge abilities:
 
 – Lightning Bolt of Paralyzation twice per day
   Damage: 10d6 electrical to all in its path (Save vs. Spell for half)
-  Special: Stuns target for 5/2 rounds if a Save vs. Spell is failed
+  Special: Stuns target for 15 seconds if a Save vs. Spell is failed
   Range: 100 ft.
 
 THAC0: +2, +4 for sorcerers and single-classed mages
@@ -989,7 +986,6 @@ Charge abilities:
   Range: 40 ft.
   Duration: 3 rounds
 
-
 THAC0: +2
 Damage: 1d6+2, +1d2 electricity damage (double on a critical hit)
 Damage type: Crushing
@@ -1001,7 +997,7 @@ Requires:
 
 Weight: 3~
 
-@42431 = ~Linked to the Plane of Earth, this staff may have been fashioned by an ancient druidic sect. It can summon an earth elemental, though it also has the potential to slay such creatures in a single blow, possibly hinting at how difficult it is to control them. It can also free a person from the earth by casting Stone to Flesh. 
+@42431 = ~Linked to the Plane of Earth, this staff may have been fashioned by an ancient druidic sect. It can summon an earth elemental, though it also has the potential to slay such creatures in a single blow, possibly hinting at how difficult it is to control them. It can also free a person from the earth by casting Stone to Flesh.
 
 STATISTICS:
 
@@ -1123,7 +1119,7 @@ The blade of Sarevok, brother of <CHARNAME>, used in the battle they fought in f
 STATISTICS:
 
 Combat abilities:
-– Chaos Blade: The latent profane energy in the blade forces unprotected living targets to take 1d4 necrotic damage, which cannot be resisted, and the user is healed by 1 to 6 Hit Points at the same time. 
+– Chaos Blade: The latent profane energy in the blade forces unprotected living targets to take 1d4 necrotic damage, which cannot be resisted, and the user is healed by 1 to 6 Hit Points at the same time.
 
 THAC0: +2
 Damage: 1d10+2
@@ -1146,7 +1142,7 @@ Equipped abilities:
 – Magic Resistance: +10%
 
 Combat abilities:
-– Chaos Blade: The latent profane energy in the blade forces unprotected living targets to take 1d4 necrotic damage, which cannot be resisted, and the user is healed by 1 to 6 Hit Points at the same time. 
+– Chaos Blade: The latent profane energy in the blade forces unprotected living targets to take 1d4 necrotic damage, which cannot be resisted, and the user is healed by 1 to 6 Hit Points at the same time.
 
 THAC0: +4
 Damage: 1d10+4
@@ -1154,7 +1150,7 @@ Damage type: Slashing
 Speed Factor: 6
 Proficiency Type: Two-handed Sword
 Type: Two-handed
-Requires: 
+Requires:
   14 Strength
 
 Weight: 10~
